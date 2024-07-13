@@ -1,0 +1,329 @@
+%%
+%% This is file `pdef.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% ptmpls.dtx  (with options: `pdef')
+%% ptmpls - pppppass' TeX Templates
+%% 
+%% By pppppass <lzh2016p@pku.edu.cn>
+%% 
+%% This macro set is held on
+%%   http://www.github.com/pppppass/ptmpls
+%% and released under the LaTeX Project Public License v1.3c or later, see
+%%   http://www.latex-project.org/lppl.txt
+%% and the postamble.
+%% 
+%% pdef.sty - Personal macro package
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pdef}[2024/07/11 1.5.0 Personal macro package]
+\def\pdef@temp@empty{
+  \let\pdef@temp@var=\undefined
+}
+\def\pdef@temp@fill{
+  \def\pdef@temp@var{\relax}
+}
+\def\ifpdef@temp{
+  \ifcsname pdef@temp@var\endcsname
+}
+\def\pdef@opt@dec#1{
+  \DeclareOption{#1}{
+    \expandafter\def\csname pdef@opt@name@#1\endcsname{\relax}
+  }
+  \expandafter\def\csname ifpdef@opt@#1\endcsname{
+    \ifcsname pdef@opt@name@#1\endcsname
+  }
+  \expandafter\def\csname pdef@test@#1\endcsname{
+    \ifcsname pdef@opt@name@#1\endcsname\pdef@temp@fill\fi
+  }
+}
+
+\pdef@opt@dec{yhaccent}
+\pdef@opt@dec{cgu}
+\pdef@opt@dec{cmrgreekup}
+\pdef@opt@dec{cgunfss}
+\pdef@opt@dec{safebm}
+\pdef@opt@dec{nosidefault}
+\pdef@opt@dec{nolstdefault}
+\pdef@opt@dec{nomacro}
+\pdef@opt@dec{paper}
+
+\ProcessOptions\relax
+
+\def\setanno#1{
+  \expandafter\def\csname ifanno#1\endcsname{
+    \ifcsname pdef@anno@name@#1\endcsname
+  }
+}
+\def\showanno#1{
+  \expandafter\def\csname pdef@anno@name@#1\endcsname{\relax}
+}
+\def\hideanno#1{
+  \expandafter\let\csname pdef@anno@name@#1\endcsname=\undefined
+}
+
+
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsxtra}
+\RequirePackage{mathtools}
+
+\setcounter{MaxMatrixCols}{30}
+
+\ifpdef@opt@yhaccent
+  \DeclareSymbolFont{largesymbolsyhmath}{OMX}{yhex}{m}{n}
+  \DeclareMathAccent{\widetilde}{\mathord}{largesymbolsyhmath}{"65}
+  \DeclareMathAccent{\widehat}{\mathord}{largesymbolsyhmath}{"62}
+  \DeclareMathAccent{\widetriangle}{\mathord}{largesymbolsyhmath}{"E6}
+  \DeclareMathAccent{\wideparen}{\mathord}{largesymbolsyhmath}{"F3}
+\fi
+
+\pdef@temp@empty
+\pdef@test@cgu
+\pdef@test@cmrgreekup
+\ifpdef@temp
+  \RequirePackage[LGR,T1]{fontenc}
+  \DeclareSymbolFont{greekupcbgreek}{LGR}{cmr}{m}{n}
+  \SetSymbolFont{greekupcbgreek}{bold}{LGR}{cmr}{bx}{n}
+  \DeclareMathSymbol{\alphaup}{\mathord}{greekupcbgreek}{97}
+  \DeclareMathSymbol{\betaup}{\mathord}{greekupcbgreek}{98}
+  \DeclareMathSymbol{\gammaup}{\mathord}{greekupcbgreek}{103}
+  \DeclareMathSymbol{\deltaup}{\mathord}{greekupcbgreek}{100}
+  \DeclareMathSymbol{\epsilonup}{\mathord}{greekupcbgreek}{101}
+  \DeclareMathSymbol{\zetaup}{\mathord}{greekupcbgreek}{122}
+  \DeclareMathSymbol{\etaup}{\mathord}{greekupcbgreek}{104}
+  \DeclareMathSymbol{\thetaup}{\mathord}{greekupcbgreek}{106}
+  \DeclareMathSymbol{\iotaup}{\mathord}{greekupcbgreek}{105}
+  \DeclareMathSymbol{\kappaup}{\mathord}{greekupcbgreek}{107}
+  \DeclareMathSymbol{\lambdaup}{\mathord}{greekupcbgreek}{108}
+  \DeclareMathSymbol{\muup}{\mathord}{greekupcbgreek}{109}
+  \DeclareMathSymbol{\nuup}{\mathord}{greekupcbgreek}{110}
+  \DeclareMathSymbol{\xiup}{\mathord}{greekupcbgreek}{120}
+  \DeclareMathSymbol{\piup}{\mathord}{greekupcbgreek}{112}
+  \DeclareMathSymbol{\rhoup}{\mathord}{greekupcbgreek}{114}
+  \DeclareMathSymbol{\sigmaup}{\mathord}{greekupcbgreek}{115}
+  \DeclareMathSymbol{\tauup}{\mathord}{greekupcbgreek}{116}
+  \DeclareMathSymbol{\upsilonup}{\mathord}{greekupcbgreek}{117}
+  \DeclareMathSymbol{\phiup}{\mathord}{greekupcbgreek}{102}
+  \DeclareMathSymbol{\chiup}{\mathord}{greekupcbgreek}{113}
+  \DeclareMathSymbol{\psiup}{\mathord}{greekupcbgreek}{121}
+  \DeclareMathSymbol{\omegaup}{\mathord}{greekupcbgreek}{119}
+\fi
+
+\ifpdef@opt@cgunfss
+  \RequirePackage[LGR,T1]{fontenc}
+  \DeclareMathAlphabet{\mathrmup}{LGR}{cmr}{m}{n}
+  \DeclareMathAlphabet{\mathbfup}{LGR}{cmr}{bx}{n}
+  \DeclareMathAlphabet{\mathsfup}{LGR}{cmss}{m}{n}
+  \DeclareMathAlphabet{\mathitup}{LGR}{cmr}{m}{it}
+  \DeclareMathAlphabet{\mathttup}{LGR}{cmtt}{m}{n}
+  \DeclareMathAlphabet{\mathttup}{LGR}{cmtt}{m}{n}
+  \DeclareMathAlphabet{\mathslup}{LGR}{cmr}{m}{sl}
+\fi
+
+\ifpdef@opt@safebm
+  \newcommand{\hmmax}{0}
+  \newcommand{\bmmax}{0}
+  \RequirePackage{bm}
+\fi
+
+\ifpdef@opt@nosidefault\else
+  \ifdefined\SI
+    \let\Si\si
+    \let\si\relax
+    \sisetup{
+      input-symbols = \pi\spi\dots\cdots,
+      binary-units = true,
+    }
+  \fi
+\fi
+
+\ifpdef@opt@nolstdefault\else
+  \ifdefined\lstset
+    \lstset{%
+      basicstyle=\ttfamily,%
+      keywordstyle=\ttfamily\color{blue!75!black},%
+      stringstyle=\ttfamily\color{red!75!black},%
+      flexiblecolumns%
+    }
+  \fi
+\fi
+
+\def\draftbox#1{%
+  \ifdefined\showdraftbox%
+    {\setlength\fboxsep{0pt}\fbox{#1}}%
+  \else%
+    #1%
+  \fi%
+}
+
+\def\tikzbox{
+  \ifdefined\showtikzbox
+    \draw
+      (current bounding box.south west)
+      rectangle
+      (current bounding box.north east);
+  \fi
+}
+
+\ifpdef@opt@nomacro\else
+  \newcommand{\rbr}[1]{\left( #1 \right)}
+  \newcommand{\sbr}[1]{\left[ #1 \right]}
+  \newcommand{\cbr}[1]{\left\{ #1 \right\}}
+  \newcommand{\pbr}[1]{\left\langle #1 \right\rangle}
+  \newcommand{\fbr}[1]{\left\lfloor #1 \right\rfloor}
+  \newcommand{\gbr}[1]{\left\lceil #1 \right\rceil}
+
+  \newcommand{\frbr}[1]{( #1 )}
+  \newcommand{\fsbr}[1]{[ #1 ]}
+  \newcommand{\fcbr}[1]{\{ #1 \}}
+  \newcommand{\fpbr}[1]{\langle #1 \rangle}
+  \newcommand{\ffbr}[1]{\lfloor #1 \rfloor}
+  \newcommand{\fgbr}[1]{\lceil #1 \rceil}
+
+  \newcommand{\abs}[1]{\left| #1 \right|}
+  \newcommand{\norm}[1]{\left\| #1 \right\|}
+
+  \newcommand{\brbr}[2]{#1( #2 #1)}
+  \newcommand{\bsbr}[2]{#1[ #2 #1]}
+  \newcommand{\bcbr}[2]{#1\{ #2 #1\}}
+  \newcommand{\bpbr}[2]{#1\langle #2 #1\rangle}
+  \newcommand{\bfbr}[2]{#1\lfloor #2 #1\rfloor}
+  \newcommand{\bgbr}[2]{#1\lceil #2 #1\rceil}
+  \newcommand{\babs}[2]{#1| #2 #1|}
+  \newcommand{\bnorm}[2]{#1\| #2 #1\|}
+
+  \newcommand{\mvert}{\middle\vert}
+  \newcommand{\mnorm}{\middle\|}
+
+  \newcommand{\rsbr}[1]{\left( #1 \right]}
+  \newcommand{\srbr}[1]{\left[ #1 \right)}
+  \newcommand{\siobr}[1]{\left[ #1 \right[}
+  \newcommand{\soibr}[1]{\left] #1 \right]}
+  \newcommand{\soobr}[1]{\left] #1 \right[}
+
+  \newcommand{\mnbr}[1]{{\begin{matrix} #1 \end{matrix}}}
+  \newcommand{\mrbr}[1]{{\begin{pmatrix} #1 \end{pmatrix}}}
+  \newcommand{\msbr}[1]{{\begin{bmatrix} #1 \end{bmatrix}}}
+  \newcommand{\mcbr}[1]{{\begin{Bmatrix} #1 \end{Bmatrix}}}
+  \newcommand{\mabr}[1]{{\begin{vmatrix} #1 \end{vmatrix}}}
+  \newcommand{\mmbr}[1]{{\begin{Vmatrix} #1 \end{Vmatrix}}}
+  \newcommand{\mpbr}[1]{{\left<\begin{matrix} #1 \end{matrix}\right>}}
+
+  \newcommand{\bra}[1]{\left< #1 \right\vert}
+  \newcommand{\ket}[1]{\left\vert #1 \right>}
+  \newcommand{\bk}[2]{\left< #1 \middle\vert #2 \right>}
+  \newcommand{\bmk}[3]{\left< #1 \middle\vert #2 \middle\vert #3 \right>}
+
+  \newcommand{\bfrac}[2]{\left. #1 \middle/ #2 \right.}
+  \newcommand{\nvbr}[1]{\left. #1 \right\rvert}
+
+  \newcommand{\narr}[2]{{\begin{array}{#1} #2 \end{array}}}
+  \newcommand{\sarr}[2]{{\begin{subarray}{#1} #2 \end{subarray}}}
+
+  \newcommand{\sd}[1][]{\mathop{\mathrm{d}^{#1} \!}}
+  \newcommand{\pd}[1][]{\mathop{\partial^{#1} \!}}
+  \newcommand{\pdl}[2][]{\mathop{\partial_{#2}^{#1} \!}}
+  \newcommand{\ud}[1][]{\mathop{\mathrm{D}^{#1} \!}}
+
+  \newcommand{\se}{\mathrm{e}}
+  \newcommand{\si}{\mathrm{i}}
+  \newcommand{\sj}{\mathrm{j}}
+  \newcommand{\sk}{\mathrm{k}}
+  \ifdefined\piup
+    \newcommand{\spi}{\piup}
+  \else
+    \ifdefined\uppi
+      \newcommand{\spi}{\uppi}
+    \else
+      \newcommand{\spi}{\pi}
+    \fi
+  \fi
+
+  \newcommand{\ptrel}[1]{\mathrel{\phantom{#1}}}
+  \newcommand{\ptbin}[1]{\mathbin{\phantom{#1}}}
+  \newcommand{\ptop}[1]{\mathop{\phantom{#1}}}
+\fi
+
+\ifpdef@opt@paper
+  \RequirePackage{ntheorem}
+  \RequirePackage{enumitem}
+
+  \newenvironment{partlist}[1][]
+    {\begin{enumerate}[
+      itemsep=0pt, label=(\arabic*), wide,
+      labelindent=\parindent, listparindent=\parindent, #1%
+    ]}
+    {\end{enumerate}}
+  \newenvironment{partpartlist}[1][]
+    {\begin{enumerate}[
+      itemsep=0pt, label=(\roman*), wide,
+      labelindent=\parindent, listparindent=\parindent, #1%
+    ]}
+    {\end{enumerate}}
+  \newenvironment{partpartpartlist}[1][]
+    {\begin{enumerate}[
+      itemsep=0pt, label=\alph*., wide,
+      labelindent=\parindent, listparindent=\parindent, #1%
+    ]}
+    {\end{enumerate}}
+
+  \newtheoremstyle{nonameplain}
+  {\item[%
+    \theorem@headerfont%
+    \hskip\labelsep{##2}%
+    \theorem@separator%
+  ]}
+  {\item[%
+    \theorem@headerfont%
+    \hskip \labelsep{##2}\ (##3)%
+    \theorem@separator%
+  ]}
+  \newtheoremstyle{nonameindent}
+  {\item[%
+    \theorem@headerfont%
+    \hskip\labelsep\hspace{\parindent}##2%
+    \theorem@separator%
+  ]}
+  {\item[%
+    \theorem@headerfont%
+    \hskip \labelsep\hspace{\parindent}##2\ (##3)%
+    \theorem@separator%
+  ]}
+  \newtheoremstyle{nonumberindent}
+{\item[%
+    \theorem@headerfont%
+    \hskip\labelsep\hspace{\parindent}##1%
+    \theorem@separator%
+  ]}
+  {\item[%
+    \theorem@headerfont%
+    \hskip \labelsep\hspace{\parindent}##1\ (##3)%
+    \theorem@separator%
+  ]}
+\fi
+
+%% This work may be distributed and/or modified under the conditions of the LaTeX
+%% Project Public License, either version 1.3 of this license or (at your option)
+%% any later version. The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt,
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status "maintained".
+%% 
+%% The Current Maintainer of this work is pppppass <lzh2016p@pku.edu.cn>.
+%% 
+%% By "this work", it is refered to the file
+%%   ptmpls.dtx,
+%% and the derived files
+%%   ptmpls.pdf,
+%%   ptmpls.ins,
+%%   pdef.sty,
+%%   pnote.cls,
+%%   pslide.cls.
+%%
+%% End of file `pdef.sty'.

@@ -1,0 +1,433 @@
+% !TEX encoding = UTF-8
+% !TEX program = lualatex
+
+\documentclass[12pt]{article}
+
+% \usepackage{luatexja}
+\usepackage[LGR,T2A,T1,EU2]{fontenc}
+% \usepackage[lutf8x]{luainputenc}
+\usepackage[greek,english]{babel}
+\usepackage[margin=0.5in,left=3.0in,bottom=1.0in]{geometry}
+\usepackage{fontspec}
+\usepackage{amssymb}
+\usepackage{newpxtext}
+\usepackage{eulerpx}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{mdframed}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{nccmath}
+\usepackage{pdef}
+
+\allowdisplaybreaks
+
+\AddToHook{shipout/background}{
+\begin{tikzpicture}[remember picture,overlay,shift=(current page.north west)]
+\draw[red, thick] (2.5in, 0in) -- (2.5in, -11in );
+\end{tikzpicture}
+}
+
+\linespread{1.08}
+
+% \def\<#1*#2-#3>{{\color{lightgray}\rule[-#3]{#1}{#2}}}
+\def\opthen{\mathop{\mathtt{then}}}
+\def\opand{\mathop{\mathtt{and}}}
+\def\opor{\mathop{\mathtt{or}}}
+\def\opnot{\mathop{\mathtt{not}}}
+\def\opforall{\mathop{\mathtt{for\ all}}}
+\def\opexists{\mathop{\mathtt{exists}}}
+
+\def\note<<#1>>{{\color{blue!50!black}(#1)}}
+% \def\note<<#1>>{}
+\def\anno<<#1>>{{\color{red!50!black}[#1]}}
+% \def\anno<<#1>>{}
+
+\begin{document}
+
+\abovedisplayskip=3pt
+\abovedisplayshortskip=0.5\abovedisplayskip
+
+\leavevmode
+
+{\centering
+Principles and Elements: Foundations of Mathematics
+
+}
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\S 0. } \textbf{Natural numbers start from zero.}
+
+\leavevmode
+
+Quotes of Arnold Schoenberg from the book \emph{Theory of Harmony}, 1922 (\emph{Harmonielehre}, 1911) translated by Roy Carter:
+
+\begin{mdframed}
+
+This book I have learned from my pupils.
+
+In my teaching I never sought merely `to tell the pupil what I know'. Better to tell him what \emph{he} did not know. Yet that was not my chief aim either, although it was reason enough for me to devise something new for each pupil. I labored rather to show him the nature of the matter from the ground up. Hence, I never imposed those fixed rules with which a pupil's brain is so carefully tied up in knots. Everything was formulated as instructions that were no more binding upon the pupil than upon the teacher. If the pupil can do something better without the instructions, then let him do so. But the teacher must have the courage to admit his own mistakes. He does not have to pose as infallible, as one who knows all and never errs; he must rather be tireless, constantly searching, perhaps sometimes finding. Why pose as a demigod? Why not be, rather, fully human?
+
+\ldots\ldots{}
+
+One of the foremost tasks of instruction is to awaken in the pupil a sense of the past and at the same time to open up to him prospects for the future. Thus instruction may proceed historically, by making the connections between what was, what is, and what is likely to be. The historian can be productive if he sets forth, not merely historical data, but an understanding of history, if he does not confine himself simply to enumerating, but tries to read the future from the past.
+
+Applied to our present concern, that means: Let the pupil learn the laws and effects of tonality just as if they still prevailed, but let him know of the tendencies that are leading toward their annulment. Let him know that the conditions leading to the dissolution of the system are inherent in the conditions upon which it is established. Let him know that every living thing has within it that which changes, develops, and destroys it. Life and death are both equally present in the embryo. What lies between is time. Nothing intrinsic, that is; merely a dimension, which is, however, necessarily consummated. Let the pupil learn by this example to recognize what is eternal: change, and what is temporal: being (\emph{das Bestehen}). Thus he will come to the conclusion that much of what has been considered aesthetically fundamental, that is, necessary to beauty, is by no means always rooted in the nature of things, that the imperfection of our senses drives us to those compromises through which we achieve order. For order is not demanded by the object, but by the subject. [The pupil will conclude], moreover, that the many laws that purport to be natural laws actually spring from the struggle of the craftsman to shape the material correctly; and that the adaptation of what the artist really wants to present, its reduction to fit within the boundaries of form, of artistic form, is necessary only because of our inability to grasp the undefined and unordered. The order we call artistic form is not an end in itself, but an expedient. As such by all means justified, but to be rejected absolutely wherever it claims to be more, to be aesthetics.
+
+\ldots\ldots{}
+
+Instruction that proceeds this way accomplishes something else, as well. It leads the pupil through all those errors that the [historical] struggle for knowledge has brought with it; it leads through, it leads past errors, perhaps past truths as well. Nevertheless, it teaches him to know how the search was carried on, the methods of thinking, the kinds of errors, the way little truths of locally limited probability became, by being stretched out into a system, absolutely untrue. In a word, he is taught all that which makes up the way we think.
+
+\ldots\ldots{}
+
+The satisfactory solution of the problem of \emph{connecting chords with one another} depends on the fulfilment of certain conditions. These conditions are not set up here in the form of laws or rules, but rather as directions (as I have already intimated and will repeat on many occasions). Laws or rules ought to hold always, unconditionally; and the saying that `exceptions prove the rule' is true only of those rules whose very exceptions constitute their sole proof. Directions, however, serve merely to impart means by which a certain goal can be reached. Therefore, they do not hold eternally, as laws, but are changed as soon as the goal changes. Although the following directions do correspond, in part, to the practice of composers, they nevertheless do not spring from aesthetic aims; rather, their purpose is a limited one: namely, to guard the pupil against mistakes that cannot be explained and described until later.
+
+\ldots\ldots{}
+
+\end{mdframed}
+
+\leavevmode
+
+\hspace{-0.75in}\llap{$\Diamond$\textalpha. } \textbf{Principle \foreignlanguage{greek}{\textalpha}.} People discuss mathematics in natural language.
+\note<<c.f. \href{https://en.wikipedia.org/wiki/Metalanguage}{Metalanguage}>>
+
+\leavevmode
+
+Language obeys rules and conveys information. A random sequence of sound is called gibberish, a random sequence of words is called word salad, and a random sequence of sentences is called incoherent rambling.
+
+Mathematical language uses reasoning to inscribe knowledge: \textbf{to make a point is to build up a sensible argument towards the point}. That's all. So you all know math. It's already built in everyday conversations. It's the same thing as someone's hot take posted on Reddit or Twitter. \textbf{To examine an argument, read the sentences one by one and ask yourself what it means, how it follows, and why it's there.} Either you are very much convinced by the sentence and can defend it readily with full confidence, or this sentence is just nonsensual random bytes and will be community noted.
+\note<<Things can be proved are true, and true things can be proved. This is something very special about classical logic, called soundness and completeness.>>
+
+There are a lot of nonsense floating around in poorly-written textbooks or in freestyled homework answers, much like in the Mario essay meme. There are also a lot of people shitposting by copying from others, prevalent among students and also surprisingly among authors, without thinking about what is really going on. They don't understand things. Don't do that. \textbf{Think. Try to understand. Investigate what sounds sus. Discover nonsense lurking. Downvote and throw them out. This way you get smart.} Asking questions is not cringe. I can sit down and talk for hours just to clarify one thing. It is even worth going back to what you think you already knew well before. The real cringe thing is to pretend you understand while you actually don't. That way you waste time learning nothing.
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{1\large?} } \textbf{Question 1.} How is \foreignlanguage{greek}{\textalpha} pronounced? How is it written?
+\note<<c.f. \href{https://en.wikipedia.org/wiki/Greek_alphabet}{Greek alphabet}>>
+
+\newpage
+
+\hspace{-0.75in}\llap{\S 1. } \textbf{Language I: True and False} 
+\note<<c.f. \href{https://en.wikipedia.org/wiki/Propositional_calculus}{Propositional calculus}>>
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{1\large?} } \textbf{Question 1.} What's wrong and what's \emph{not wrong} in the following?
+\note<<c.f. syllogism>>
+\begin{mdframed}
+\noindent Socrates is a dog. Dogs are green. So Socrates is green.
+
+\noindent Socrates is a dog. Dogs are mortal. So Socrates is mortal.
+
+\noindent Socrates is human. Humans are green. So Socrates is green.
+
+\noindent Socrates is human. Humans are mortal. So Socrates is mortal.
+
+\end{mdframed}
+
+\leavevmode
+
+A statement is a sentence that we can know whether it's true or false.
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{2\large?} } \textbf{Question 2.} Which line in Question 1 \{implies, is implied by, falsified, is falsified by\}
+\begin{equation*}
+\rbr{ p \opand \rbr{ p \opthen q } } \opthen q.
+\end{equation*}
+Is the above true or false? What's \{$p$, $q$\}? Is \{$p$, $q$\} true or false?
+
+\leavevmode
+
+If the premise isn't true, an argument won't then apply. But it doesn't hurt either: the argument is \emph{vacuously true} \note<<c.f. \href{https://en.wikipedia.org/wiki/Vacuous_truth}{Wikipedia}>>, as told in the following.
+\begin{mdframed}
+If pigs can fly \ldots{}
+
+\hfill\ldots{} then we can commute to work on them.\hfill{}
+
+\hfill ChatGPT
+
+\end{mdframed}
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{3\large?} } \textbf{Question 3.} Complete the following. \textbf{Don't think in $pqr$ but think in natural language, i.e. don't work mechanically with abstract symbols but always instantiate them into concrete examples, as exemplified by this sentence itself.}
+\begin{mdframed}
+\centering
+\noindent\begin{tabular}{c|c|c}
+If $p$ is \ldots & and $q$ is \ldots & then $ p \opthen q $ is \ldots \\
+\hline
+true & true & \\
+\hline
+true & false & \\
+\hline
+false & true & \\
+\cline{1-2}
+false & false &
+\end{tabular}
+\end{mdframed}
+Now complete the following.
+\begin{mdframed}
+\centering
+\noindent\begin{tabular}{c|c|c|c|c}
+$p$ & $q$ & $ p \opthen q $ & $ p \opand \rbr{ p \opthen q } $ & $ \rbr{ p \opand \rbr{ p \opthen q } } \opthen q $ \\
+\hline
+T & T & & & \\
+\hline
+T & F & & & \\
+\hline
+F & T & & & \\
+\hline
+F & F & & &
+\end{tabular}
+\end{mdframed}
+
+\leavevmode
+
+An argument can still be \emph{valid} even if the premise isn't true, though in this case the conclusion doesn't follow, i.e. it is not \emph{sound}. This is precisely how ``if'' clauses work.
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{4\large?} } \textbf{Question 4.} Complete the following.
+\begin{mdframed}
+\centering
+\noindent\begin{tabular}{lc|c|c}
+& If we have \ldots & and \ldots & then we have \ldots \\
+\hline
+1. & $p$ & \multirow{4}*{$ p \opthen q $} & \\
+\cline{1-2}\cline{4-4}
+2. & $ \opnot p $ & & \\
+\cline{1-2}\cline{4-4}
+3. & $ q $ & & \\
+\cline{1-2}\cline{4-4}
+4. & $ \opnot q $ & &
+\end{tabular}
+\end{mdframed}
+What are synonyms to ``we have''? What are the differences between [``we have $p$'', ``we have $ \rbr{ \opnot p } $'', ``we don't have $p$'', ``we don't have $ \rbr{ \opnot p } $'']? Which one is the opposite to ``we have $p$''?
+
+\leavevmode
+
+\hspace{-0.75in}\llap{$\Box$ } \textbf{Element.} To use $ \rbr{ p \opthen q } $: once we have $p$ and $ \rbr{ p \opthen q } $, we have $q$.
+\note<<c.f. \href{https://en.wikipedia.org/wiki/Modus_ponens}{Modus ponens}>>
+
+\leavevmode
+
+We can always find valid arguments for true statements. Statements with valid arguments are always true.
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{5\large?} } \textbf{Question 5.} I argue for $ \rbr{ \rbr{ p \opthen q } \opand \rbr{ q \opthen r } } \opthen \rbr{ p \opthen r } $ as the following.
+\begin{mdframed}
+\noindent 1. I want $ \rbr{ \rbr{ p \opthen q } \opand \rbr{ q \opthen r } } \opthen \rbr{ p \opthen r } $.
+
+\noindent $\longrightarrow$ 2. Suppose $ \rbr{ p \opthen q } $ and $ \rbr{ q \opthen r } $.
+
+\noindent $\longrightarrow$ 3. I want $ \rbr{ p \opthen r } $.
+
+\noindent $\longrightarrow$ $\longrightarrow$ 4. Suppose $p$.
+
+\noindent $\longrightarrow$ $\longrightarrow$ 5. Since we have $p$ and $ \rbr{ p \opthen q } $, I have $q$.
+
+\noindent $\longrightarrow$ $\longrightarrow$ 6. Since we have $q$ and $ \rbr{ q \opthen r } $, I have $r$.
+
+\noindent $\longrightarrow$ 7. Since I demonstrated once I have $p$ I will have $r$, I have $ \rbr{ p \opthen r } $.
+
+\noindent 8. Since I demonstrated once I have $ \rbr{ p \opthen q } $ and $ \rbr{ q \opthen r } $ I will have $ \rbr{ p \opthen q } $, I have $ \rbr{ \rbr{ p \opthen q } \opand \rbr{ q \opthen r } } \opthen \rbr{ p \opthen r } $.
+
+\end{mdframed}
+What does the indentation $\longrightarrow$ mean? On which lines do I have \{$p$, $q$, $ p \opthen q $\}? Which lines people usually streamline/combine?
+
+\hspace{-0.75in}\llap{$\Box$ } \textbf{Element.} To argue for $ \rbr{ p \opthen q } $: suppose we have $p$, demonstrate how to get $q$.
+
+\leavevmode
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} Argue for $ \rbr{ p \opand \rbr{ p \opthen q } } \opthen q $.
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} Argue for $ \rbr{ p \opthen \rbr{ q \opthen p } } $.
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} Argue for $ \rbr{ p \opthen \rbr{ q \opthen r } } \opthen \rbr{ \rbr{ p \opthen q } \opthen \rbr{ p \opthen r } } $.
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{6\large?} } \textbf{Question 6.} I argue for $ \rbr{ p \opand \opnot q } \opthen \opnot \rbr{ p \opthen q } $ as the following.
+\begin{mdframed}
+\noindent 1. \ldots{}
+
+\noindent $\longrightarrow$ 2. Suppose I have $p$ and $ \rbr{ \opnot q } $.
+
+\noindent $\longrightarrow$ 3. Either $ \rbr{ p \opthen q } $ is true or $ \opnot \rbr{ p \opthen q } $ is true.
+
+\noindent $\longrightarrow$ $\longrightarrow$ 4. Suppose I have $ \rbr{ p \opthen q } $.
+
+\noindent \ldots{}
+
+\noindent $\longrightarrow$ $\longrightarrow$ 6. Since I have $q$ and $ \rbr{ \opnot q } $, this is impossible.
+
+\noindent $\longrightarrow$ 7. Since $ \rbr{ p \opthen q } $ is never possible, I have $ \opnot \rbr{ p \opthen q } $.
+
+\noindent \ldots{}
+
+\end{mdframed}
+Complete the argument. How do we argue for $ \rbr{ \opnot p } $? How do we use $ \rbr{ \opnot p } $? How do we argue against $ \rbr{ p \opthen q } $?
+
+\leavevmode
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} Argue for $ \rbr{ \opnot q \opand \rbr{ p \opthen q } } \opthen \opnot p $.
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} Argue for $ \rbr{ p \opthen \rbr{ \opnot p \opthen q } } $.
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} Argue for $ \rbr{ \opnot p \opthen q } \opthen \rbr{ \rbr{ \opnot p \opthen \opnot q } \opthen p } $.
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{7\large?} } \textbf{Question 7.} Which ones of [``$p$ if $q$'', ``$p$ only if $q$'', ``$p$ is necessary to $q$'', ``$p$ is sufficient for $q$''] mean $ \rbr{ p \opthen q } $ and which ones mean $ \rbr{ q \opthen p } $?
+
+\leavevmode
+
+The abbreviation $p$ \emph{iff} $q$ means ($p$ if and only if $q$), i.e. ($ p \opthen q $) and ($ q \opthen p $).
+
+\leavevmode
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} If [$ p \opthen q $, $ q \opthen r $, $ r \opthen p $], argue that one iff any other, i.e. [$ p \opthen r $, $ q \opthen p $, $ r \opthen q $].
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} Argue that $ \rbr{ p \opthen q } $ iff $ \rbr{ \opnot p \opthen \opnot q } $.
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} If (one and only one of [$p$, $q$, $r$] is true), (one and only one of [$u$, $v$, $w$] is true), and [$ p \opthen u $, $ q \opthen v $, $ r \opthen w $], argue that [$ u \opthen p $, $ v \opthen q $, $ w \opthen r $].
+
+\newpage
+
+\hspace{-0.75in}\llap{\S 2. } \textbf{Language II: All and Some}
+\note<<c.f. \href{https://en.wikipedia.org/wiki/First-order_logic}{First-order logic}>>
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{1\large?} } \textbf{Question 1.} What's wrong in each of the following?
+\begin{mdframed}
+\noindent 1. \emph{Some cats are black. Some black things are televisions. So some cats are televisions.}
+
+\hfill Wikipedia
+
+\noindent 2. \emph{All dragons produce fire. All candles produce fire. So some candles are dragons.}
+
+\hfill ChatGPT
+
+\noindent 3. \emph{All superheroes are brave. No ordinary people are superheroes. So no ordinary people are brave.}
+
+\hfill ChatGPT and author
+
+\noindent 4. \emph{All french fries are good. All french fries are unhealthy. So all good things are unhealthy.}
+
+\hfill author
+
+\noindent 5. \emph{All my neighbors come back late. All who come back late live next door to me. So some people living next to me are not my neighbors.}
+
+\hfill author
+
+\noindent 6. \emph{All of us don't read that trash. All who read that trash don't appreciate real literature. So all of us appreciate real literature.}
+
+\hfill Wikipedia
+
+\noindent 7. \emph{No cats are dogs. Some dogs are not pets. So some pets are not cats.}
+
+\hfill Wikipedia
+
+\noindent 8. \emph{No planets are dogs. Some dogs are not pets. So some pets are not planets.}
+
+\hfill Wikipedia
+
+\end{mdframed}
+
+\leavevmode
+
+There are questions that become statements once we specify an object but are not statements themselves.
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{2\large?} } \textbf{Question 2.} Complete the following. Build formulas using [$\opnot$, ($ \opforall x : \ldots $), ($ \opexists x : \ldots $), $ P\!\rbr{x} \opthen Q\! \rbr{x} $, $ P\!\rbr{x} \opand Q\!\rbr{x} $].
+\begin{mdframed}
+\begin{longtable}{l|l}
+Natural language & Formula \\
+\hline
+some cats are black & \\
+\hline
+some cats are not black & \\
+\hline
+all cats are black & \\
+\hline
+all cats are not black & \\
+\hline
+no cats are black & \\
+\hline
+no cats are not black & \\
+\hline
+not all cats are black & \\
+\hline
+not all cats are not black & \phantom{not all cats are not black}
+\end{longtable}
+\end{mdframed}
+Which ones are the same thing? Which ones are the opposite things?
+
+\leavevmode
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} What's the opposite to $ \rbr{ \opforall x, P\!\rbr{x} } $ and what's the opposite to $ \rbr{ \opexists x, P\!\rbr{x} } $?
+
+\hspace{-0.75in}\llap{> } \textbf{Exercise.} The opposite to $ \rbr{ \opforall x, P\!\rbr{x} \opthen Q\!\rbr{x} } $ is which one of
+\begin{alignat*}{2}
+& \opexists x, P\!\rbr{x} \opthen \opnot Q\!\rbr{x}, & \quad & \opexists x, P\!\rbr{x} \opand \opnot Q\!\rbr{x}, \\ & \opexists x, \opnot P\!\rbr{x} \opthen \opnot Q\!\rbr{x}, & \quad & \opexists x, \opnot P\!\rbr{x} \opand \opnot Q\!\rbr{x}?
+\end{alignat*}
+
+\leavevmode
+
+\hspace{-0.75in}\llap{\rotatebox[origin=B]{45}{3\large?} } \textbf{Question 3.} I argue for
+\begin{multline*}
+\rbr{ \opexists x, P\!\rbr{x} \opand Q\!\rbr{x} } \opand \opnot \rbr{ \opexists x, Q\!\rbr{x} \opand R\!\rbr{x} } \\
+\opthen \rbr{ \opexists x, P\!\rbr{x} \opthen \opnot R\!\rbr{x} }
+\end{multline*}
+as the following.
+\begin{mdframed}
+\noindent 1. \ldots{}
+
+\noindent $\longrightarrow$ 2. Suppose \ldots{}
+
+\noindent $\longrightarrow$ 3. I want $ \rbr{ \opforall x, P\!\rbr{x} \opthen R\!\rbr{x} } $.
+
+\noindent $\longrightarrow$ $\longrightarrow$ 4. Take any $x$ such that we have $ P\!\rbr{x} $.
+
+\noindent $\longrightarrow$ $\longrightarrow$ 5. Since we have $ P\!\rbr{x} $ and $ \rbr{ \opforall x, P\!\rbr{x} \opthen Q\!\rbr{x} } $, we have $ Q\!\rbr{x} $.
+
+\noindent $\longrightarrow$ $\longrightarrow$ 6. Since we have $q$ and $ \rbr{ q \opthen r } $, I have $r$.
+
+\noindent $\longrightarrow$ 7. Since I demonstrated once I have $p$ I will have $r$, I have $ \rbr{ p \opthen r } $.
+
+\noindent 8. Since I demonstrated once I have $ \rbr{ p \opthen q } $ and $ \rbr{ q \opthen r } $ I will have $ \rbr{ p \opthen q } $, I have $ \rbr{ \rbr{ p \opthen q } \opand \rbr{ q \opthen r } } \opthen \rbr{ p \opthen r } $.
+
+\end{mdframed}
+What does the indentation $\longrightarrow$ mean? On which lines do I have \{$p$, $q$, $ p \opthen q $\}? Which lines people usually streamline/combine?
+
+\leavevmode
+
+
+
+
+Q1. Apply or
+
+Q2. De morgan
+
+Q3. Argue for and against or [another version of ->]
+
+
+Q5. More syllogism's, venn
+
+Q6. Apply all
+
+Q7. Apply some
+
+Q8. Negation, relative negation
+
+Q9. Argue for and against
+
+Q10. Summary
+
+\end{document}
+f
