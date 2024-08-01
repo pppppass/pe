@@ -1,0 +1,45 @@
+name: Build pem205 with PreTeXt-CLI
+
+on:
+  pull_request:
+    branches: [main, m205]
+  push:
+    branches: [main, m205]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r pem205/requirements.txt
+
+      - name: Build deploy targets
+        working-directory: ./pem205
+        run: pretext build --deploys
+
+      - name: Stage deployment
+        working-directory: ./pem205
+        run: pretext deploy --stage-only
+
+      - name: Cache output/stage
+        uses: actions/cache/save@v4
+        with:
+            path: pem205/output/stage
+            key: m205-${{ github.run_id }}
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+    uses: ./.github/workflows/gh-pages.yml
