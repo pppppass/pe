@@ -22,24 +22,28 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: pip install -r pem205/requirements.txt
+        run: pip install -r m205/requirements.txt
 
       - name: Build deploy targets
-        working-directory: ./pem205
+        working-directory: ./m205
         run: pretext build --deploys
 
       - name: Stage deployment
-        working-directory: ./pem205
+        working-directory: ./m205
         run: pretext deploy --stage-only
+      
+      - name: Move to depoly folder
+        run: mkdir -p deploy && mv m205/output/stage deploy/m205
 
-      - name: Cache output/stage
+      - name: Cache contents
         uses: actions/cache/save@v4
         with:
-            path: pem205/output/stage
+            path: deploy/m205
             key: m205-${{ github.run_id }}
 
-  deploy:
+  gh-pages:
     needs: build
     permissions:
       pages: write
+      id-token: write
     uses: ./.github/workflows/gh-pages.yml
