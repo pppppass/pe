@@ -11,7 +11,7 @@
   <subsection xml:id="subsec-abstract-measures">
     <title>Abstract measures</title>
     <p>§1.2-1.3.<ul>
-      <li><p><m>\sigma</m>-algebra = countably complete Boolean algebra = subset family closed under countable operations (p. 21).</p></li>
+      <li><p><m>\sigma</m>-algebra = countably complete Boolean algebra = family of subsets closed under countable operations (p. 21).</p></li>
       <li><p>Measure = countably additive set function (p. 24).</p></li>
       <li><p>Completion: make subsets of null sets measurable and therefore null (p. 26 Thm. 1.9).</p></li>
       <li><p>Functional factorization: finer <m>\sigma</m>-algebra contains more information and vice versa  ([K] p. 18 Lm. 1.14).</p></li>
