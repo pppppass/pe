@@ -1,0 +1,46 @@
+name: Deploy GitHub Pages
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: page
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+
+      - name: Download contents of pem205
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/m205
+          key: m205-${{ github.run_id }}
+          restore-keys: m205
+
+      - name: Download contents of pem0
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/m0
+          key: m0-${{ github.run_id }}
+          restore-keys: m0
+
+      - name: Setup GitHub Pages
+        id: check
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: deploy
+
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

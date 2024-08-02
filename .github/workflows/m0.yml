@@ -1,0 +1,49 @@
+name: Build pem0 with PreTeXt-CLI
+
+on:
+  pull_request:
+    branches: [main, m0]
+  push:
+    branches: [main, m0]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r m0/requirements.txt
+
+      - name: Build deploy targets
+        working-directory: ./m0
+        run: pretext build --deploys
+
+      - name: Stage deployment
+        working-directory: ./m0
+        run: pretext deploy --stage-only
+      
+      - name: Move to depoly folder
+        run: mkdir -p deploy && mv m0/output/stage deploy/m0
+
+      - name: Cache contents
+        uses: actions/cache/save@v4
+        with:
+            path: deploy/m0
+            key: m0-${{ github.run_id }}
+
+  gh-pages:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/gh-pages.yml
