@@ -2,10 +2,229 @@
 <section xml:id="reading-vectors" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Reading: Vectors</title>
   <introduction>
-    <p>Some words</p>
+    <p>
+      <ul>
+        <li>
+          <p>
+            ([ILA]) Margalit, Rabinoff, Williams. <em><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></em>, UBC ed.
+          </p>
+        </li>
+      </ul>
+      Read Chapter 1.
+    </p>
   </introduction>
-  <subsection xml:id="subsection-1">
-    <title>My First Subsection</title>
-    <p>Some more words</p>
-  </subsection>
+  <reading-questions xml:id="rqs-before-everything">
+    <title>Before everything</title>
+    <exercise>
+      <statement>
+        <p>
+          Where is Chapter 1? How to navigate through unfamiliar things?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          What's before Chapter 1? What's at the end of the book? What are they about? How is the textbook structured?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          What's special about this textbook besides being online? How does it compare to traditional ones?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          There's also a PDF version of the textbook.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          What's linear algebra? Why study linear algebra?
+        </p>
+      </statement>
+    </exercise>
+  </reading-questions>
+  <reading-questions xml:id="rqs-vectors">
+    <title>Vectors</title>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words what <m>\mathbb{R}^3</m> is. Why write <m>\mathbb{R}</m> and why 3? How many things are inside <m>\mathbb{R}^3</m>?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          There are other names for <m>2</m>-tuples, <m>3</m>-tuples, ...
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain the following.
+        </p>
+        <blockquote>
+          <p>
+            Points and vectors are different things. Vectors are differences between points. Starting from a point and moving by a vector we arrive at another point. Sometimes we regard points as vectors by taking differences to the origin. That's why in most of the later pictures we draw vectors starting at the origin.
+          </p>
+        </blockquote>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          What are real-world examples when high(&gt;3)-dimensional vectors can be useful?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words the following text.
+        </p>
+        <blockquote>
+          <p>
+            Why? The width of <m>v + w</m> is the sum of the widths, and likewise with the heights.
+          </p>
+        </blockquote>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words the following text.
+          <blockquote>
+            <p>
+              Why? If you add <m> v - w </m> to <m>w</m>, you get <m>v</m>.
+            </p>
+          </blockquote>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain again the geometric rule of vector subtraction, this time using scalar multiplication: <m> v - w = v + (-1) w </m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain the following. What are the two scenarios?
+        </p>
+        <blockquote>
+          <p>
+            In fact, there are infinitely many scenarios of {all linear combinations of a vector}. However, many scenarios are essentially the same. There are only two essentially different scenarios.
+          </p>
+        </blockquote>
+      </statement>
+    </exercise>
+  </reading-questions>
+  <reading-questions xml:id="rqs-linear-systems">
+    <title>Linear systems</title>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words the following in the text. Give your own examples.
+        </p>
+        <blockquote>
+          <p>
+            Asking whether or not a vector equation has a solution is the same as asking if a given vector is a linear combination of some other given vectors.
+          </p>
+        </blockquote>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Give an example when a linear system has no solution. Why it has no solutions?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Give an example when a linear system has infinitely many solutions. What are the infinitely many solutions?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          We want to express solutions with something we can wiggle, i.e. something we are free to choose...
+          <hint>
+            <p>
+              You discovered the concept of how to <em>parameterize</em> solutions!
+            </p>
+          </hint>
+        </p>
+      </hint>
+    </exercise>
+  </reading-questions>
+  <reading-questions xml:id="rqs-spans">
+    <title>Spans</title>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words how and why spans and consistency of linear systems are related.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          How to express <q><m>v_1</m>, <m>v_2</m>, <m>v_3</m> span the whole <m>\mathbb{R}^3</m> </q> in terms of solutions of linear systems?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Any ... is in ...
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Find all different scenarios for the span of X vectors in Y-dimensional space. Draw essentially identical scenarios only once.
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell>1 vector</cell>
+            <cell>2 vectors</cell>
+            <cell>3 vectors</cell>
+            <cell>4 vectors</cell>
+          </row>
+          <row>
+            <cell>in <m>\mathbb{R}^1</m></cell>
+          </row>
+          <row>
+            <cell>in <m>\mathbb{R}^2</m></cell>
+          </row>
+          <row>
+            <cell>in <m>\mathbb{R}^3</m></cell>
+          </row>
+        </tabular>
+        <p>
+          How many vectors are necessary to span the whole space? When can some vectors be removed and the span doesn't change?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          There are conditions on X and Y. Starting from <m>\mathbb{R}^2</m> might be easier.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Are the coefficients unique when expressing any vector in <m>\mathbb{R}^3</m> as a linear combination of <m>\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}</m>, and <m>\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}</m>? What about the three and an extra <m> \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} </m>?
+        </p>
+      </statement>
+    </exercise>
+  </reading-questions>
 </section>
