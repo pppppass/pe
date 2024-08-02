@@ -25,6 +25,13 @@ jobs:
           key: m205-${{ github.run_id }}
           restore-keys: m205
 
+      - name: Download contents of pem0
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/m0
+          key: m0-${{ github.run_id }}
+          restore-keys: m0
+
       - name: Setup GitHub Pages
         id: check
         uses: actions/configure-pages@v5
