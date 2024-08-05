@@ -98,12 +98,12 @@
       <statement>
         <p>
           Explain in your own words the following text.
-          <blockquote>
-            <p>
-              Why? If you add <m> v - w </m> to <m>w</m>, you get <m>v</m>.
-            </p>
-          </blockquote>
         </p>
+        <blockquote>
+          <p>
+            Why? If you add <m> v - w </m> to <m>w</m>, you get <m>v</m>.
+          </p>
+        </blockquote>
       </statement>
     </exercise>
     <exercise>
@@ -126,8 +126,8 @@
       </statement>
     </exercise>
   </reading-questions>
-  <reading-questions xml:id="rqs-linear-systems">
-    <title>Linear systems</title>
+  <reading-questions xml:id="rqs-vector-equations">
+    <title>Vector equations</title>
     <exercise>
       <statement>
         <p>
