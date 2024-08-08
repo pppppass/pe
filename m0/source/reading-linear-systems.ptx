@@ -1,4 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xml:id="reading-linear-systems" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Reading: Linear systems</title>
+  <introduction>
+    <p>
+      <ul>
+        <li>
+          <p>
+            ([ILA]) Margalit, Rabinoff, Williams. <em><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></em>, UBC ed.
+          </p>
+        </li>
+      </ul>
+      Read §§ 2.1-2.3. The exact definition of <q>pivot</q> is not extremely important; pay more attention to the procedure of Gaussian elimination. Once the procedure is clear other things will follow.
+    </p>
+  </introduction>
+  <reading-questions xml:id="rqs-solutions-geometry">
+    <title>Solutions: geometry</title>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words the geometric meaning of a linear system of X variables with Y equations. Give your own examples.
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell># Variables</cell>
+            <cell># Equations</cell>
+          </row>
+          <row>
+            <cell halign="center">2</cell>
+            <cell halign="center">1</cell>
+          </row>
+          <row>
+            <cell halign="center">2</cell>
+            <cell halign="center">2</cell>
+          </row>
+          <row>
+            <cell halign="center">3</cell>
+            <cell halign="center">1</cell>
+          </row>
+          <row>
+            <cell halign="center">3</cell>
+            <cell halign="center">2</cell>
+          </row>
+          <row>
+            <cell halign="center">3</cell>
+            <cell halign="center">3</cell>
+          </row>
+        </tabular>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain the following. Give your own examples.
+        </p>
+        <blockquote>
+          <p>
+            There are two different points of views on a linear system. If we think of it as a vector equation, we are asking whether the right hand side is in the span of columns. If we think of rows as equations separately, we are trying to find points on the intersection of (hyper)planes.
+          </p>
+        </blockquote>
+      </statement>
+    </exercise>
+  </reading-questions>
+  <reading-questions xml:id="rqs-gauss-elimination">
+    <title>Gaussian elimination</title>
+    <exercise>
+      <statement>
+        <p>
+          Why the following two linear systems have <em>the same</em> solutions? In particular, why a solution of the left one is a solution of the right one, and <em>why is a solution of the right one a solution of the left one</em>?
+          <me>
+            \left\{\begin{aligned}
+            x + 2 y + 3 z &amp;= 6 \\
+            2 x - 3 y + 2 z &amp;= 14 \\
+            3 x + y - z &amp;= -2,
+            \end{aligned}\right.
+            \qquad\qquad
+            \left\{\begin{aligned}
+            x + 2 y + 3 z &amp;= 6 \\
+            -7 y - 4 z &amp;= 2 \\
+            3 x + y - z &amp;= -2.
+            \end{aligned}\right.
+          </me>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          If <m> A = A' </m>, <m> B = B' </m>, then <m> 1000 A = 1000 A' </m> and <m> A + B = A' + B' </m>.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Solve the followings on your own.
+          <me>
+            \left\{\begin{aligned}
+            x + 2 y + 3 z &amp;= 6 \\
+            2 x - 3 y + 2 z &amp;= 14 \\
+            3 x + y - z &amp;= -2,
+            \end{aligned}\right.
+            \qquad\qquad
+            \left\{\begin{aligned}
+            -7 y -4 z &amp;= 2 \\
+            2 x + 4 y + 6 z &amp;= 12 \\
+            3 x + y - z &amp;= -2.
+            \end{aligned}\right.
+          </me>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Solve the followings on your own.
+          <me>
+            \left\{\begin{aligned}
+            x + y &amp;= 2 \\
+            3 x + 4 y &amp;= 5 \\
+            4 x + 5 y &amp;= 9,
+            \end{aligned}\right.
+            \qquad\qquad
+            \left\{\begin{aligned}
+            2 x + 10 y &amp;= -1 \\
+            3 x + 15 y &amp;= 2.
+            \end{aligned}\right.
+          </me>
+        </p>
+      </statement>
+    </exercise>
+  </reading-questions>
+  <reading-questions xml:id="rqs-solutions-algebra">
+    <title>Solutions: algebra</title>
+    <exercise>
+      <statement>
+        <p>
+          Look at the following linear system of four variables <m>x</m>, <m>y</m>, <m>z</m>, and <m>w</m>.
+          <me>
+          \left\{\begin{aligned}
+          x + 3 w &amp;= 2 \\
+          z + 4 w &amp;= -1.
+          \end{aligned}\right.
+          </me>
+          Explain the following.
+        </p>
+        <blockquote>
+          <p>
+            Here <m>y</m> and <m>w</m> can be chosen as free variables in the sense that (1) they can be any numbers and (2) once they are chosen all the other variables are determined by them.
+          </p>
+        </blockquote>
+        <p>
+          Explain why <m>w</m> itself, or the three variables <m>y</m>, <m>z</m>, <m>w</m> cannot be (all of) the free variables.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Solve the followings on your own.
+          <me>
+            \left\{\begin{aligned}
+            2 x + y + 12 z &amp;= 1 \\
+            x + 2 y + 9 z &amp;= -1,
+            \end{aligned}\right.
+            \qquad\qquad
+            \left\{\begin{aligned}
+            x + y + z &amp;= 1.
+            \end{aligned}\right.
+          </me>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Give examples of the three scenarios for the number of solutions to a linear system. Explain why the numbers of solutions are so and so.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain why the procedure of Gaussian elimination is useful in finding solutions of linear systems. In particular, how it converts a complicated problem to an easier one, by simplifying the dependence of variables.
+        </p>
+      </statement>
+    </exercise>
+    
+  </reading-questions>
 </section>
