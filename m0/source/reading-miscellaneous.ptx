@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="reading-miscellaneous" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Reading: Miscellaneous</title>
+  <introduction>
+    <p>
+      <ul>
+        <li>
+          <p>
+            ([ILA]) Margalit, Rabinoff, Williams. <em><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></em>, UBC ed.
+          </p>
+        </li>
+      </ul>
+      Read §2.4 and §§3.1-3.2. Not everything in these sections are important, so figure out what to read from the following questions.
+    </p>
+  </introduction>
+  <reading-questions xml:id="rqs-matrix-equations">
+    <title>Matrix equations</title>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words the four equivalent ways to write a linear system.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words why having pivots on all rows means a solution exists regardless of the right-hand side.
+        </p>
+      </statement>
+    </exercise>
+  </reading-questions>
+  <reading-questions xml:id="rqs-solution-sets">
+    <title>Solution sets</title>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words when a homogenous linear system has a nontrivial solution. Give your own examples and non-examples.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words why solutions of a homogenous linear system is a span.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words when an inhomogenous linear system will have a solution.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words how to obtain all solutions to an inhomogenous linear system from one special solution and {solutions of the corresponding homogenous system}.
+        </p>
+      </statement>
+    </exercise>
+  </reading-questions>
+  <reading-questions xml:id="rqs-linear-independence">
+    <title>Linear independence</title>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words how to determine linear independence by solving linear systems.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words why linear dependence means we can always find one vector that is a linear combination of the other vectors.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain in your own words why the span of several vectors will be the same if we add in another vector that is a linear combination of the other vectors.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Given a set of vectors, how to produce a linearly independent subset while keeping the span?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (1) If we have an linearly independent set, adding a new vector either retains linear independence, or the new vector is in the span of the previous ones. (2) In the latter case removing the vector doesn't affect the span.
+        </p>
+        <hint>
+          <p>
+            (1) and (2) come from the last two questions above.
+          </p>
+        </hint>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Explain how to give a linearly independent spanning set of the solutions of a homogenous linear system.
+        </p>
+      </statement>
+    </exercise>
+  </reading-questions>
+</section>
