@@ -7,9 +7,10 @@
     <title>Learn Math</title>
     <xi:include href="./where-to-learn.ptx"/>
     <xi:include href="./learn-what.ptx"/>
-    <xi:include href="./how-to-learn.ptx" />
-    <xi:include href="./why-learn.ptx" />
-    <xi:include href="./reading-vectors.ptx" />
-    <xi:include href="./reading-linear-systems.ptx" />
+    <xi:include href="./how-to-learn.ptx"/>
+    <xi:include href="./why-learn.ptx"/>
+    <xi:include href="./reading-vectors.ptx"/>
+    <xi:include href="./reading-linear-systems.ptx"/>
+    <xi:include href="./reading-miscellaneous.ptx"/>
   </article>
 </pretext>
