@@ -6,126 +6,129 @@
       <ul>
         <li>
           <p>
-            ([ILA]) Margalit, Rabinoff, Williams. <em><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></em>, UBC ed.
+            ([ILA]) Margalit, Rabinoff, Williams. <pubtitle><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></pubtitle>, UBC ed.
           </p>
         </li>
       </ul>
-      Read Chapter 1.
+    </p>
+    <p>
+      Read <section-mark/><section-mark/>1.1<ndash/>1.2.
     </p>
   </introduction>
-  <reading-questions xml:id="rqs-before-everything">
+  <subsection>
     <title>Before everything</title>
-    <exercise>
-      <statement>
-        <p>
-          Where is Chapter 1? How to navigate through unfamiliar things?
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          What's before Chapter 1? What's at the end of the book? What are they about? How is the textbook structured?
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          What's special about this textbook besides being online? How does it compare to traditional ones?
-        </p>
-      </statement>
-      <hint>
-        <p>
-          There's also a PDF version of the textbook.
-        </p>
-      </hint>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          What's linear algebra? Why study linear algebra?
-        </p>
-      </statement>
-    </exercise>
-  </reading-questions>
-  <reading-questions xml:id="rqs-vectors">
+    <p>
+      Open the textbook from the link above. If it doesn't work, try <url href="https://personal.math.ubc.ca/~tbjw/ila/colophon-1.html">this link</url>.
+    </p>
+    <reading-questions>
+      <exercise>
+        <statement>
+          <p>
+            Where's the table of contents? How to open <section-mark/>2.1? How to navigate through the book in browsers?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            How is the main text of the book structured? What are some different types of paragraphs?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            What's useful before Chapter 1? What's useful at the end of the book?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            What's special about this textbook besides being online? Where's the PDF version of the book? How does the online version compare to the PDF version?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Why it is called <q>linear algebra</q>? What's the key object in the study of linear algebra?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            What are the two main types of problems linear algebra concerns about? Why still study linear algebra even if computers can do much faster than us?
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
     <title>Vectors</title>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words what <m>\mathbb{R}^3</m> is. Why write <m>\mathbb{R}</m> and why 3? How many things are inside <m>\mathbb{R}^3</m>?
-        </p>
-      </statement>
-      <hint>
-        <p>
-          There are other names for <m>2</m>-tuples, <m>3</m>-tuples, ...
-        </p>
-      </hint>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain the following.
-        </p>
-        <blockquote>
+    <p>
+      A set is a collection of things. The set of fruits contains apple, banana, orange, peach, ananac, <etc/> The set of integers is <m> \mathbb{Z} = \{ \cdots, -2, -1, 0, 1, 2, 3, 4, \cdots \} </m>. The set <m>\mathbb{R}</m> of real numbers contains <m>1</m>, <m>-10000.1</m>, <m>\sqrt{2}</m>, and <m>\mathrm{e}^{\pi}</m>.
+    </p>
+    <p>
+      A vector is a tuple of numbers. An <m>n</m>-vector has <m>n</m> entries, and <m>\mathbb{R}^n</m> is the set of all <m>n</m>-tuples of real numbers. Some ways to write the same vector are <me> ( 1, 2, 3 ) = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 1 \amp 2 \amp 3 \end{bmatrix}^{\top} </me>, where <m>\top</m> stands for transpose. <em>However, <m> \begin{bmatrix} 1 \amp 2 \amp 3 \end{bmatrix} </m> means something different.</em>
+    </p>
+    <p>
+      Vectors are added and scaled entry-wise: <me> \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} = \begin{bmatrix} 5 \\ 7 \\ 9 \end{bmatrix}, \qquad 3 \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 3 \\ 6 \\ 9 \end{bmatrix} </me>. <em>Vectors cannot be multiplied entry-wise.</em>
+    </p>
+    <p>
+      Strictly speaking, vectors are differences between points. Starting from a point and moving by a vector we arrive at another point. The vector from <m> (1, 2) </m> to <m> (3, 4) </m> is the same as the one from <m> (0, 0) </m> to <m> (2, 2) </m>: the movements are the same vector <m> \begin{bmatrix} 2 \amp 2 \end{bmatrix}^{\top} </m>. Sometimes people equate points with vectors by starting from the origin, so <m> \begin{bmatrix} 2 \amp 2 \end{bmatrix}^{\top} </m> can mean either the point <m> (2, 2) </m> or the movement from the origin to <m> (2, 2) </m>.
+    </p>
+    <reading-questions>
+      <exercise>
+        <statement>
           <p>
-            Points and vectors are different things. Vectors are differences between points. Starting from a point and moving by a vector we arrive at another point. Sometimes we regard points as vectors by taking differences to the origin. That's why in most of the later pictures we draw vectors starting at the origin.
+            Explain in your own words what <m>\mathbb{R}^3</m> is? Why write <m>\mathbb{R}</m> and why write <m>3</m>? How many things are inside <m>\mathbb{R}^3</m>? How many entries does each thing inside <m>\mathbb{R}^3</m> have?
           </p>
-        </blockquote>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          What are real-world examples when high(&gt;3)-dimensional vectors can be useful?
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words the following text.
-        </p>
-        <blockquote>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
           <p>
-            Why? The width of <m>v + w</m> is the sum of the widths, and likewise with the heights.
+            Explain in your own words the difference between vectors and points. Why people usually draw vectors based at the origin?
           </p>
-        </blockquote>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words the following text.
-        </p>
-        <blockquote>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
           <p>
-            Why? If you add <m> v - w </m> to <m>w</m>, you get <m>v</m>.
+            Find some real-world applications of high-dimensional vectors, both from the textbook and from the internet.
           </p>
-        </blockquote>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain again the geometric rule of vector subtraction, this time using scalar multiplication: <m> v - w = v + (-1) w </m>.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain the following. What are the two scenarios?
-        </p>
-        <blockquote>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
           <p>
-            In fact, there are infinitely many scenarios of {all linear combinations of a vector}. However, many scenarios are essentially the same. There are only two essentially different scenarios.
+            Explain in your own words how to add vectors geometrically, and explain the reason.
           </p>
-        </blockquote>
-      </statement>
-    </exercise>
-  </reading-questions>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words how to subtract vectors geometrically, and explain the reason using <m> \mathbf{u} - \mathbf{v} = \mathbf{u} + (-1) \mathbf{v} </m>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain the following. What are the two scenarios?
+          </p>
+          <blockquote>
+            <p>
+              In fact, there are infinitely many scenarios of {all linear combinations of a vector}. However, many scenarios are essentially the same. There are only two essentially different scenarios.
+            </p>
+          </blockquote>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
   <reading-questions xml:id="rqs-vector-equations">
     <title>Vector equations</title>
     <exercise>
