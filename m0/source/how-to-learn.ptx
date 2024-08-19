@@ -1,4 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xml:id="how-to-learn" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>How to learn?</title>
+  <subsection>
+    <title>Showcase: softwares</title>
+    <p>
+      <ul>
+        <li>
+          <p>
+            Choose a software listed below. All of them run in browsers so you don't need to install them.
+          </p>
+        </li>
+        <li>
+          <p>
+            Find tutorials and look for typical usages of the software. For graphical calculators plotting <m> x^2 + y^2 - z^2 = -1 </m> might be a start. For computer algebra systems evaluating <m> \int_0^{\pi} \sin^4 x \mathop{\mathrm{d}\!} x </m> might be a start.
+          </p>
+        </li>
+        <li>
+          <p>
+            Think about how the software can be useful to you. Search online for interesting or novel usages of the software.
+          </p>
+        </li>
+        <li>
+          <p>
+            Come up with a very specific example where the software is useful. Test it out and share your experience! Demonstrate what the software is good at and what the limitations are.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      ChatGPT:
+      <ul>
+        <li>
+          <p>
+            <url href ="https://openai.com/chatgpt/" visual="openai.com/chatgpt"></url>
+          </p>
+        </li>
+        <li>
+          <p>
+            Signing up is free and grants access to some models.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Claude:
+      <ul>
+        <li>
+          <p>
+            <url href="https://claude.ai/" visual="claude.ai"></url>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Desmos:
+      <ul>
+        <li>
+          <p>
+            <url href="https://www.desmos.com/" visual="desmos.com"></url>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      GeoGebra:
+      <ul>
+        <li>
+          <p>
+            <url href="https://www.geogebra.org/" visual="geogebra.org"></url>
+          </p>
+        </li>
+        <li>
+          <p>
+            There are books using GeoGebra: <url href="https://www.geogebra.org/m/XnfUWvvp/">one example</url> and <url href="https://www.geogebra.org/m/rsamte2c">another example</url>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      WolframAlpha:
+      <ul>
+        <li>
+          <p>
+            <url href="https://www.wolframalpha.com/" visual="wolframalpha.com"></url>
+          </p>
+        </li>
+        <li>
+          <p>
+            There's Wolfram integration for ChatGPT.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      SageMath:
+      <ul>
+        <li>
+          <p>
+            <url href="https://www.sagemath.org/" visual="sagemath.org"></url>
+          </p>
+        </li>
+        <li>
+          <p>
+            Online server: <url href="https://sagecell.sagemath.org/" visual="sagecell.sagemath.org"></url>
+          </p>
+        </li>
+        <li>
+          <p>
+            The Sage language is based on Python.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      CodeLens:
+      <ul>
+        <li>
+          <p>
+            <url href="https://pythontutor.com/" visual="pythontutor.com"></url>
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
 </section>
