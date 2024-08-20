@@ -99,14 +99,14 @@
       <exercise>
         <statement>
           <p>
-            Explain in your own words why a span is a subspace. Give examples.
+            Explain in your own words why a span is a subspace. Give an example.
           </p>
         </statement>
       </exercise>
       <exercise>
         <statement>
           <p>
-            Explain in your own words why a null space is a subspace. Give examples.
+            Explain in your own words why a null space is a subspace. Give an example.
           </p>
         </statement>
       </exercise>
@@ -207,28 +207,28 @@
       <exercise>
         <statement>
           <p>
-            Explain in your own words how to find the dimension of a span. Give examples.
+            Explain in your own words how to find the dimension of a span. Give an example.
           </p>
         </statement>
       </exercise>
       <exercise>
         <statement>
           <p>
-            Explain in your own words how to find the dimension of a null space. Give examples.
+            Explain in your own words how to find the dimension of a null space. Give an example.
           </p>
         </statement>
       </exercise>
       <exercise>
         <statement>
           <p>
-            Explain in your own words why the size of a spanning set &gt;= the dimension. Give examples of &gt; and =.
+            Explain in your own words why the size of a spanning set &gt;= the dimension. Give an example of &gt; and another of =.
           </p>
         </statement>
       </exercise>
       <exercise>
         <statement>
           <p>
-            Explain in your own words why the size of a linearly independent set &lt;= the dimension. Give examples of &lt; and =.
+            Explain in your own words why the size of a linearly independent set &lt;= the dimension. Give an example of &lt; and another of =.
           </p>
         </statement>
       </exercise>
@@ -245,7 +245,7 @@
       <me>
         (x - 3) \mathbf{u} + (y - 4) \mathbf{v} = \mathbf{0}
       </me>.
-      The coefficients are called coordinates.
+      The coefficients are called coordinates under/<abbr>w.r.t.</abbr> the basis.
     </p>
     <reading-questions>
       <exercise>
@@ -262,7 +262,7 @@
             <me>
               \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
             </me>?
-            What are its coordinates under the basis
+            What are the coordinates under the basis
             <me>
               \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
             </me>?
