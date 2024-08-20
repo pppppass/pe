@@ -71,19 +71,23 @@
       A set is a collection of things. The set of fruits contains apple, banana, orange, peach, ananac, <etc/> The set of integers is <m> \mathbb{Z} = \{ \cdots, -2, -1, 0, 1, 2, 3, 4, \cdots \} </m>. The set <m>\mathbb{R}</m> of real numbers contains <m>1</m>, <m>-10000.1</m>, <m>\sqrt{2}</m>, and <m>\mathrm{e}^{\pi}</m>.
     </p>
     <p>
-      A vector is a tuple of numbers. An <m>n</m>-vector has <m>n</m> entries, and <m>\mathbb{R}^n</m> is the set of all <m>n</m>-tuples of real numbers. Some ways to write the same vector are <me> ( 1, 2, 3 ) = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 1 \amp 2 \amp 3 \end{bmatrix}^{\top} </me>, where <m>\top</m> stands for transpose. <em>However, <m> \begin{bmatrix} 1 \amp 2 \amp 3 \end{bmatrix} </m> means something different.</em>
+      A vector is a tuple of numbers. An <m>n</m>-vector has <m>n</m> entries, and <m>\mathbb{R}^n</m> is the set of all <m>n</m>-tuples of real numbers. Two ways to write the same vector are <m> ( 1, 2, 3 ) = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} </m>. <em>However, <m> \begin{bmatrix} 1 \amp 2 \amp 3 \end{bmatrix} </m> means something different.</em>
     </p>
     <p>
-      Vectors are added and scaled entry-wise: <me> \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} = \begin{bmatrix} 5 \\ 7 \\ 9 \end{bmatrix}, \qquad 3 \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 3 \\ 6 \\ 9 \end{bmatrix} </me>. <em>Vectors cannot be multiplied entry-wise.</em>
+      Vectors are added and scaled entry-wise:
+      <me>
+        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} = \begin{bmatrix} 5 \\ 7 \\ 9 \end{bmatrix}, \qquad 3 \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 3 \\ 6 \\ 9 \end{bmatrix}
+      </me>.
+      <em>Vectors cannot be multiplied entry-wise.</em>
     </p>
     <p>
-      Strictly speaking, vectors are differences between points. Starting from a point and moving by a vector we arrive at another point. The vector from <m> (1, 2) </m> to <m> (3, 4) </m> is the same as the one from <m> (0, 0) </m> to <m> (2, 2) </m>: the movements are the same vector <m> \begin{bmatrix} 2 \amp 2 \end{bmatrix}^{\top} </m>. Sometimes people equate points with vectors by starting from the origin, so <m> \begin{bmatrix} 2 \amp 2 \end{bmatrix}^{\top} </m> can mean either the point <m> (2, 2) </m> or the movement from the origin to <m> (2, 2) </m>.
+      Strictly speaking, vectors are differences between points. Starting from a point and moving by a vector we arrive at another point. The vector from <m> (1, 2) </m> to <m> (3, 4) </m> is the same as the one from <m> (0, 0) </m> to <m> (2, 2) </m>: the movements are the same vector <m> \begin{bmatrix} 2 \\ 2 \end{bmatrix} </m>. Sometimes people equate points with vectors by starting from the origin, so <m> \begin{bmatrix} 2 \\ 2 \end{bmatrix} </m> can mean either the point <m> (2, 2) </m> or the movement from the origin to <m> (2, 2) </m>.
     </p>
     <reading-questions>
       <exercise>
         <statement>
           <p>
-            Explain in your own words what <m>\mathbb{R}^3</m> is? Why write <m>\mathbb{R}</m> and why write <m>3</m>? How many things are inside <m>\mathbb{R}^3</m>? How many entries does each thing inside <m>\mathbb{R}^3</m> have?
+            Explain in your own words what <m>\mathbb{R}^3</m> is. Why write <m>\mathbb{R}</m> and why write <m>3</m>? How many things are inside <m>\mathbb{R}^3</m>? What are some examples of things from <m>\mathbb{R}^3</m>?
           </p>
         </statement>
       </exercise>
@@ -104,7 +108,7 @@
       <exercise>
         <statement>
           <p>
-            Explain in your own words how to add vectors geometrically, and explain the reason.
+            Explain in your own words how to add vectors geometrically and explain the reason.
           </p>
         </statement>
       </exercise>
@@ -115,119 +119,135 @@
           </p>
         </statement>
       </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
+    <title>Vector equations</title>
+    <p>
+      A linear combination of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> is a vector <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} </m> for some numbers <m>a</m>, <m>b</m>, <m>c</m>. For example,
+      <me>
+        \mathbf{u}, \quad \mathbf{0} = 0 \mathbf{u}, \quad -\mathbf{u} = (-1) \mathbf{u}, \quad \frac{1}{2} \mathbf{u}, \quad 100 \mathbf{u}, \quad (k^2 + 4) \mathbf{u} \text{ for some } k
+      </me>
+      are all linear combinations of <m>\mathbf{u}</m>.
+    </p>
+    <p>
+      A linear system can be written as a vector equation:
+      <me>
+        \begin{aligned}
+        x + 2 y \amp= 3 \\
+        3 x + 4 y \amp = 7
+        \end{aligned}
+        \quad \text{vs.} \quad
+        x \begin{bmatrix} 1 \\ 3 \end{bmatrix} + y \begin{bmatrix} 2 \\ 4 \end{bmatrix} = \begin{bmatrix} 3 \\ 7 \end{bmatrix}
+      </me>.
+    </p>
+    <reading-questions>
       <exercise>
         <statement>
           <p>
-            Explain the following. What are the two scenarios?
+            Can all the linear combinations of a single vector be just a point? Can all the linear combinations of a single vector form a line, a plane, or the space? What are the two different scenarios depending on some condition on the vector?
           </p>
-          <blockquote>
-            <p>
-              In fact, there are infinitely many scenarios of {all linear combinations of a vector}. However, many scenarios are essentially the same. There are only two essentially different scenarios.
-            </p>
-          </blockquote>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words why <q>asking whether or not a vector equation has a solution is the same as asking if a given vector is a linear combination of some other given vectors</q>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Give an example when a linear system has no solution and explain why. Does the linear system say what is or isn't a linear combination of something?
+          </p>
+        </statement>
+      </exercise>combination of
+      ,
+      , and
+      ? What about the three
+      <exercise>
+        <statement>
+          <p>
+            Give an example when a linear system has infinitely many solutions and explain why. Does the linear system say what is or isn't a linear combination of something?
+          </p>
         </statement>
       </exercise>
     </reading-questions>
   </subsection>
-  <reading-questions xml:id="rqs-vector-equations">
-    <title>Vector equations</title>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words the following text. Give your own examples.
-        </p>
-        <blockquote>
-          <p>
-            Asking whether or not a vector equation has a solution is the same as asking if a given vector is a linear combination of some other given vectors.
-          </p>
-        </blockquote>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Give an example when a linear system has no solution. Why it has no solutions?
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Give an example when a linear system has infinitely many solutions. What are the infinitely many solutions?
-        </p>
-      </statement>
-      <hint>
-        <p>
-          We want to express solutions with something we can wiggle, i.e. something we are free to choose...
-          <hint>
-            <p>
-              You discovered the concept of how to <em>parameterize</em> solutions!
-            </p>
-          </hint>
-        </p>
-      </hint>
-    </exercise>
-  </reading-questions>
-  <reading-questions xml:id="rqs-spans">
+  <subsection>
     <title>Spans</title>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words how and why spans and consistency of linear systems are related.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          How to express <q><m>v_1</m>, <m>v_2</m>, <m>v_3</m> span the whole <m>\mathbb{R}^3</m> </q> in terms of solutions of linear systems?
-        </p>
-      </statement>
-      <hint>
-        <p>
-          Any ... is in ...
-        </p>
-      </hint>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Find all different scenarios for the span of X vectors in Y-dimensional space. Draw essentially identical scenarios only once.
-        </p>
-        <tabular>
-          <row bottom="minor">
-            <cell></cell>
-            <cell>1 vector</cell>
-            <cell>2 vectors</cell>
-            <cell>3 vectors</cell>
-            <cell>4 vectors</cell>
-          </row>
-          <row>
-            <cell>in <m>\mathbb{R}^1</m></cell>
-          </row>
-          <row>
-            <cell>in <m>\mathbb{R}^2</m></cell>
-          </row>
-          <row>
-            <cell>in <m>\mathbb{R}^3</m></cell>
-          </row>
-        </tabular>
-        <p>
-          How many vectors are necessary to span the whole space? When can some vectors be removed and the span doesn't change?
-        </p>
-      </statement>
-      <hint>
-        <p>
-          There are conditions on X and Y. Starting from <m>\mathbb{R}^2</m> might be easier.
-        </p>
-      </hint>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Are the coefficients unique when expressing any vector in <m>\mathbb{R}^3</m> as a linear combination of <m>\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}</m>, and <m>\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}</m>? What about the three and an extra <m> \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} </m>?
-        </p>
-      </statement>
-    </exercise>
-  </reading-questions>
+    <p>
+      The span of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> is the set of all possible linear combinations of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m>. In other words, the span is <m> \{ a \mathbf{u} + b \mathbf{v} + c \mathbf{w} : a, b, c \in \mathbb{R} \} </m>, <ie/> it is composed of all possible <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} </m> when <m>a</m>, <m>b</m>, <m>c</m> run over real numbers. Just like the set of sweet fruits is the set of all possible fruits that are sweet.
+    </p>
+    <p>
+      A vector <m>\mathbf{p}</m> being in the span of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> means we can find numbers <m>x</m>, <m>y</m>, <m>z</m> such that <m> \mathbf{p} = x \mathbf{u} + y \mathbf{v} + z \mathbf{w} </m>. Not being in the span means we cannot find the numbers. Just like apple being among sweet fruits means apple is sweet, and lemon not being among sweet fruits means lemon is not sweet.
+    </p>
+    <reading-questions>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words how to check whether something is in the span of something by checking consistency of some linear system. Give an example.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            How to express <q><m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> span the whole <m>\mathbb{R}^3</m></q> in terms of linear systems? Start from
+            <me>
+              \text{for any } a, b, c, \text{ the vector equation } \ldots = \begin{bmatrix} \cdots \\ \cdots \\ \cdots \end{bmatrix} \text{ has a solution}
+            </me>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            What shapes can the span of X vectors in the Y-dimensional space have?
+          </p>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell>1 vector</cell>
+              <cell>2 vectors</cell>
+              <cell>3 vectors</cell>
+              <cell>4 vectors</cell>
+            </row>
+            <row>
+              <cell>in <m>\mathbb{R}^1</m></cell>
+            </row>
+            <row>
+              <cell>in <m>\mathbb{R}^2</m></cell>
+            </row>
+            <row>
+              <cell>in <m>\mathbb{R}^3</m></cell>
+            </row>
+          </tabular>
+          <p>
+            Observe the followings from the table.
+            <ul>
+              <li>
+                <p>
+                  We need at least <m>n</m> vectors to span the <m>n</m>-dimensional space.
+                </p>
+              </li>
+              <li>
+                <p>
+                  There will always be redundancy if we have &gt;<m>n</m> vectors in the <m>n</m>-dimensional space. 
+                </p>
+              </li>
+            </ul>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Are the coefficients unique (uniquely determined) when expressing a 3-vector as a linear combination of <m>\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}</m>? What about as a linear combination of <m>\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}</m>, <m> \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} </m>?
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
 </section>
