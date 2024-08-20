@@ -1,188 +1,445 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xml:id="reading-linear-systems" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>Reading: Linear systems</title>
+  <title>Reading: Linear systems</title> 
   <introduction>
     <p>
       <ul>
         <li>
           <p>
-            ([ILA]) Margalit, Rabinoff, Williams. <em><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></em>, UBC ed.
+            ([ILA]) Margalit, Rabinoff, Williams. <pubtitle><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></pubtitle>, UBC ed.
           </p>
         </li>
       </ul>
-      Read §§2.1-2.3. The exact definition of <q>pivot</q> is not extremely important; pay more attention to the procedure of Gaussian elimination. Once the procedure is clear other things will follow.
+    </p>
+    <p>
+      Read <section-mark/><section-mark/>2.1<ndash/>2.3. The exact definitions of <q>(reduced) row echelon form</q> is not that important; pay more attention to the general procedure of Gaussian elimination and concrete examples. Once the procedure is clear, other things will follow.
     </p>
   </introduction>
-  <reading-questions xml:id="rqs-solutions-geometry">
-    <title>Solutions: geometry</title>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words the geometric meaning of a linear system of X variables with Y equations. Give your own examples.
-        </p>
-        <tabular>
-          <row bottom="minor">
-            <cell># Variables</cell>
-            <cell># Equations</cell>
-          </row>
-          <row>
-            <cell halign="center">2</cell>
-            <cell halign="center">1</cell>
-          </row>
-          <row>
-            <cell halign="center">2</cell>
-            <cell halign="center">2</cell>
-          </row>
-          <row>
-            <cell halign="center">3</cell>
-            <cell halign="center">1</cell>
-          </row>
-          <row>
-            <cell halign="center">3</cell>
-            <cell halign="center">2</cell>
-          </row>
-          <row>
-            <cell halign="center">3</cell>
-            <cell halign="center">3</cell>
-          </row>
-        </tabular>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain the following. Give your own examples.
-        </p>
-        <blockquote>
+  <subsection>
+    <title>Equations</title>
+    <p>
+      Letters and symbols are really placeholders for concrete things: a number <m>a</m> can be <m>5</m> or <m>\sqrt{2}</m> or <m>10000</m>; an unknown can be named <m>x</m>, which we may later discover to be really <m>5</m>. Usually <m>f</m> stands for a function, <m>S</m> for a set, lower-case boldface <m>\mathbf{u}</m> for a vector, and upper-case boldface <m>\mathbf{A}</m> for a matrix. When I say <q>I was talking to a friend A last night</q>, I can mean many different things by <q>A</q> even though it's usually not a real name. Think it as a call sign: <q>I was talking to a friend B last night</q>, <q>I was talking to a friend asufutimaehaehfutbw last night</q>, <q>I was talking to a friend 😇 last night</q> literally mean the same thing.
+    </p>
+    <p>
+      There are different usages of these placeholders.
+      <ul>
+        <li>
           <p>
-            There are two different points of views on a linear system. If we think of it as a vector equation, we are asking whether the right hand side is in the span of columns. If we think of rows as equations separately, we are trying to find points on the intersection of (hyper)planes.
+            They can mean arbitrary things: <eg/>, for any <m>a</m> and <m>b</m> we have
+            <men xml:id="eq-sq-diff">
+              a^2 - b^2 = ( a + b ) ( a - b )
+            </men>.
+            Since they are arbitrary, they can be substituted by other things: the followings are all consequences of <xref ref="eq-sq-diff"/>:
+            <md>
+              <mrow> x^2 - y^2 \amp= ( x + y ) ( x - y )\text{,} </mrow>
+              <mrow> 11^2 - 9^2 \amp= 2 \times 20\text{,}</mrow>
+              <mrow> k^4 + 4 = (k^2 + 2)^2 - (2 k)^2 \amp= (k^2 + 2 k + 2) (k^2 - 2 k + 2) </mrow>
+            </md>.
           </p>
-        </blockquote>
-      </statement>
-    </exercise>
-  </reading-questions>
-  <reading-questions xml:id="rqs-gauss-elimination">
+        </li>
+        <li>
+          <p>
+            They can also mean specific things: <m>\mathbf{p}</m> is a linear combination of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> means there exist numbers <m>a</m>, <m>b</m>, <m>c</m> such that <m> \mathbf{p} = a \mathbf{u} + b \mathbf{v} + c \mathbf{w} </m>. We're only promised the numbers but not their exact values: they can be <m>2</m>, <m>5</m>, <m>8</m> or <m>0</m>, <m>0</m>, <m>0</m> or <m>0</m>, <m>1</m>, <m>-100</m>. They are given to us just as is, so we cannot do any substitution: we don't know whether there exists a number <m>k</m> such that <m> \mathbf{p} = k \mathbf{u} + (k^2 + 2 k + 2) \mathbf{v} + (k^2 - 2 k + 2) \mathbf{w} </m>, nor do we know whether there exist numbers <m>a</m> and <m>c</m> such that <m> \mathbf{p} = a \mathbf{u} + a \mathbf{v} + c \mathbf{w} </m>, even though both are still possible. However, we can rename things: <m>\mathbf{p}</m> is a linear combination of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> also means there exist numbers <m>x</m>, <m>y</m>, <m>z</m> such that <m> \mathbf{p} = x \mathbf{u} + y \mathbf{v} + z \mathbf{w} </m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            They can mean parameters: <eg/>, the linear system parameterized by <m>t</m> has the solution:
+            <me>
+              \left\{\begin{aligned}
+                x + 2 y \amp= 3 + 5 t\text{,} \\
+                3 x + 4 y \amp= 7 + 11 t\text{,}
+              \end{aligned}\right.
+              \qquad\qquad
+              \left\{\begin{aligned}
+                x \amp= 1 + t\text{,} \\
+                y \amp= 1 + 2 t\text{.}
+              \end{aligned}\right.
+            </me>
+            From an insider's view, when solving this system, we just treat <m>t</m> as a number, a specific one given by others. From an outsider's view, when asking the question, <m>t</m> is really an arbitrary number, and different <m>t</m>'s result in different systems to be solved. Think of <m>t</m> as the value of a slider: we want to move it to observe how the solution changes with respect to <m>t</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            They can mean temporary things: <eg/>, <m>x</m> in <m> \int_0^{\pi} \sin^4 x \mathop{\mathrm{d}\!} x = 3 \pi / 8 </m>, or <m>k</m> in <m> \sum_{ k = 1 }^n k^2 = n (n + 1) (2 n + 1) / 6 </m>. Here <m>x</m> and <m>k</m> run over a certain range as if they are loop variables, and we can unroll (expand) the loop:
+            <me>
+              \sum_{ k = 1 }^5 k^2 = 1^2 + 2^2 + 3^2 + 4^2 + 5^2
+            </me>.
+            Substitutions won't work unless when we loop over the same range:
+            <me>
+              \sum_{ k = 1 }^n k^2 = \sum_{ k = 0 }^{ n - 1 } ( k + 1 )^2
+            </me>.
+            This is also exactly the reason why we change the bounds doing <m>u</m>-substitutions. <em>Temporary variables are meaningless outside the loop: <eg/>, it makes no sense to write <m> x \int_0^1 x^2 \mathop{\mathrm{d\!}} x </m></em>. It's just bad practice for some people to write <m> \int_0^x x^2 \mathop{\mathrm{d\!}} x = x^3 / 3 </m> when they really mean <m> \int_0^x t^2 \mathop{\mathrm{d\!}} t = x^3 / 3 </m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            They can mean assumptions: <eg/>, solving the linear system
+            <me>
+              \left\{\begin{aligned}
+              x + 2 y \amp= 3\text{,} \\
+              3 x + 4 y \amp= 7
+              \end{aligned}\right.
+            </me>
+            actually means the question <q>if we have numbers <m>x</m> and <m>y</m> satisfying <m> x + 2 y = 3 </m> and <m> 3 x + 4 y = 7 </m>, what can we say about <m>x</m> and <m>y</m></q>. We want to deduce something from these assumptions, <eg/>,
+            <ul>
+              <li>
+                <p>
+                  <m>x</m> has to be <m>1</m> and <m>y</m> has to be <m>1</m>; or
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m> x = 3 - 2 t </m> and <m> y = t </m> for some <m>t</m>; or
+                </p>
+              </li>
+              <li>
+                <p>
+                  the assumption is never possible to begin with.
+                </p>
+              </li>
+            </ul>
+          </p>
+        </li>
+        <li>
+          <p>
+            They can mean conventions: <eg/>, the three axes in the three-dimensional space are called the <m>x</m>, <m>y</m>, <m>z</m>-axes, and the three entries of a three-dimensional vector are called the <m>x</m>, <m>y</m>, <m>z</m>-coordinates. Except for the old old math traditions nothing else prevents me from calling them <m>u</m>, <m>s</m>, <m>a</m> or 😒, 😅, 🤯. I can even drawing axes slanted and that's called a <url href="https://en.wikipedia.org/wiki/Triclinic_crystal_system">triclinic system</url>.  In some areas other names might be more preferable, like <m>p</m>-<m>V</m> graphs for engineers or <m>P</m>-<m>Q</m> curves for economists. On the <m>p</m>-<m>V</m> plane, we can find the point of any specified <m>p</m>-<m>V</m> coordinates. The curve of <m> p V = 3 </m> is composed of all the possible points <m> ( p, V ) </m> that satisfy <m> p V = 3 </m>. The parameterized curve of <m> p = \mathrm{e}^t </m>, <m> V = 3 \mathrm{e}^{-t} </m> in parameter <m>t</m> is composed of the points <m> ( \mathrm{e}^t, 3 \mathrm{e}^{-t} ) </m> when <m>t</m> runs over all numbers.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+  <subsection>
     <title>Gaussian elimination</title>
-    <exercise>
-      <statement>
-        <p>
-          Why the following two linear systems have <em>the same</em> solutions? In particular, why a solution of the left one is a solution of the right one, and <em>why is a solution of the right one a solution of the left one</em>?
-          <me>
-            \left\{\begin{aligned}
-            x + 2 y + 3 z &amp;= 6 \\
-            2 x - 3 y + 2 z &amp;= 14 \\
-            3 x + y - z &amp;= -2,
-            \end{aligned}\right.
-            \qquad\qquad
-            \left\{\begin{aligned}
-            x + 2 y + 3 z &amp;= 6 \\
-            -7 y - 4 z &amp;= 2 \\
-            3 x + y - z &amp;= -2.
-            \end{aligned}\right.
-          </me>
-        </p>
-      </statement>
-      <hint>
-        <p>
-          If <m> A = A' </m>, <m> B = B' </m>, then <m> 1000 A = 1000 A' </m> and <m> A + B = A' + B' </m>.
-        </p>
-      </hint>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Solve the followings on your own.
-          <me>
-            \left\{\begin{aligned}
-            x + 2 y + 3 z &amp;= 6 \\
-            2 x - 3 y + 2 z &amp;= 14 \\
-            3 x + y - z &amp;= -2,
-            \end{aligned}\right.
-            \qquad\qquad
-            \left\{\begin{aligned}
-            -7 y -4 z &amp;= 2 \\
-            2 x + 4 y + 6 z &amp;= 12 \\
-            3 x + y - z &amp;= -2.
-            \end{aligned}\right.
-          </me>
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Solve the followings on your own.
-          <me>
-            \left\{\begin{aligned}
-            x + y &amp;= 2 \\
-            3 x + 4 y &amp;= 5 \\
-            4 x + 5 y &amp;= 9,
-            \end{aligned}\right.
-            \qquad\qquad
-            \left\{\begin{aligned}
-            2 x + 10 y &amp;= -1 \\
-            3 x + 15 y &amp;= 2.
-            \end{aligned}\right.
-          </me>
-        </p>
-      </statement>
-    </exercise>
-  </reading-questions>
-  <reading-questions xml:id="rqs-solutions-algebra">
-    <title>Solutions: algebra</title>
-    <exercise>
-      <statement>
-        <p>
-          Look at the following linear system of four variables <m>x</m>, <m>y</m>, <m>z</m>, and <m>w</m>.
-          <me>
-          \left\{\begin{aligned}
-          x + 3 w &amp;= 2 \\
-          z + 4 w &amp;= -1.
-          \end{aligned}\right.
-          </me>
-          Explain the following.
-        </p>
-        <blockquote>
+    <p>
+      The system
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y \amp= 3\text{,} \amp \quad \amp\text{(1)} \\
+        3 x + 4 y \amp= 7 \amp \amp\text{(2)}
+        \end{alignedat}\right.
+      </me>
+      is asking what can be said about <m>x</m> and <m>y</m> if they satisfy (1) and (2). In either (1) or (2), <m>x</m> and <m>y</m> depend on each other in the sense that specifying one pins down the other. If we set the value of <m>y</m> randomly, (1) and (2) may (and will) give conflicting values of <m>x</m>. We want to remove the dependence of <m>x</m> from one of the equations.
+    </p>
+    <p>
+      We subtract <m>3</m> times (1) from (2) so the <m>x</m>-term now becomes
+      <me>
+        (x \text{ from (2)}) - 3 \times (x \text{ from (1)}) = 3 x - 3 \times x = 0 x
+      </me>.
+      The system is then
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y \amp= 3\text{,} \amp \quad \amp\text{(1)} \\
+        -2 y \amp= -2\text{.} \amp \amp\text{(3)} = \text{(2)} - 3 \times \text{(1)}
+        \end{alignedat}\right.
+      </me>
+      Any <m>x</m> and <m>y</m> that satisfy (1) and (2) will satisfy (3) since
+      <me>
+        \left\{\begin{aligned}
+        \text{left} \amp= \text{right}\text{,} \\
+        \text{hidari} \amp= \text{migi}
+        \end{aligned}\right.
+        \qquad\text{then}\qquad \text{left} - 3 \times \text{hidari} = \text{right} - 3 \times \text{migi}.
+      </me>
+      Conversely, any <m>x</m> and <m>y</m> that satisfy (1) and (3) will satisfy <m> \text{(2)} = \text{(3)} + 3 \times \text{(1)} </m>. Therefore, we can just look at the system of (1) and (3).
+    </p>
+    <p>
+      At this point we can safely deal with (3) first and then obtain <m>x</m> from (1). Since <m>x</m> doesn't depend on <m>y</m> anymore in (3), stipulation of <m>x</m> from (1) doesn't affect (3) anymore. From (3) we know <m>y</m> has to be <m>1</m>. From (1) we know <m>x</m> has to be <m>1</m> also. In other words, the solution is
+      <me>
+        \left\{\begin{aligned}
+        x \amp= 1\text{,} \\
+        y \amp= 1
+        \end{aligned}\right.
+        \quad\text{or}\quad
+        \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}
+      </me>.
+    </p>
+    <p>
+      Now look at the following linear system:
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y \amp= 3\text{,} \amp \quad \amp\text{(1)} \\
+        2 x + 4 y \amp= 6\text{.} \amp \amp\text{(2)}
+        \end{alignedat}\right.
+      </me>
+      We still want to eliminate <m> 2 x </m> from (2), so we in turn look at
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y \amp= 3\text{,} \amp \quad \amp\text{(1)} \\
+        0 \amp= 0\text{.} \amp \amp\text{(3)} = \text{(2)} - 2 \times \text{(1)}
+        \end{alignedat}\right.
+      </me>
+      Here (3) holds always so it doesn't pin down anything. Back to (1), we can set <m>y</m> to be anything and (1) will then fix <m> x = 3 - 2 y </m>. In other words, the solutions are
+      <me>
+        \left\{\begin{aligned}
+        x \amp= 3 - 2 y\text{,} \\
+        y \amp= \text{any,}
+        \end{aligned}\right.
+      </me>
+      <ie/>
+      <me>
+        \left\{\begin{aligned}
+        x \amp= 3 - 2 t\text{,} \\
+        y \amp= t
+        \end{aligned}\right.
+        \quad\text{or}\quad
+        \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 3 \\ 0 \end{bmatrix} + \begin{bmatrix} -2 \\ 1 \end{bmatrix} t \quad\text{for some } t
+      </me>.
+    </p>
+    <p>
+      Now look at the following linear system:
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y \amp= 3\text{,} \amp \quad \amp\text{(1)} \\
+        2 x + 4 y \amp= 7\text{.} \amp \amp\text{(2)}
+        \end{alignedat}\right.
+      </me>
+      We still want to eliminate <m> 2 x </m> from (2), so we in turn look at
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y \amp= 3\text{,} \amp \quad \amp\text{(1)} \\
+        0 \amp= 1\text{.} \amp \amp\text{(3)} = \text{(2)} - 2 \times \text{(1)}
+        \end{alignedat}\right.
+      </me>
+      But (3) never holds, so there are no such <m>x</m> and <m>y</m> realizing both (1) and (3) at the same time. In other words, (1) and (3) (so (1) and (2)) cannot be both satisfied for whatever <m>x</m> and <m>y</m>, and there're no solutions at all.
+    </p>
+    <p>
+      Now look at the following linear system:
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y + 3 z \amp= 6\text{,} \amp \quad \amp\text{(1)} \\
+        4 x + 5 y + 6 z \amp= 15\text{,} \amp \amp\text{(2)} \\
+        7 x + 8 y + 9 z \amp= 24\text{.} \amp \amp\text{(3)}
+        \end{alignedat}\right.
+      </me>
+      We want to eliminate <m> 4 x </m> from (2) and <m> 7 x </m> from (3), so we in turn look at
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y + 3 z \amp= 6\text{,} \amp \quad \amp\text{(1)} \\
+        -3 y - 6 z \amp= -9\text{,} \amp \amp\text{(4)} = \text{(2)} - 4 \times \text{(1)} \\
+        -6 y - 12 z \amp= -18 \amp \amp\text{(5)} = \text{(3)} - 7 \times \text{(1)}
+        \end{alignedat}\right.
+      </me>
+      or more simply
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y + 3 z \amp= 6\text{,} \amp \quad \amp\text{(1)} \\
+        y + 2 z \amp= 3\text{,} \amp \amp\text{(4')} = \text{(4)} / (-3) \\
+        -6y - 12 z \amp= -18\text{.} \amp \amp\text{(5)}
+        \end{alignedat}\right.
+      </me>
+      We then want to eliminate <m> -6 y </m> from (5), so we in turn look at
+      <me>
+        \left\{\begin{alignedat}{2}
+        x + 2 y + 3 z \amp= 6\text{,} \amp \quad \amp\text{(1)} \\
+        y + 2 z \amp= 3\text{,} \amp \amp\text{(4')} \\
+        0 \amp= 0\text{.} \amp \amp\text{(6)} = \text{(5)} + 6 \times \text{(4')}
+        \end{alignedat}\right.
+      </me>
+      Here we see we can set <m>z</m> to be anything, (4') will then fix <m>y</m> using <m>z</m>, and then (1) will fix <m>x</m> using both <m>y</m> and <m>z</m>. We can stop here and perform back-substitution to find the solutions, but to make life easier we cancel <m> 2 y </m> from (1):
+      <me>
+        \left\{\begin{alignedat}{2}
+        x \phantom{+ 2 y} - z \amp= 0\text{,} \amp \quad \amp\text{(7)} = \text{(1)} - 2 \times \text{(4')} \\
+        y + 2 z \amp= 3\text{,} \amp \amp\text{(4')} \\
+        0 \amp= 0\text{.} \amp \amp\text{(6)}
+        \end{alignedat}\right.
+      </me>
+      We can set <m>z</m> to be anything, and then using the value of <m>z</m>, (7) will fix <m>x</m> and (4') will fix <m>y</m>. In other words, the solutions are
+      <me>
+        \left\{\begin{aligned}
+        x \amp= z\text{,} \\
+        y \amp= 3 - 2 z\text{,} \\
+        z \amp= \text{any,}
+        \end{aligned}\right.
+      </me>
+      <ie/>
+      <me>
+        \left\{\begin{aligned}
+        x \amp= t\text{,} \\
+        y \amp= 3 - 2 t\text{,} \\
+        z \amp= t
+        \end{aligned}\right.
+        \quad\text{or}\quad
+        \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix} + \begin{bmatrix} 1 \\ -2 \\ 1 \end{bmatrix} t \quad\text{for some } t
+      </me>.
+    </p>
+    <reading-questions>
+      <exercise>
+        <statement>
           <p>
-            Here <m>y</m> and <m>w</m> can be chosen as free variables in the sense that (1) they can be any numbers and (2) once they are chosen all the other variables are determined by them.
+            Why the following two linear systems have the same solutions? In particular, why a solution of the left is a solution of the right, and <em>why a solution of the right is always a solution of the left</em>?
+            <me>
+              \left\{\begin{aligned}
+              x + 2 y + 3 z \amp= 6\text{,} \\
+              2 x - 3 y + 2 z \amp= 14\text{,} \\
+              3 x + y - z \amp= -2\text{,}
+              \end{aligned}\right.
+              \qquad\qquad
+              \left\{\begin{aligned}
+              x + 2 y + 3 z \amp= 6\text{,} \\
+              -7 y - 4 z \amp= 2\text{,} \\
+              3 x + y - z \amp= -2\text{.}
+              \end{aligned}\right.
+            </me>
           </p>
-        </blockquote>
-        <p>
-          Explain why <m>w</m> itself, or the three variables <m>y</m>, <m>z</m>, <m>w</m> cannot be (all of) the free variables.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Solve the followings on your own.
-          <me>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Solve the following linear systems:
+            <me>
+              \left\{\begin{aligned}
+              x + 2 y + 3 z \amp= 6\text{,} \\
+              2 x - 3 y + 2 z \amp= 14\text{,} \\
+              3 x + y - z \amp= -2\text{,}
+              \end{aligned}\right.
+              \qquad\qquad
+              \left\{\begin{aligned}
+              -7 y -4 z \amp= 2\text{,} \\
+              2 x + 4 y + 6 z \amp= 12\text{,} \\
+              3 x + y - z \amp= -2\text{.}
+              \end{aligned}\right.
+            </me>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Solve the following linear systems:
+            <me>
+              \left\{\begin{aligned}
+              x + y \amp= 2\text{,} \\
+              3 x + 4 y \amp= 5\text{,} \\
+              4 x + 5 y \amp= 9\text{,}
+              \end{aligned}\right.
+              \qquad\qquad
+              \left\{\begin{aligned}
+              2 x + 10 y \amp= -1\text{,} \\
+              3 x + 15 y \amp= 2\text{.}
+              \end{aligned}\right.
+            </me>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Look at the following linear system of four variables <m>x</m>, <m>y</m>, <m>z</m>, and <m>w</m>:
+            <me>
             \left\{\begin{aligned}
-            2 x + y + 12 z &amp;= 1 \\
-            x + 2 y + 9 z &amp;= -1,
+            x + 3 w &amp;= 2\text{,} \\
+            z + 4 w &amp;= -1\text{.}
             \end{aligned}\right.
-            \qquad\qquad
-            \left\{\begin{aligned}
-            x + y + z &amp;= 1.
-            \end{aligned}\right.
-          </me>
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Give examples of the three scenarios for the number of solutions to a linear system. Explain why the numbers of solutions are so and so.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain why the procedure of Gaussian elimination is useful in finding solutions of linear systems. In particular, how it converts a complicated problem to an easier one, by simplifying the dependence of variables.
-        </p>
-      </statement>
-    </exercise>
-    
-  </reading-questions>
+            </me>
+            Explain why <m>y</m> and <m>w</m> can be chosen as free variables in the sense that
+            <ol>
+              <li>
+                <p>
+                  they can be any numbers, and
+                </p>
+              </li>
+              <li>
+                <p>
+                  once they are chosen all the other variables are determined by them.
+                </p>
+              </li>
+            </ol>
+            Explain why the set of all free variables cannot just be <m>w</m> itself. Also explain why <m>y</m>, <m>z</m>, <m>w</m> cannot all be free variables at the same time. What are the solutions to the linear system?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Solve the following linear systems:
+            <me>
+              \left\{\begin{aligned}
+              2 x + y + 12 z \amp= 1\text{,} \\
+              x + 2 y + 9 z \amp= -1\text{,}
+              \end{aligned}\right.
+              \qquad\qquad
+              \left\{\begin{aligned}
+              x + y + z \amp= 1\text{.}
+              \end{aligned}\right.
+            </me>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            How many solutions can a linear system have? Give specific examples of linear systems for the three different scenarios.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain why the procedure of Gaussian elimination is useful in finding solutions of linear systems. In particular, how it converts a complicated problem with messy constraints to an easier one from which we can directly read out the solutions. How does it simplify the dependencies among variables step by step?
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
+    <title>Geometry of solutions</title>
+    <p></p>
+    <reading-questions>
+      <exercise>
+        <statement>
+          <p>
+            Explain how a linear system can be viewed in two different ways:
+            <ul>
+              <li>
+                <p>
+                  If we think of columns as vectors, we have a vector equation and we are asking whether the right-hand side is in the span of the columns.
+                </p>
+              </li>
+              <li>
+                <p>
+                  If we think of rows as equations separately, each equation represents a (hyper-)plane and we are trying to find their intersections (common points on them).
+                </p>
+              </li>
+            </ul>
+            Demonstrate these in an exemplar linear system.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words what a linear system of X variables with Y equations geometrically means. Demonstrate the different scenarios by using whiteboards, books, or several sheets of paper.
+          </p>
+          <tabular>
+            <row bottom="minor">
+              <cell>#Variables</cell>
+              <cell>#Equations</cell>
+            </row>
+            <row>
+              <cell halign="center">2</cell>
+              <cell halign="center">1</cell>
+            </row>
+            <row>
+              <cell halign="center">2</cell>
+              <cell halign="center">2</cell>
+            </row>
+            <row>
+              <cell halign="center">3</cell>
+              <cell halign="center">1</cell>
+            </row>
+            <row>
+              <cell halign="center">3</cell>
+              <cell halign="center">2</cell>
+            </row>
+            <row>
+              <cell halign="center">3</cell>
+              <cell halign="center">3</cell>
+            </row>
+          </tabular>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
 </section>
