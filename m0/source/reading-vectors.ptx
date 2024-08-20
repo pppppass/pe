@@ -52,7 +52,7 @@
       <exercise>
         <statement>
           <p>
-            Why it is called <q>linear algebra</q>? What's the key object in the study of linear algebra?
+            Why it is called <q>linear algebra</q>? What's the one key object in the study of linear algebra?
           </p>
         </statement>
       </exercise>
@@ -71,17 +71,21 @@
       A set is a collection of things. The set of fruits contains apple, banana, orange, peach, ananac, <etc/> The set of integers is <m> \mathbb{Z} = \{ \cdots, -2, -1, 0, 1, 2, 3, 4, \cdots \} </m>. The set <m>\mathbb{R}</m> of real numbers contains <m>1</m>, <m>-10000.1</m>, <m>\sqrt{2}</m>, and <m>\mathrm{e}^{\pi}</m>.
     </p>
     <p>
-      A vector is a tuple of numbers. An <m>n</m>-vector has <m>n</m> entries, and <m>\mathbb{R}^n</m> is the set of all <m>n</m>-tuples of real numbers. Two ways to write the same vector are <m> ( 1, 2, 3 ) = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} </m>. <em>However, <m> \begin{bmatrix} 1 \amp 2 \amp 3 \end{bmatrix} </m> means something different.</em>
+      A vector is a tuple of numbers. An <m>n</m>-vector has <m>n</m> entries, and <m>\mathbb{R}^n</m> is the set of all <m>n</m>-tuples of real numbers. All the followings are just different ways to write the same vector:
+      <me>
+        ( 1, 2, 3 ) = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}
+      </me>.
+      <em>However, <m> \begin{bmatrix} 1 \amp 2 \amp 3 \end{bmatrix} = \begin{pmatrix} 1 \amp 2 \amp 3 \end{pmatrix} </m> means something different.</em>
     </p>
     <p>
       Vectors are added and scaled entry-wise:
       <me>
-        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} = \begin{bmatrix} 5 \\ 7 \\ 9 \end{bmatrix}, \qquad 3 \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 3 \\ 6 \\ 9 \end{bmatrix}
+        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} = \begin{bmatrix} 5 \\ 7 \\ 9 \end{bmatrix}\text{,} \qquad 3 \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 3 \\ 6 \\ 9 \end{bmatrix}
       </me>.
       <em>Vectors cannot be multiplied entry-wise.</em>
     </p>
     <p>
-      Strictly speaking, vectors are differences between points. Starting from a point and moving by a vector we arrive at another point. The vector from <m> (1, 2) </m> to <m> (3, 4) </m> is the same as the one from <m> (0, 0) </m> to <m> (2, 2) </m>: the movements are the same vector <m> \begin{bmatrix} 2 \\ 2 \end{bmatrix} </m>. Sometimes people equate points with vectors by starting from the origin, so <m> \begin{bmatrix} 2 \\ 2 \end{bmatrix} </m> can mean either the point <m> (2, 2) </m> or the movement from the origin to <m> (2, 2) </m>.
+      Strictly speaking, vectors are differences between points. Starting from a point and moving by a vector we arrive at another point. The vector from <m> (1, 2) </m> to <m> (3, 4) </m> is the same as the one from <m> (0, 0) </m> to <m> (2, 2) </m>: the movements are the same vector <m> \begin{bmatrix} 2 \\ 2 \end{bmatrix} </m>, <ie/> two units positive horizontally and two units positive vertically. Sometimes we equate points with vectors by considering the movement from the origin, so <m> \begin{bmatrix} -2 \\ 2 \end{bmatrix} </m> can mean either the point <m> (-2, 2) </m> or the movement by <m>\sqrt{2}</m> units heading 315.
     </p>
     <reading-questions>
       <exercise>
@@ -115,7 +119,7 @@
       <exercise>
         <statement>
           <p>
-            Explain in your own words how to subtract vectors geometrically, and explain the reason using <m> \mathbf{u} - \mathbf{v} = \mathbf{u} + (-1) \mathbf{v} </m>.
+            Explain in your own words how to subtract vectors geometrically. Explain the reason using <m> \mathbf{u} - \mathbf{v} = \mathbf{u} + (-1) \mathbf{v} </m>.
           </p>
         </statement>
       </exercise>
@@ -126,17 +130,17 @@
     <p>
       A linear combination of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> is a vector <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} </m> for some numbers <m>a</m>, <m>b</m>, <m>c</m>. For example,
       <me>
-        \mathbf{u}, \quad \mathbf{0} = 0 \mathbf{u}, \quad -\mathbf{u} = (-1) \mathbf{u}, \quad \frac{1}{2} \mathbf{u}, \quad 100 \mathbf{u}, \quad (k^2 + 4) \mathbf{u} \text{ for some } k
+        \mathbf{u}\text{,} \quad \mathbf{0} = 0 \mathbf{u}\text{,} \quad -\mathbf{u} = (-1) \mathbf{u}\text{,} \quad \frac{1}{2} \mathbf{u}\text{,} \quad 100 \mathbf{u}\text{,} \quad (k^2 + 4) \mathbf{u} \text{ for some } k
       </me>
       are all linear combinations of <m>\mathbf{u}</m>.
     </p>
     <p>
       A linear system can be written as a vector equation:
       <me>
-        \begin{aligned}
-        x + 2 y \amp= 3 \\
+        \left\{\begin{aligned}
+        x + 2 y \amp= 3\text{,} \\
         3 x + 4 y \amp = 7
-        \end{aligned}
+        \end{aligned}\right.
         \quad \text{vs.} \quad
         x \begin{bmatrix} 1 \\ 3 \end{bmatrix} + y \begin{bmatrix} 2 \\ 4 \end{bmatrix} = \begin{bmatrix} 3 \\ 7 \end{bmatrix}
       </me>.
@@ -159,17 +163,14 @@
       <exercise>
         <statement>
           <p>
-            Give an example when a linear system has no solution and explain why. Does the linear system say what is or isn't a linear combination of something?
+            Give an example of linear systems without solutions and explain why it doesn't have any solution. Does the linear system say what is or isn't a linear combination of some other things?
           </p>
         </statement>
-      </exercise>combination of
-      ,
-      , and
-      ? What about the three
+      </exercise>
       <exercise>
         <statement>
           <p>
-            Give an example when a linear system has infinitely many solutions and explain why. Does the linear system say what is or isn't a linear combination of something?
+            Give an example when a linear system has infinitely many solutions and demonstrate some of the solutions. Does the linear system say what is or isn't a linear combination of some other things?
           </p>
         </statement>
       </exercise>
@@ -181,22 +182,22 @@
       The span of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> is the set of all possible linear combinations of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m>. In other words, the span is <m> \{ a \mathbf{u} + b \mathbf{v} + c \mathbf{w} : a, b, c \in \mathbb{R} \} </m>, <ie/> it is composed of all possible <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} </m> when <m>a</m>, <m>b</m>, <m>c</m> run over real numbers. Just like the set of sweet fruits is the set of all possible fruits that are sweet.
     </p>
     <p>
-      A vector <m>\mathbf{p}</m> being in the span of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> means we can find numbers <m>x</m>, <m>y</m>, <m>z</m> such that <m> \mathbf{p} = x \mathbf{u} + y \mathbf{v} + z \mathbf{w} </m>. Not being in the span means we cannot find the numbers. Just like apple being among sweet fruits means apple is sweet, and lemon not being among sweet fruits means lemon is not sweet.
+      A vector <m>\mathbf{p}</m> is in the span of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> means we can find those numbers <m>x</m>, <m>y</m>, <m>z</m> such that <m> \mathbf{p} = x \mathbf{u} + y \mathbf{v} + z \mathbf{w} </m>. Not being in the span means we cannot find the numbers. Just like apple is among sweet fruits means apple is sweet, and lemon isn't among sweet fruits means lemon is not sweet.
     </p>
     <reading-questions>
       <exercise>
         <statement>
           <p>
-            Explain in your own words how to check whether something is in the span of something by checking consistency of some linear system. Give an example.
+            Explain in your own words how to check whether something is in the span of some other things by checking consistency of a linear system. Give an example.
           </p>
         </statement>
       </exercise>
       <exercise>
         <statement>
           <p>
-            How to express <q><m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> span the whole <m>\mathbb{R}^3</m></q> in terms of linear systems? Start from
+            How to express <q><m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> span the whole <m>\mathbb{R}^3</m></q> in terms of linear systems? Begin with
             <me>
-              \text{for any } a, b, c, \text{ the vector equation } \ldots = \begin{bmatrix} \cdots \\ \cdots \\ \cdots \end{bmatrix} \text{ has a solution}
+              \text{for any } a\text{, } b\text{, } c\text{,} \quad \text{the vector equation } \ldots = \begin{bmatrix} \cdots \\ \cdots \\ \cdots \end{bmatrix} \text{ has a solution}
             </me>.
           </p>
         </statement>
@@ -204,7 +205,7 @@
       <exercise>
         <statement>
           <p>
-            What shapes can the span of X vectors in the Y-dimensional space have?
+            What shapes can the span of X vectors in the Y-dimensional space be?
           </p>
           <tabular>
             <row bottom="minor">
@@ -229,7 +230,7 @@
             <ul>
               <li>
                 <p>
-                  We need at least <m>n</m> vectors to span the <m>n</m>-dimensional space.
+                  We need at least <m>n</m> vectors to span the whole <m>n</m>-dimensional space.
                 </p>
               </li>
               <li>
