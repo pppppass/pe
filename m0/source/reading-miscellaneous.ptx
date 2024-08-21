@@ -6,107 +6,304 @@
       <ul>
         <li>
           <p>
-            ([ILA]) Margalit, Rabinoff, Williams. <em><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></em>, UBC ed.
+            ([ILA]) Margalit, Rabinoff, Williams. <pubtitle><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></pubtitle>, UBC ed.
           </p>
         </li>
       </ul>
-      Read §2.4 and §§3.1-3.2. Not everything in these sections are important, so figure out what to read from the following questions.
+    </p>
+    <p>
+      Read <section-mark/>2.4 and <section-mark/><section-mark/>3.1<ndash/>3.2. Not everything in these sections is important, so figure out what to read from the following questions.
     </p>
   </introduction>
-  <reading-questions xml:id="rqs-matrix-equations">
+  <subsection>
     <title>Matrix equations</title>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words the four equivalent ways to write a linear system.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words why having pivots on all rows means a solution exists regardless of the right-hand side.
-        </p>
-      </statement>
-    </exercise>
-  </reading-questions>
-  <reading-questions xml:id="rqs-solution-sets">
-    <title>Solution sets</title>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words when a homogenous linear system has a nontrivial solution. Give your own examples and non-examples.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words why solutions of a homogenous linear system is a span.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words when an inhomogenous linear system will have a solution.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words how to obtain all solutions to an inhomogenous linear system from one special solution and {solutions of the corresponding homogenous system}.
-        </p>
-      </statement>
-    </exercise>
-  </reading-questions>
-  <reading-questions xml:id="rqs-linear-independence">
-    <title>Linear independence</title>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words how to determine linear independence by solving linear systems.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words why linear dependence means we can always find one vector that is a linear combination of the other vectors.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain in your own words why the span of several vectors will be the same if we add in another vector that is a linear combination of the other vectors.
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Given a set of vectors, how to produce a linearly independent subset while keeping the span?
-        </p>
-      </statement>
-      <hint>
-        <p>
-          (1) If we have an linearly independent set, adding a new vector either retains linear independence, or the new vector is in the span of the previous ones. (2) In the latter case removing the vector doesn't affect the span.
-        </p>
-        <hint>
+    <p>
+      Dot product inputs two <m>n</m>-vectors and outputs a number:
+      <me>
+        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} = 1 \times 4 + 2 \times 5 + 3 \times 6 = 32
+      </me>.
+      Unlike when we scale vectors, the dot <m>\cdot</m> of dot products cannot be omitted: it's called <q>dot</q> product! <em>If <m> m \neq n </m>, There's no way to take the dot product of an <m>n</m>-vector and an <m>m</m>-vector!</em>
+    </p>
+    <p>
+      Another way to write dot products is by using matrices. An (<m>m</m><times/><m>n</m>)-matrix is an array of numbers of <m>m</m> rows and <m>n</m> columns. An <m>n</m>-vector is an (<m>n</m><times/><m>1</m>)-matrix. Matrices are added and scaled entry-wise.
+    </p>
+    <p>
+      Multiplication of an (<m>1</m><times/><m>n</m>)-matrix and an (<m>n</m><times/><m>1</m>)-matrix is really taking the dot product of two <m>n</m>-vectors, but remember the left (<m> 1 \mathord{\times} n </m>)-matrix <em>is not</em> an <m>n</m>-vector so we have to transpose it:
+      <me>
+        \begin{bmatrix} 1 \amp 2 \amp 3 \end{bmatrix} \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} = 1 \times 4 + 2 \times 5 + 3 \times 6 = 32 = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix}
+      </me>.
+      In other words, <m> \mathbf{v} \cdot \mathbf{w} = \mathbf{v}^{\top} \mathbf{w} </m>, where <m>\top</m> stands for transpose.
+    </p>
+    <p>
+      Matrix-vector multiplication is really stacked dot products:
+      <md>
+        <mrow> \begin{bmatrix} \mathbf{u}^{\top} \\ \mathbf{v}^{\top} \\ \mathbf{w}^{\top} \end{bmatrix} \mathbf{p} \amp= \begin{bmatrix} \mathbf{u}^{\top} \mathbf{p} \\ \mathbf{v}^{\top} \mathbf{p} \\ \mathbf{w}^{\top} \mathbf{p} \end{bmatrix}\text{,} </mrow>
+        <mrow> \begin{bmatrix} 1 \amp 2 \amp 3 \\ 4 \amp 5 \amp 6 \end{bmatrix} \begin{bmatrix} 7 \\ 8 \\ 9 \end{bmatrix} \amp= \begin{bmatrix} 1 \times 7 + 2 \times 8 + 3 \times 9 \\ 4 \times 7 + 5 \times 8 + 6 \times 9 \end{bmatrix} = \begin{bmatrix} 50 \\ 122 \end{bmatrix} </mrow>
+      </md>.
+      In particular, the product of an (<m>m</m><times/><m>n</m>)-matrix with an <m>n</m>-vector is an <m>m</m>-vector. The <m>k</m>-th entry of the resulting vector is the dot product of the <m>k</m>-th row and the vector.
+    </p>
+    <p>
+      Matrix-matrix multiplication is again packed matrix-vector multiplication:
+      <md>
+        <mrow> \mathbf{A} \begin{bmatrix} \mathbf{x} \amp \mathbf{y} \amp \mathbf{z} \end{bmatrix} \amp= \begin{bmatrix} \mathbf{A} \mathbf{x} \amp \mathbf{A} \mathbf{y} \amp \mathbf{A} \mathbf{z} \end{bmatrix}\text{,} </mrow>
+        <mrow> \begin{bmatrix} 1 \amp 2 \amp 3 \\ 4 \amp 5 \amp 6 \end{bmatrix} \begin{bmatrix} 7 \amp 10 \\ 8 \amp 11 \\ 9 \amp 12 \end{bmatrix} \amp= \begin{bmatrix} \begin{array}[t]{c} \ldots \\ \text{(yk)} \end{array} \begin{bmatrix} 7 \\ 8 \\ 9 \end{bmatrix} \amp \begin{array}[t]{c} \ldots \\ \text{(yk)} \end{array} \begin{bmatrix} 10 \\ 11 \\ 12 \end{bmatrix} \end{bmatrix} = \begin{bmatrix} 50 \amp 68 \\ 122 \amp 167 \end{bmatrix} </mrow>
+      </md>.
+      In particular, the product of an (<m>m</m><times/><m>n</m>)-matrix and an (<m>n</m><times/><m>k</m>)-matrix is an (<m>m</m><times/><m>k</m>)-matrix. The resulting (<m>i</m>, <m>j</m>)-entry is the dot product of the <m>i</m>-th row from the left and the <m>j</m>-th row from the right.
+    </p>
+    <p>
+      In general <m> \mathbf{A} \mathbf{B} \neq \mathbf{B} \mathbf{A} </m>. <em>A priori</em> the shapes will dismatch in the first place: if <m>\mathbf{A}</m> is <m>m</m><times/><m>n</m> and <m>\mathbf{B}</m> is <m>n</m><times/><m>k</m>,
+      <ul>
+        <li>
           <p>
-            (1) and (2) come from the last two questions above.
+            <m> \mathbf{A} \mathbf{B} </m> will make sense always, but
           </p>
-        </hint>
-      </hint>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
-          Explain how to give a linearly independent spanning set of the solutions of a homogenous linear system.
-        </p>
-      </statement>
-    </exercise>
-  </reading-questions>
+        </li>
+        <li>
+          <p>
+            <m> \mathbf{B} \mathbf{A} </m> won't make sense unless <m> k = m </m>.
+          </p>
+        </li>
+      </ul>
+      Even if <m>\mathbf{A}</m> is <m>m</m><times/><m>n</m> and <m>\mathbf{B}</m> is <m>n</m><times/><m>m</m>, <m> \mathbf{A} \mathbf{B} </m> will be of shape <m>m</m><times/><m>m</m> but <m> \mathbf{B} \mathbf{A} </m> of <m>n</m><times/><m>n</m>: they have no ways to be equal unless <m> m = n </m>.
+    </p>
+    <reading-questions>
+      <exercise>
+        <statement>
+          <p>
+            What's the result of the following products? Anytime think about the (input and output) shapes first. Only two make sense.
+            <me>
+              \begin{bmatrix} 1 \\ 2 \end{bmatrix} \begin{bmatrix} 3 \amp 4 \end{bmatrix} \quad 
+              \begin{bmatrix} 1 \\ 2 \end{bmatrix} \begin{bmatrix} 3 \\ 4 \end{bmatrix} \quad 
+              \begin{bmatrix} 1 \amp 2 \end{bmatrix} \begin{bmatrix} 3 \\ 4 \end{bmatrix} \quad 
+              \begin{bmatrix} 1 \amp 2 \end{bmatrix} \begin{bmatrix} 3 \amp 4 \end{bmatrix}
+            </me>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words what's the condition when two matrices can be multiplied together. Explain the reason by interpreting matrix multiplication as dot products of rows and columns.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words how to write a linear system in the following ways, using one running example:
+            <ul>
+              <li>
+                <p>
+                  as several equations presumed together;
+                </p>
+              </li>
+              <li>
+                <p>
+                  as an equation of vectors;
+                </p>
+              </li>
+              <li>
+                <p>
+                  as an equation with an unknown vector;
+                </p>
+              </li>
+              <li>
+                <p>
+                  as an augmented matrix.
+                </p>
+              </li>
+            </ul>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words why having pivots on all rows means a solution exists regardless of the right-hand side. Give examples and non-examples.
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection xml:id="subsec-">
+    <title>Solution sets</title>
+    <p>
+      A homogenous linear system always has a zero solution.
+    </p>
+    <p>
+      A homogenous linear system sometimes has a non-zero (some entry is non-zero but not necessarily all entries) solution, depending on whether or not it has free variables. For example,
+      <me>
+        \begin{bmatrix} 1 \amp 0 \amp 2 \amp 3 \\ 0 \amp 1 \amp 4 \amp 5 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \\ w \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+      </me>
+      then
+      <me>
+        \begin{bmatrix} x \\ y \\ z \\ w \end{bmatrix} = \begin{bmatrix} -2 z - 3 w \\ -4 z - 5 w \\ z \\ w \end{bmatrix} = \begin{bmatrix} -2 \\ -4 \\ 1 \\ 0 \end{bmatrix} z + \begin{bmatrix} -3 \\ -5 \\ 0 \\ 1 \end{bmatrix} w \quad \text{for some } z \text{ and } w
+      </me>,
+      but 
+      <me>
+        \begin{bmatrix} 1 \amp 0 \\ 0 \amp 1 \\ 0 \amp 0 \\ 0 \amp 0 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 0 \end{bmatrix} \quad \text{then} \quad \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+      </me>.
+    </p>
+    <p>
+      An inhomogeneous linear system may or may not have solutions, depending on the left-hand side is in the span of the columns. For example, the left system has (a lot of) solutions but the right doesn't have any:
+      <me>
+        \begin{bmatrix} 1 \amp 0 \amp 2 \\ 0 \amp 1 \amp 3 \\ 0 \amp 0 \amp 0 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 1000 \\ 222 \\ 0 \end{bmatrix}\text{,} \qquad \begin{bmatrix} 1 \amp 0 \amp 2 \\ 0 \amp 1 \amp 3 \\ 0 \amp 0 \amp 0 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 1000 \\ 222 \\ 1 \end{bmatrix}\text{.}
+      </me>
+      Once we have a special solution to an inhomogeneous linear system, we can find all solutions from the homogenous system. For example, the left linear system has one solution:
+      <me>
+        \begin{bmatrix} 1 \amp 0 \amp 2 \\ 0 \amp 1 \amp 3 \\ 0 \amp 0 \amp 0 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 1000 \\ 222 \\ 0 \end{bmatrix}\text{,} \qquad \begin{bmatrix} 1 \amp 0 \amp 2 \\ 0 \amp 1 \amp 3 \\ 0 \amp 0 \amp 0 \end{bmatrix} \begin{bmatrix} 998 \\ 219 \\ 1 \end{bmatrix} = \begin{bmatrix} 1000 \\ 222 \\ 0 \end{bmatrix}
+      </me>,
+      so
+      <me>
+        \begin{bmatrix} 1 \amp 0 \amp 2 \\ 0 \amp 1 \amp 3 \\ 0 \amp 0 \amp 0 \end{bmatrix} \begin{bmatrix} x - 998 \\ y - 219 \\ z - 1 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}
+      </me>
+      then by solving the homogenous system
+      <me>
+        \begin{bmatrix} x - 998 \\ y - 219 \\ z - 1 \end{bmatrix} = \begin{bmatrix} -2 \\ -3 \\ 1 \end{bmatrix} t \quad\text{i.e.}\quad \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 998 \\ 219 \\ 1 \end{bmatrix} + \begin{bmatrix} -2 \\ -3 \\ 1 \end{bmatrix} t \quad\text{for some } t.
+      </me>
+    </p>
+    <reading-questions>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words when a homogenous linear system will have a nontrivial solution. Give examples and non-examples.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words why solutions of a homogenous linear system is a span.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words when an inhomogeneous linear system will have a solution. Give examples and non-examples.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words how to solve an inhomogeneous linear system if we know
+            <ul>
+              <li>
+                <p>
+                  one solution to the inhomogeneous system and
+                </p>
+              </li>
+              <li>
+                <p>
+                  the solutions to the corresponding homogenous system.
+                </p>
+              </li>
+            </ul>
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
+    <title>Linear independence</title>
+    <p>
+      We say vectors <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> are linearly dependent if there exist not-all-zero numbers <m>a</m>, <m>b</m>, <m>c</m> such that <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} = \mathbf{0} </m>. Otherwise we say they're linearly independent. Reflect a little bit and you'll see the following sayings literally mean the same thing:
+      <ul>
+        <li>
+          <p>
+            there doesn't exist not-all-zero <m>a</m>, <m>b</m>, <m>c</m> such that <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} = \mathbf{0} </m>;
+          </p>
+        </li>
+        <li>
+          <p>
+            there're no <m>a</m>, <m>b</m>, <m>c</m> which make <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} = \mathbf{0} </m> other than <m> a = b = c = 0 </m>;
+          </p>
+        </li>
+        <li>
+          <p>
+            if <m>a</m>, <m>b</m>, <m>c</m> make <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} = \mathbf{0} </m>, then <m> a = b = c = 0 </m>;
+          </p>
+        </li>
+        <li>
+          <p>
+            the equation <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} = \mathbf{0} </m> has no other solutions than <m> a = b = c = 0 </m>;
+          </p>
+        </li>
+        <li>
+          <p>
+            the equation <m> a \mathbf{u} + b \mathbf{v} + c \mathbf{w} = \mathbf{0} </m> has only one solution;
+          </p>
+        </li>
+        <li>
+          <p>
+            there's no ways to express the zero vector as a linear combination of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> other than <m> \mathbf{0} = 0 \mathbf{u} + 0 \mathbf{v} + 0 \mathbf{w} </m>;
+          </p>
+        </li>
+        <li>
+          <p>
+            there's only one way to express the zero vector as a linear combination of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m>.
+          </p>
+        </li>
+      </ul>
+      For example, <m>\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}</m> are linearly independent because
+      <me>
+        \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} x + \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} y + \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} z = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} \quad\text{then}\quad \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}
+      </me>,
+      while <m>\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}</m>, <m> \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} </m> are linearly dependent because
+      <me>
+        (1) \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + (1) \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} + (1) \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} + (-1) \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}
+      </me>.
+    </p>
+    <p>
+      If <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> are linearly dependent, we will have a relation among them. Say the relation is <m> \mathbf{u} + 2 \mathbf{v} + 3 \mathbf{w} = \mathbf{0} </m>. We can then separate <m> \mathbf{u} = -2 \mathbf{v} - 3 \mathbf{w} </m> or <m> \mathbf{v} = -\mathbf{u} / 2 - 3 \mathbf{w} / 2 </m> or <m> \mathbf{w} = -\mathbf{u} / 3 - 2 \mathbf{v} / 3 </m>. But we cannot separate something whose coefficient is zero. Say the relation is <m> 2 \mathbf{v} + 3 \mathbf{w} = \mathbf{0} </m>. We cannot separate <m>\mathbf{u}</m> from <m> 0 \mathbf{u} = -2 \mathbf{v} - 3 \mathbf{w} </m> because we don't want to summon the monster called <q>division by zero</q> that virtually crashes everything. Nevertheless we can still separate <m>\mathbf{v}</m> or <m>\mathbf{w}</m>. In whichever case, we can separate at least one because the coefficients are not all zero. One of the vector is in the span of the others, although we don't have control on exactly which.
+    </p>
+    <p>
+      The span of <m>\mathbf{u}</m> and <m>\mathbf{v}</m> is always inside the span of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m>. If <m>\mathbf{w}</m> happens to be a linear combination of <m>\mathbf{u}</m> and <m>\mathbf{v}</m>, the two spans are the same since a linear combination of <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> can be written as a linear combination of <m>\mathbf{u}</m> and <m>\mathbf{v}</m>:
+      <me>
+        \mathbf{w} = a \mathbf{u} + b \mathbf{v} \quad\text{then}\quad 2 \mathbf{u} + 3 \mathbf{v} + 4 \mathbf{w} = (2 + 4 a) \mathbf{u} + (3 + 4 b) \mathbf{v}
+      </me>.
+    </p>
+    <reading-questions>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words how to determine linear independence by solving some linear system. Give an example.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words why linear dependence means we can always find one vector that is a linear combination of the other vectors. Give an example.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words why the span of several vectors will stay the same if we add in another vector that is in the span. Give an example.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Given a set of vectors, how to produce a linearly independent subset while not shrinking their span? Start from concrete examples like <m>\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}</m>, <m>\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}</m>, <m> \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} </m>, and you will need the previous two questions.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Given a homogenous linear system, how to produce a linearly independent set that spans the the solution set? Start from concrete examples like
+            <me>
+              \begin{bmatrix} 1 \amp 0 \amp 2 \amp 3 \\ 0 \amp 1 \amp 4 \amp 5 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \\ w \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+            </me>,
+            and you don't need previous questions.
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
 </section>
