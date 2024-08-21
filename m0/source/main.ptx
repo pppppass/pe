@@ -13,5 +13,6 @@
     <xi:include href="./reading-linear-systems.ptx"/>
     <xi:include href="./reading-miscellaneous.ptx"/>
     <xi:include href="./reading-basis.ptx"/>
+    <xi:include href="./reading-linear-transformations.ptx"/>
   </article>
 </pretext>
