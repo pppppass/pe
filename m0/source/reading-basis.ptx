@@ -18,60 +18,60 @@
   <subsection>
     <title>Linear subspaces</title>
     <p>
-      Things have types. Rose is a kind of flower, red is a kind of color, and 3 is a number. Number, <m>n</m>-Vector, and (<m> m \mathord{\times} n </m>)-Matrix are all different types.
+      Things have types. Rose is a kind of flower, red is a kind of color, and 3 is a number. Number, <m>n</m>-Vector, and (<m>m</m><times/><m>n</m>)-Matrix are all different types.
     </p>
     <p>
-      Operations require specific types. We can <q>put a rose next to a violet</q> but not <q>put a rose next to red</q>: the operation <q>put X next to Y</q> requires both X and Y are concrete objects in reality. Things like
+      Operations require specific types. We can <q>put a rose next to a violet</q> but not <q>put a rose next to red</q>: the operation <q>put X next to Y</q> requires both X and Y to be concrete objects in reality. Things like
       <me>
-        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix}, \qquad
-        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix}, \qquad
+        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix}\text{,} \qquad
+        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix}\text{,} \qquad
         \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} + 7
       </me>
       make sense while
       <me>
-        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + \begin{bmatrix} 4 \\ 5 \\ 6 \\ 7 \end{bmatrix}, \qquad
-        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 4 \\ 5 \\ 6 \\ 7 \end{bmatrix}, \qquad
+        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} + \begin{bmatrix} 4 \\ 5 \\ 6 \\ 7 \end{bmatrix}\text{,} \qquad
+        \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 4 \\ 5 \\ 6 \\ 7 \end{bmatrix}\text{,} \qquad
         \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} + \begin{bmatrix} 7 \\ 8 \\ 9 \end{bmatrix}
       </me>
       are ungrammatical since
       <md>
-        <mrow> +:
+        <mrow> +\amp:
           \begin{cases}
-          ( \text{Number}, \text{Number} ) \to \text{Number} \\
-          ( n\text{-Vector}, n\text{-Vector} ) \to n\text{-Vector},
+          ( \text{Number}, \text{Number} ) \to \text{Number}\text{;} \\
+          ( n\text{-Vector}, n\text{-Vector} ) \to n\text{-Vector}\text{,}
           \end{cases}
         </mrow>
-        <mrow> \cdot: ( n\text{-Vector}, n\text{-Vector} ) \to \text{Number} </mrow>
+        <mrow> \cdot\amp: ( n\text{-Vector}, n\text{-Vector} ) \to \text{Number} </mrow>
       </md>.
       Type errors are worse than false statements like <q><m> 1 + 1 = 3 </m></q>: in the latter the statement is at least clear though not true.
     </p>
     <p>
       Some types support linear operations, <ie/> adding and scaling:
       <md>
-        <mrow> + : ( \text{Type}, \text{Type} ) \to \text{Type}, </mrow>
-        <mrow> \cdot \text{ (or omitted) } : ( \text{Number}, \text{Type} ) \to \text{Type} </mrow>
+        <mrow> + \amp: ( \text{Type}, \text{Type} ) \to \text{Type}\text{,} </mrow>
+        <mrow> \cdot \text{ (or omitted)} \amp: ( \text{Number}, \text{Type} ) \to \text{Type} </mrow>
       </md>.
-      Number, <m>n</m>-Vector, and (<m> m \mathord{\times} n </m>)-Matrix are all examples. They form linear spaces (now called vector spaces). In particular, <m>\mathbb{R}^n</m> is a vector space.
+      Number, <m>n</m>-Vector, and (<m>m</m><times/><m>n</m>)-Matrix are all examples. They form linear spaces (now called vector spaces). In particular, <m>\mathbb{R}^n</m> is a vector space.
     </p>
     <p>
-      If a subset of a vector space is a vector space itself, the subset is then called a linear subspace of the bigger vector space. This means linear operations don't move things originally in the subset outside.
+      If a subset of a vector space is a vector space itself, the subset is then called a linear subspace of the bigger vector space. This means linear operations don't move things originally inside to the outside. Here's another example: the set <m>\mathbb{Z}</m> of integers is a (not linear!) subspace of the set <m>\mathbb{R}</m> of real numbers with respect to additions alone (no scaling so not linear). Just like in <m>\mathbb{R}</m> we say <m> 3 + 2 = 5 </m> but we're secretly doing everything in <m>\mathbb{Z}</m>. However, <m>\mathbb{Z}</m> itself doesn't support divisions because <m> 3 / 2 </m> is not in <m>\mathbb{Z}</m> but <m>\mathbb{R}</m>. In other words, <m>\mathbb{Z}</m> has to be extended to <m>\mathbb{R}</m> (or the set <m>\mathbb{Q}</m> of rational numbers) to support divisions.
     </p>
     <p>
-      A span is a subspace: <eg/>,
+      A span is a subspace because we can just add and scale coefficients: <eg/>,
       <md>
-        <mrow> (3\mathbf{u} + 4 \mathbf{v}) + (5 \mathbf{u} + 6 \mathbf{v}) \amp= (3 + 5) \mathbf{u} + (4 + 6) \mathbf{v}, </mrow>
-        <mrow> 100 (3 \mathbf{u} + 4 \mathbf{v}) \amp= (100 \cdot 3) \mathbf{u} + (100 \cdot 4) \mathbf{v} </mrow>
+        <mrow> (3\mathbf{u} + 4 \mathbf{v}) + (5 \mathbf{u} + 6 \mathbf{v}) \amp= (3 + 5) \mathbf{u} + (4 + 6) \mathbf{v}\text{,} </mrow>
+        <mrow> 100 \cdot (3 \mathbf{u} + 4 \mathbf{v}) \amp= (100 \cdot 3) \mathbf{u} + (100 \cdot 4) \mathbf{v} </mrow>
       </md>.
     </p>
     <p>
-      A null space is a subspace: <eg/>, if
+      A null space is a subspace: <eg/>, if <m> ( a, b ) </m> and <m> ( c, d ) </m> solves <m> 3 x + 4 y = 0 </m>, <ie/>
       <me>
-        3 x_1 + 4 y_1 = 0, \quad 3 x_2 + 4 y_2 = 0
+        3 a + 4 b = 0\text{,} \quad 3 c + 4 d = 0
       </me>,
-      then
+      then after addition or scaling, <m> ( a + c, b + d ) </m> and <m> ( 100 a, 100 c ) </m> still solve the same equation, <ie/>
       <md>
-        <mrow> 3 (x_1 + x_2) + 4 (y_1 + y_2) \amp= 0, </mrow>
-        <mrow> 3 (100 x_1) + 4 (100 y_1) \amp= 0 </mrow>
+        <mrow> 3 (a + c) + 4 (b + d) \amp= 0\text{,} </mrow>
+        <mrow> 3 (100 a) + 4 (100 b) \amp= 0 </mrow>
       </md>.
     </p>
     <reading-questions>
@@ -115,12 +115,12 @@
   <subsection>
     <title>Basis and dimension</title>
     <p>
-      A basis is a linearly independent spanning set.
+      A basis (of a subspace) is a linearly independent spanning set (of a subspace).
     </p>
     <p>
       One procedure to find a basis from a spanning set is to remove vectors one by one. Say
       <me>
-        \mathbf{u} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, \quad \mathbf{v} = \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix}, \quad \mathbf{w} = \begin{bmatrix} 7 \\ 8 \\ 9 \end{bmatrix}, \quad \mathbf{r} = \begin{bmatrix} 10 \\ 11 \\ 12 \end{bmatrix}
+        \mathbf{u} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}\text{,} \quad \mathbf{v} = \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix}\text{,} \quad \mathbf{w} = \begin{bmatrix} 7 \\ 8 \\ 9 \end{bmatrix}\text{,} \quad \mathbf{r} = \begin{bmatrix} 10 \\ 11 \\ 12 \end{bmatrix}
       </me>.
       <ul>
         <li>
@@ -130,7 +130,7 @@
         </li>
         <li>
           <p>
-            Here they are linearly dependent, and one vector can be expressed as a linear combination of others: <m> \mathbf{w} = 2 \mathbf{v} - \mathbf{u} </m>. So throw <m>\mathbf{w}</m> away.
+            Here they are linearly dependent so one vector can be expressed as a linear combination of the others: <m> \mathbf{w} = 2 \mathbf{v} - \mathbf{u} </m>. So throw <m>\mathbf{w}</m> away and the span doesn't change.
           </p>
         </li>
         <li>
@@ -140,7 +140,7 @@
         </li>
         <li>
           <p>
-            Here they are linearly dependent, and one vector can be expressed as a linear combination of others: <m> \mathbf{r} = 3 \mathbf{v} - 2 \mathbf{u} </m>. So throw <m>\mathbf{r}</m> away.
+            Here they are linearly dependent so one vector can be expressed as a linear combination of the others: <m> \mathbf{r} = 3 \mathbf{v} - 2 \mathbf{u} </m>. So throw <m>\mathbf{r}</m> away and the span doesn't change.
           </p>
         </li>
         <li>
@@ -201,7 +201,7 @@
       </ul>
     </p>
     <p>
-      Different bases of the same space always have the same size. That number is called the dimension of the space.
+      Different bases of the same (linear) (sub)space always have the same size. That number is called the dimension of the (linear) (sub)space.
     </p>
     <reading-questions>
       <exercise>
@@ -260,11 +260,11 @@
           <p>
             What are the coordinates of a 3-vector under the basis
             <me>
-              \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+              \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}\text{,} \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}\text{,} \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
             </me>?
             What are the coordinates under the basis
             <me>
-              \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
+              \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}\text{,} \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}\text{,} \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
             </me>?
           </p>
         </statement>
@@ -274,10 +274,10 @@
           <p>
             Suppose two bases <m>\mathbf{u}</m>, <m>\mathbf{v}</m> and <m>\mathbf{r}</m>, <m>\mathbf{s}</m> are related by
             <md>
-              <mrow> \mathbf{u} \amp= \mathbf{r} + 3 \mathbf{s}, </mrow>
+              <mrow> \mathbf{u} \amp= \mathbf{r} + 3 \mathbf{s}\text{,} </mrow>
               <mrow> \mathbf{v} \amp= 2 \mathbf{r} + 4 \mathbf{s} </mrow>
             </md>.
-            What are the coordinates under <m>\mathbf{r}</m>, <m>\mathbf{s}</m> given coordinates under <m>\mathbf{u}</m>, <m>\mathbf{v}</m>? How to find the coordinates under <m>\mathbf{u}</m>, <m>\mathbf{v}</m> given coordinates under <m>\mathbf{r}</m>, <m>\mathbf{s}</m>?
+            What are the coordinates under <m>\mathbf{r}</m>, <m>\mathbf{s}</m> given coordinates under <m>\mathbf{u}</m>, <m>\mathbf{v}</m>? How to find the coordinates under <m>\mathbf{u}</m>, <m>\mathbf{v}</m> given coordinates under <m>\mathbf{r}</m>, <m>\mathbf{s}</m>? The former one is just plugging something into something, and the latter one needs to solve a linear system.
           </p>
         </statement>
       </exercise>
