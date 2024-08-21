@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="reading-linear-transformations" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Reading: Linear transformations</title>
+  <introduction>
+    <p>
+      <ul>
+        <li>
+          <p>
+            ([ILA]) Margalit, Rabinoff, Williams. <pubtitle><url href="https://personal.math.ubc.ca/~tbjw/ila/">Interactive Linear Algebra</url></pubtitle>, UBC ed.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Read the following text and work through the questions. Details can be found in <section-mark/>4.1 and <section-mark/>4.3 or on wiki.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Functions</title>
+    <p>
+      A function input something and output something. Some people say functions eat in something and spit out something. The function given by <m> f (x) = x^2 </m> takes in a number <m>x</m> and gives out <m>x^2</m>. When fed <m>y</m> it yields <m>y^2</m>, when fed <m>7</m> it yields <m>49</m>, and when fed 🤦 it yields <m>\text{🤦}^2</m>.
+    </p>
+    <p>
+      Even if we write <q>the function <m> f (x) = x^2 </m> </q> so often, the function is really <m>f</m> instead of <m> f (x) </m>: the little tail <m>(x)</m> is only an attempt to name the input, and technically <em><m> f (x) </m> is a number</em>. I can change it to whatever, like <q>the function <m>f</m> defined by <m> f (\cdot) = (\cdot)^2 </m></q>. A fancier way to write a function is <m> f : x \mapsto x^2 </m> where the barred arrow reads <q>maps to</q>. It literally expresses the same function as <m> y \mapsto y^2 </m>. Earlier people wrote <q>the function <m> y = x^2 </m></q>: it's really because in old times <m>x</m> is the default name for input and <m>y</m> for output. It was useful, especially if you didn't have a thousand symbols to keep track of as we have today 🤦.
+    </p>
+    <p>
+      Functions have input and output types. I don't want to know what's <m> \sin \text{🥑} </m> unless I intend to mean a number by 🥑. A function <m> f : \mathbb{R}^n \to \mathbb{R}^m </m> inputs an <m>n</m>-vector and outputs an <m>m</m>-vector, with the unbarred arrow reading <q>to</q>. Input and output types together determine the function type, like the function given by <m> f (x) = x^2 </m> has type <m> \mathbb{R} \to \mathbb{R} </m>.
+    </p>
+    <reading-questions>
+      <title>Questions</title>
+      <exercise>
+        <statement>
+          <p>
+            If <m>f</m> is given by <m> f ( x, y ) = x^2 + y </m>, what's <m> f ( x, z ) </m>, <m> f ( y, x ) </m>, <m> f ( x, x ) </m>, and <m> f ( \text{🟠}, \text{🟦} ) </m>? How is it different from the function <m> g : u, v \mapsto u^2 + v </m>, the function <m> h : u, v \mapsto v^2 + u </m>, and the function given by <m> F ( \ast, \circ ) = \ast + \circ^2 </m>?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            What are the type constraints so that we can chain two functions <m>f</m> and <m>g</m>: we first apply <m>f</m> on the input to get an intermediate result, and then apply <m>g</m> on the intermediate result to get the eventual output? What's the type <m> \ldots \to \ldots </m> of the composite function? How to define the composite function <m> \ldots \mapsto \ldots </m>? Why the composite function is written as <m> g \circ f </m> instead of <m> f \circ g </m>?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words how <q>left-multiplying by <m>\mathbf{A}</m></q> is a function from vectors to vectors once given a matrix <m>\mathbf{A}</m>. If <m>\mathbf{A}</m> is an (<m>m</m><times/><m>n</m>)-matrix, what's the type of the function?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Given a function <m> f : \mathbb{R}^2 \to \mathbb{R}^n </m>, how can we construct a function <m> x, y \mapsto f ( y, x ) </m> by composing <m>f</m> with some very special function? In other words, how to express <m> h : u, v \mapsto v^2 + u </m> as a composite function part of which is <m> g : u, v \mapsto u^2 + v </m>?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Given (for <m>P</m> and <m> Q : \mathbb{R}^2 \to \mathbb{R} </m>)
+            <me>
+              \int_{ \partial \Omega } \left( P \mathop{\mathrm{d}\!} x + Q \mathop{\mathrm{d}\!} y \right) = \iint_{\Omega} \left( -\frac{ \mathop{\partial\!} P }{ \mathop{\partial\!} y } + \frac{ \mathop{\partial\!} Q }{ \mathop{\partial\!} x } \right) \mathop{\mathrm{d}\!} x \mathop{\mathrm{d}\!} y
+            </me>,
+            obtain
+            <me>
+              \int_{ \partial \Omega } \left( P \mathop{\mathrm{d}\!} y - Q \mathop{\mathrm{d}\!} x \right) = \iint_{\Omega} \left( \frac{ \mathop{\partial\!} P }{ \mathop{\partial\!} x } + \frac{ \mathop{\partial\!} Q }{ \mathop{\partial\!} y }\right) \mathop{\mathrm{d}\!} x \mathop{\mathrm{d}\!} y
+            </me>.
+            You don't need any calculus to do this. Not at all. Absolutely zero.
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
+    <title>Linear transformations</title>
+    <p>
+      Some types support linear operations, <ie/> addition <m>+</m> and scaling <m>\cdot</m> (or omitted). Sometimes these two operations pass through a function: these functions are called linear functions or linear transformations.  For example,
+      <mdn alignment="gather">
+        <mrow xml:id="eq-lin-trans-1"> 2 \times ( 3 + 5 ) = 2 \times 3 + 2 \times 5 \text{,} </mrow>
+        <mrow> \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \left( \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} + \begin{bmatrix} 7 \\ 8 \\ 9 \end{bmatrix} \right) = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} + \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \cdot \begin{bmatrix} 7 \\ 8 \\ 9 \end{bmatrix} \text{,} </mrow>
+        <mrow> \begin{bmatrix} 1 \amp 2 \\ 3 \amp 4 \end{bmatrix} \left( \begin{bmatrix} 5 \\ 6 \end{bmatrix} + \begin{bmatrix} 7 \\ 8 \end{bmatrix} \right) = \begin{bmatrix} 1 \amp 2 \\ 3 \amp 4 \end{bmatrix} \begin{bmatrix} 5 \\ 6 \end{bmatrix} + \begin{bmatrix} 1 \amp 2 \\ 3 \amp 4 \end{bmatrix} \begin{bmatrix} 7 \\ 8 \end{bmatrix} \text{,} </mrow>
+        <mrow> \begin{bmatrix} 1 \amp 2 \\ 3 \amp 4 \end{bmatrix} \left( 777 \begin{bmatrix} 5 \\ 6 \end{bmatrix} \right) = 777 \left( \begin{bmatrix} 1 \amp 2 \\ 3 \amp 4 \end{bmatrix} \begin{bmatrix} 5 \\ 6 \end{bmatrix} \right) \text{,} </mrow>
+        <mrow xml:id="eq-lin-trans-5"> \left( \begin{bmatrix} 1 \amp 2 \\ 3 \amp 4 \end{bmatrix} + \begin{bmatrix} 5 \amp 6 \\ 7 \amp 8 \end{bmatrix} \right) \begin{bmatrix} 9 \\ 10 \end{bmatrix} = \begin{bmatrix} 1 \amp 2 \\ 3 \amp 4 \end{bmatrix} \begin{bmatrix} 9 \\ 10 \end{bmatrix} + \begin{bmatrix} 5 \amp 6 \\ 7 \amp 8 \end{bmatrix} \begin{bmatrix} 9 \\ 10 \end{bmatrix}\text{.} </mrow>
+      </mdn>
+    </p>
+    <p>
+      Matrices are extremely useful because virtually all linear transformations are secretly <q>left-multiplying by <m>\mathbf{A}</m></q> for an appropriate <m>\mathbf{A}</m>. Say we have a linear transformation <m> T : \mathbf{R}^2 \to \mathbf{R}^2 </m> . Say plugging in two very special vectors we see
+      <me>
+        T \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 3 \\ 5 \end{bmatrix}, \qquad\qquad T \begin{bmatrix} 0 \\ 1 \end{bmatrix} = \begin{bmatrix} 4 \\ 6 \end{bmatrix}.
+      </me>
+      Then actually
+      <me>
+        \begin{split}
+        T \begin{bmatrix} a \\ b \end{bmatrix} \amp= T \left( a \begin{bmatrix} 1 \\ 0 \end{bmatrix} + b \begin{bmatrix} 0 \\ 1 \end{bmatrix} \right) \\
+        \amp= a \left( T \begin{bmatrix} 1 \\ 0 \end{bmatrix} \right) + b \left( T \begin{bmatrix} 0 \\ 1 \end{bmatrix} \right) \\
+        \amp= a \begin{bmatrix} 3 \\ 5 \end{bmatrix} + b \begin{bmatrix} 4 \\ 6 \end{bmatrix} \\
+        \amp= \begin{bmatrix} 3 \amp 4 \\ 5 \amp 6 \end{bmatrix} \begin{bmatrix} a \\ b \end{bmatrix}\text{,}
+        \end{split}
+      </me>
+      <ie/> the linear transformation <m>T</m> is exactly the function <q>left-multiplying by <m> \begin{bmatrix} 3 \amp 4 \\ 5 \amp 6 \end{bmatrix} </m></q>. In other words, the matrix <m>\mathbf{A}</m> can be found by applying the linear transformation to a basis of the input space. Since any input is a linear combination of the basis elements, because of linearity the output (and thus the function) is already completely determined.
+    </p>
+    <reading-questions>
+      <title>Questions</title>
+      <exercise>
+        <statement>
+          <p>
+            What are the linear transformations <xref first="eq-lin-trans-1" last="eq-lin-trans-5"/> are showing? For example, <xref ref="eq-lin-trans-1"/> is saying the function <q>multiplying by <m>2</m></q>, <ie/> <m> x \mapsto 2 x </m> is linear.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words how <q>left-multiplying by <m>\mathbf{A}</m></q> is a linear function.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain in your own words why every linear transformation <m> \mathbb{R}^n \to \mathbb{R}^m </m> is <q>left-multiplying by <m>\mathbf{A}</m></q> for some matrix <m>\mathbf{A}</m>. In particular, what's the shape of the matrix <m>\mathbf{A}</m> and how to find <m>\mathbf{A}</m>?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Does <m> \mathbf{A} \mathbf{B} </m> or <m> \mathbf{A} \mathbf{B} </m> represents the linear transformation of applying <m>\mathbf{A}</m> first and then applying <m>\mathbf{B}</m>? How does this compare to the notion of function composition?
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+</section>
