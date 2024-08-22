@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="reading-topics" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Reading: Topics</title>
+  <introduction>
+    <p>
+      Choose one topic and complete the questions on that topic. Search online to find references, especially on wiki and YouTube.
+    </p>
+  </introduction>
+  <subsection>
+    <title>High-order functions</title>
+    <p></p>
+    <reading-questions>
+      <title></title>
+      <exercise>
+        <statement>
+          <p>
+            <url href="https://en.wikipedia.org/wiki/Function_(mathematics)#function_evaluation">Function evaluation</url> or <url href="https://en.wikipedia.org/wiki/Map_(higher-order_function)"><c>map</c> function</url>. Function is a type. So a function can be inputs and outputs of other functions. Explain why <q>plugging in <m>3</m></q> is a function of type <m> ( \mathbb{R} \to \mathbb{R} ) \to \mathbb{R} </m>, <ie/> it inputs a function <m> \mathbb{R} \to \mathbb{R} </m> and outputs a number. Give a function of type <m> \mathbb{R} \to ( (\mathbb{R} \to \mathbb{R} ) \to \mathbb{R} ) </m>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            <url href="https://en.wikipedia.org/wiki/Currying">Currying</url>. Explain how a function of type <m> ( \mathbb{R}, \mathbb{R} ) \to \mathbb{R} </m> is exactly the same thing as a function <m> \mathbb{R} \to ( \mathbb{R} \to \mathbb{R} )</m> and vice versa.
+          </p>
+          <p>
+            This is a concept hidden everywhere. Partial derivative with a variable is just derivative <q>when other variables are fixed</q>: <eg/>,
+            <md>
+              <mrow> \frac{\mathop{\partial\!}}{ \mathop{\partial\!} x } y^2 = 0\text{,} \quad \frac{\mathop{\partial\!}}{ \mathop{\partial\!} x } ( x y^2 ) = y^2\text{,} \quad \frac{\mathop{\partial\!}}{ \mathop{\partial\!} y } ( x y^2 ) = 2 x y\text{,} </mrow>
+              <mrow> \frac{\mathop{\partial\!}}{ \mathop{\partial\!} x } \mathrm{e}^{ x y } = y \mathrm{e}^{ x y }\text{,} \quad \frac{\mathop{\partial\!}}{ \mathop{\partial\!} y } \log ( x^2 + y^2 ) = \frac{ 2 y }{ x^2 + y^2 }\text{.} </mrow>
+            </md>
+            But what's really happening here, say for <m> \partial / \mathop{\partial\!} y </m>, is that we take a function say <m> f : x, y \mapsto x y^2 </m>, regard it as <m> F : x \mapsto ( y \mapsto x y^2 )</m>, and takes derivatives of the inner function which is now innocently single-variable. For example, <m> F (2) </m> is <m> y \mapsto 2 y^2 </m> so the derivative is <m> y \mapsto 4 y </m>, <m> F (3) </m> is <m> y \mapsto 3 y^2 </m> so the derivative is <m> y \mapsto 6 y </m>, and more generally for any <m>x</m> the inner function is <m> F (x) </m> is <m> y \mapsto x y^2 </m> so the derivative is <m> y \mapsto 2 x y </m>.
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
+    <title>Linearity</title>
+    <p></p>
+    <reading-questions>
+      <title></title>
+      <exercise>
+        <statement>
+          <p>
+            Explain why <q>taking differentiation</q> that inputs a function <m> \mathbb{R} \to \mathbb{R} </m> and outputs a function <m> \mathbb{R} \to \mathbb{R} </m>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Functions <m> \mathbb{R} \to \mathbb{R} </m> also support addition <m>+</m> and scaling <m>\cdot</m> (or omitted). Say <m> f : t \mapsto t^2 </m> and <m> g : t \mapsto \sin t </m>. Then
+            <me>
+              (f + g) : t \mapsto t^2 + \sin t\text{,} \qquad (2 f) : t \mapsto 2 t^2\text{.}
+            </me>
+            Explain why <q>taking differentiation</q> is a linear transform. Give examples.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain why <q>taking integral over <m> [ 0, 1 ] </m></q> is a linear transform that inputs a function and outputs a number. Give examples.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Find three (or <m> k > 3 </m>) linearly independent functions <m> \mathbb{R} \to \mathbb{R} </m>. For example, the two functions
+            <me>
+              f : x \mapsto \begin{cases} 1 \amp 0 \le x \lt 1\text{;} \\ 0 \amp \text{otherwise,} \end{cases} \qquad 
+              g : x \mapsto \begin{cases} 1 \amp 2 \le x \lt 3\text{;} \\ 0 \amp \text{otherwise,} \end{cases}
+            </me>
+            are linearly independent; just try scaling and adding them.
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
+    <title>Rotations</title>
+    <p></p>
+    <reading-questions>
+      <title></title>
+      <exercise>
+        <statement>
+          <p>
+            Among the following matrices, which one represents <q>rotating angle <m>\theta</m> counter-clockwise</q> and which one represents <q>rotating angle <m>\theta</m> clockwise</q>, both around the origin in the two-dimensional space? Determine the signs.
+            <me>
+              \begin{bmatrix} \sin \theta \amp \pm \cos \theta \\ \mp \cos \theta \amp \sin \theta \end{bmatrix} \qquad \begin{bmatrix} \cos \theta \amp \pm \sin \theta \\ \mp \sin \theta \amp \cos \theta \end{bmatrix}
+            </me>
+            The trick is to plug in a very small <m>\theta</m> and apply the matrix to special vectors. For example, after counter-clockwise rotation, the vector <m> \begin{bmatrix} 1 \\ 0 \end{bmatrix} </m> becomes <m> \begin{bmatrix} \text{slightly smaller than } 1 \\ \text{slightly larger than } 0 \end{bmatrix} </m>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Find the matrices representing <q>rotating counter-clockwise around the <m>x</m>-axis</q>, <q><ellipsis/> around the <m>y</m>-axis</q>, <q><ellipsis/> around <m>z</m>-axis</q> in the three-dimensional space on <url href="https://en.wikipedia.org/wiki/Rotation_matrix#Basic_3D_rotations">wiki</url>. Explain why the entries are like that.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain why
+            <me>
+              \begin{bmatrix} \cos \theta \amp -\sin \theta \\ \sin \theta \amp \cos \theta \end{bmatrix} \begin{bmatrix} \cos \varphi \amp -\sin \varphi \\ \sin \varphi \amp \cos \varphi \end{bmatrix} = \begin{bmatrix} \cos (\theta + \varphi) \amp -\sin (\theta + \varphi) \\ \sin (\theta + \varphi) \amp \cos (\theta + \varphi) \end{bmatrix}
+            </me>.
+            What does this say about <m> \cos ( \alpha + \beta ) </m> and <m> \sin ( \alpha + \beta ) </m>?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            When <m> \mathop{\mathrm{d}\!} \theta</m> is so small,
+            <me>
+              \begin{bmatrix} \cos \mathop{\mathrm{d}\!} \theta \amp -\sin \mathop{\mathrm{d}\!} \theta \\ \sin \mathop{\mathrm{d}\!} \theta \amp \cos \mathop{\mathrm{d}\!} \theta \end{bmatrix} = \begin{bmatrix} 1 \amp 0 \\ 0 \amp 1 \end{bmatrix} + \begin{bmatrix} 0 \amp -1 \\ 1 \amp 0 \end{bmatrix} \mathop{\mathrm{d}\!} \theta
+            </me>.
+            The matrix <m> \begin{bmatrix} 0 \amp -1 \\ 1 \amp 0 \end{bmatrix} </m> is called the matrix of <url href="https://en.wikipedia.org/wiki/Infinitesimal_rotation_matrix">infinitesimal rotation</url>. Find the three infinitesimal rotation matrices <m>\mathbf{J}_x</m>, <m>\mathbf{J}_y</m>, <m>\mathbf{J}_z</m> around the axes in the three dimensional space; each of them has only two non-zero entries. Try hitting arrow keys <kbd name="up"/><kbd name="left"/><kbd name="down"/><kbd name="right"/> repeatedly on <url href="https://earth.google.com/web/">Google Earth</url>. Explain what happens by using <m> \mathbf{J}_y \mathbf{J}_x - \mathbf{J}_x \mathbf{J}_y = -2 \mathbf{J}_z </m> and
+            <me>
+              \begin{split}
+              \mathrel{\phantom{=}} ( \mathbf{I}_3 - \mathop{\mathrm{d}\!} \theta \mathbf{J}_y ) ( \mathbf{I}_3 - \mathop{\mathrm{d}\!} \theta \mathbf{J}_x ) ( \mathbf{I}_3 + \mathop{\mathrm{d}\!} \theta \mathbf{J}_y ) ( \mathbf{I}_3 + \mathop{\mathrm{d}\!} \theta \mathbf{J}_x ) \qquad\qquad \\
+              \hfill= \mathbf{I}_3 + 2 (\mathbf{J}_y - \mathbf{J}_x - \mathbf{J}_x \mathbf{J}_y) \mathop{\mathrm{d}\!} \theta^2\text{.}
+              \end{split}
+            </me>
+            You can also just hold and rotate your phones and it's really a cool trick.
+          </p>
+          <p>
+            One cool thing about infinitesimal rotation matrices is that for <m>\theta</m>
+            <me>
+              \begin{split}
+              \begin{bmatrix} \cos \theta \amp -\sin \theta \\ \sin \theta \amp \cos \theta \end{bmatrix} \amp= \lim_{ N \to \infty } \begin{bmatrix} \cos (\theta / N) \amp -\sin (\theta / N) \\ \sin (\theta / N) \amp \cos (\theta / N) \end{bmatrix} \\ \amp= \lim_{ N \to \infty } \left( \begin{bmatrix} 1 \amp 0 \\ 0 \amp 1 \end{bmatrix} + \frac{1}{N} \cdot \theta \begin{bmatrix} 0 \amp -1 \\ 1 \amp 0 \end{bmatrix} \right) \\ \amp= \mathrm{e}^{ \theta \begin{bmatrix} 0 \amp -1 \\ 1 \amp 0 \end{bmatrix} }\text{.}
+              \end{split}
+            </me>
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
+    <title>Matrix inverses</title>
+    <p>
+      The matrix <m>\mathbf{I}_n</m> is the (<m>n</m><times/><m>n</m>)-matrix
+      <me>
+        \begin{bmatrix} 1 \amp 0 \amp 0 \amp \cdots \amp 0 \amp 0 \\ 0 \amp 1 \amp 0 \amp \cdots \amp 0 \amp 0 \\ 0 \amp 0 \amp 1 \amp \cdots \amp 0 \amp 0 \\ \vdots \amp \vdots \amp \vdots \amp \ddots \amp \vdots \amp \vdots \\ 0 \amp 0 \amp 0 \amp \cdots \amp 1 \amp 0 \\ 0 \amp 0 \amp 0 \amp \cdots \amp 0 \amp 1 \end{bmatrix}
+      </me>.
+      It works like the unit <m>1</m> of numbers: for any (<m>n</m><times/><m>n</m>)-matrix <m>\mathbf{A}</m>, we always have <m> \mathbf{I}_n \mathbf{A} = \mathbf{A} \mathbf{I}_n = \mathbf{A} </m>.
+    </p>
+    <reading-questions>
+      <title></title>
+      <exercise>
+        <statement>
+          <p>
+            For some (<m>n</m><times/><m>n</m>)-matrices, say <m>\mathbf{A}</m>, we can find another (<m>n</m><times/><m>n</m>)-matrix <m>\mathbf{B}</m> such that <m> \mathbf{B} \mathbf{A} = \mathbf{I}_n </m>. Explain why if there's (<m>n</m><times/><m>n</m>)-matrix <m>\mathbf{C}</m> such that <m> \mathbf{A} \mathbf{C} = \mathbf{I}_n </m>, then <m> \mathbf{B} = \mathbf{C} </m>. Try looking at <m> \mathbf{B} \mathbf{A} \mathbf{C} </m> in two different ways.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            The inverse of an (<m>n</m><times/><m>n</m>)-matrix <m>\mathbf{A}</m> is an (<m>n</m><times/><m>n</m>) matrix <m>\mathbf{A}^{-1} </m> such that <m> \mathbf{A} \mathbf{A}^{-1} = \mathbf{A}^{-1} \mathbf{A} = \mathbf{I}_n </m>. <em>Never write anything like <m> \mathbf{A} / \mathbf{B} </m> or <m> \mathbf{B} \backslash \mathbf{A} </m> because nobody can tell whether it's multiplied from the left or from the right.</em> <em>Never ever try inverting a non-square matrix.</em> Decide whether <m> (\mathbf{A} \mathbf{B})^{-1} = \mathbf{A}^{-1} \mathbf{B}^{-1} </m> or <m> \mathbf{B}^{-1} \mathbf{A}^{-1} </m> and explain the reason.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Find the inverse of
+            <me>
+              \begin{bmatrix} 1 \amp 1 \amp 0 \amp 0 \\ 0 \amp 1 \amp 1 \amp 0 \\ 0 \amp 0 \amp 1 \amp 1 \\ 0 \amp 0 \amp 0 \amp 1 \end{bmatrix}
+            </me>
+            by yourself. The trick is to apply special vectors and then solve the linear systems:
+            <me>
+              \begin{bmatrix} 1 \amp 1 \amp 0 \amp 0 \\ 0 \amp 1 \amp 1 \amp 0 \\ 0 \amp 0 \amp 1 \amp 1 \\ 0 \amp 0 \amp 0 \amp 1 \end{bmatrix}^{-1} \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} = \begin{bmatrix} \text{the} \\ \text{first} \\ \text{col} \\ \text{umn} \end{bmatrix} \quad \text{then} \quad \begin{bmatrix} 1 \amp 1 \amp 0 \amp 0 \\ 0 \amp 1 \amp 1 \amp 0 \\ 0 \amp 0 \amp 1 \amp 1 \\ 0 \amp 0 \amp 0 \amp 1 \end{bmatrix} \begin{bmatrix} \text{the} \\ \text{first} \\ \text{col} \\ \text{umn} \end{bmatrix} = \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}
+            </me>.
+          </p>
+          <p>
+            Another trick is to think of
+            <me>
+              \mathbf{J}_4 = \begin{bmatrix} 0 \amp 1 \amp 0 \amp 0 \\ 0 \amp 0 \amp 1 \amp 0 \\ 0 \amp 0 \amp 0 \amp 1 \\ 0 \amp 0 \amp 0 \amp 0 \end{bmatrix}
+            </me>
+            and try
+            <me>
+              ( \mathbf{I}_4 + \mathbf{J}_4 )^{-1} = \mathbf{I}_4 - \mathbf{J}_4 + \mathbf{J}_4^2 - \mathbf{J}_4^3 + \mathbf{J}_4^4 - \mathbf{J}_4^5 + \cdots
+            </me>,
+            which turns out to be true but you have to explain why. The reason is not difficult: if you calculate <m>\mathbf{J}_4^4</m> it actually vanishes.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Find the inverse of <m> \begin{bmatrix} 1 \amp 2 \\ 3 \amp 4 \end{bmatrix} </m> by either rolling your own, finding the formula, using a calculator, or asking ChatGPT. Explain how to solve the linear system
+            <me>
+              \begin{bmatrix} 1 \amp 2 \\ 3 \amp 4 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 2147483647 \\ 222222 \end{bmatrix}
+            </me>
+            using the inverse.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Not every matrix has an inverse. Explain why if there's a non-zero <m>n</m>-vector <m>\mathbf{v}</m> such that <m> \mathbf{A} \mathbf{v} = \mathbf{0} </m>, then <m>\mathbf{A}</m> doesn't have an inverse at all. Note that any matrix multiplying with the zero vector gives a zero vector again.
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
+    <title>Eigenvalues</title>
+    <p></p>
+    <reading-questions>
+      <title></title>
+      <exercise>
+        <statement>
+          <p>
+            For an (<m>n</m><times/><m>n</m>)-matrix <m>\mathbf{A}</m>, if <m> \mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1} </m> for some <m>\mathbf{P}</m> and <m>\mathbf{D}</m> satisfying
+            <me>
+              \mathbf{P} = \begin{bmatrix} \mathbf{v}_1 \amp \mathbf{v}_2 \amp \cdots \amp \mathbf{v}_n \end{bmatrix} \qquad\text{and}\qquad \mathbf{D} = \begin{bmatrix} \lambda_1 \\ \amp \lambda_2 \\ \amp \amp \ddots \\ \amp \amp \amp \lambda_n \end{bmatrix}
+            </me>,
+            with <m>n</m>-vectors <m>\mathbf{v}_k</m>, explain why
+            <me>
+              \mathbf{A} \mathbf{v}_k = \lambda_k \mathbf{v}_k
+            </me>.
+            You can just work with <m> n = 3 </m>. The only point is to find <m> \mathbf{P}^{-1} \mathbf{v}_k </m>. What is the thing that after applying <m>\mathbf{P}</m> gives <m>\mathbf{v}_k</m>?
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain how to calculate <m>\mathbf{A}^m</m> more efficiently given the information above.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Explain how to calculate
+            <me>
+              \mathrm{e}^{\mathbf{A}} = \sum_{ i = 0 }^{\infty} \frac{1}{ i ! } \mathbf{A}^i
+            </me>
+            more efficiently given the information above.
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+  <subsection>
+    <title>Matrix transformations</title>
+    <p></p>
+    <reading-questions>
+      <title></title>
+      <exercise>
+        <statement>
+          <p>
+            Suppose <m>\mathbf{u}</m>, <m>\mathbf{v}</m>, <m>\mathbf{w}</m> form a basis of <m>\mathbb{R}^3</m>. Explain why the matrix <m> \mathbf{P} = \begin{bmatrix} \mathbf{u} \amp \mathbf{v} \amp \mathbf{w} \end{bmatrix} </m> has an inverse. One key point is
+            <me>
+              \begin{bmatrix} \mathbf{u} \amp \mathbf{v} \amp \mathbf{w} \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+            </me>
+            always has a solution, and the solution is really the first column of <m>\mathbf{A}^{-1}</m>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Suppose further that a (3<times/>3)-matrix <m>\mathbf{A}</m> satisfies
+            <md>
+              <mrow> \mathbf{A} \mathbf{u} \amp= \lambda \mathbf{u}\text{,} </mrow>
+              <mrow> \mathbf{A} \mathbf{v} \amp= \mu \mathbf{v}\text{,} </mrow>
+              <mrow> \mathbf{A} \mathbf{w} \amp= \nu \mathbf{w} </mrow>
+            </md>
+            with numbers <m>\lambda</m>, <m>\mu</m>, <m>\nu</m>. Explain why <m>\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1} </m>, where
+            <me>
+              \mathbf{D} = \begin{bmatrix} \lambda \\ \amp \mu \\ \amp \amp \nu \end{bmatrix}
+            </me>.
+          </p>
+        </statement>
+      </exercise>
+    </reading-questions>
+  </subsection>
+</section>
