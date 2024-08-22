@@ -1,4 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <section xml:id="why-learn" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Why learn?</title>
+  <subsection>
+    <title>Showcase: topics</title>
+    <p>
+      Choose a topic from below as a group; the links are just meant for a possible starting point. Try to obtain a big picture of the topic from whatever resources, but don't go into technical details at all. Tell other people what's the fuss about the topic, in particular why this topic is important and interesting. Prepare a group presentation.
+    </p>
+    <p>
+      <ul>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=eXBwU9ieLL0">Groups and categories</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=MOJ9XzMuFvk">Homotopy</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=8DBhTXM_Br4">Knots</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=X8jsijhllIA">Error correction codes</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=zQo_S3yNa2w">Hyperbolic spaces</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=_QxrkEqOrWM">Symmetric polyhedra</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=pYeRS5a3HbE">Spin</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=ovJcsL7vyrk">Bifurcation and chaos</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=spUNpyF58BY">Fourier transform</url> and <url href="https://www.youtube.com/watch?v=jnxqHcObNK4">wavelets</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=sD0NjbwqlYw"><m> \zeta (-1) = -1/12 </m></url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=aVwxzDHniEw">Musical temperament</url> and <url href="https://www.youtube.com/watch?v=cyW5z-M2yzw">number theory</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=tRaq4aYPzCc"><m>p</m>-adic numbers</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=A5w-dEgIU1M">Black<ndash/>Scholes equation</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=a-767WnbaCQ">Percolation</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=twPaOtfpneo">Geodesics</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=oCK5oGmRtxQ">Curvature</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=ThwuT3_AG6w">Origami</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=7ESK5SaP-bc">Monte<ndash/>Carlo</url> and <url href="https://www.youtube.com/watch?v=vTUwEu53uzs">Bayesian statistics</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=IHZwWFHWa-w">Gradient descent</url> and <url href="https://www.youtube.com/watch?v=UmathvAKj80">Stochastic gradient descent</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=IaSGqQa5O-M">Convolution</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=t-_VPRCtiUg">Resonance</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=48sCx-wBs34">Quasicrystals</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=_axrpVnGHpk">Phonons</url> and <url href="https://www.youtube.com/watch?v=le_ORQZzkmE">Quasiparticles</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=Ederft9dkag">Solitons</url>
+          </p>
+        </li>
+        <li>
+          <p>
+            <url href="https://www.youtube.com/watch?v=_UoTTq651dE">Turbulence</url>
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
 </section>

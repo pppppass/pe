@@ -59,7 +59,7 @@
       <exercise>
         <statement>
           <p>
-            Given (for <m>P</m> and <m> Q : \mathbb{R}^2 \to \mathbb{R} </m>)
+            Given (for any <m>P</m> and <m> Q : \mathbb{R}^2 \to \mathbb{R} </m>)
             <me>
               \int_{ \partial \Omega } \left( P \mathop{\mathrm{d}\!} x + Q \mathop{\mathrm{d}\!} y \right) = \iint_{\Omega} \left( -\frac{ \mathop{\partial\!} P }{ \mathop{\partial\!} y } + \frac{ \mathop{\partial\!} Q }{ \mathop{\partial\!} x } \right) \mathop{\mathrm{d}\!} x \mathop{\mathrm{d}\!} y
             </me>,
@@ -127,7 +127,7 @@
       <exercise>
         <statement>
           <p>
-            Does <m> \mathbf{A} \mathbf{B} </m> or <m> \mathbf{A} \mathbf{B} </m> represents the linear transformation of applying <m>\mathbf{A}</m> first and then applying <m>\mathbf{B}</m>? How does this compare to the notion of function composition?
+            Does <m> \mathbf{A} \mathbf{B} </m> or <m> \mathbf{B} \mathbf{A} </m> represents the linear transformation of applying <m>\mathbf{A}</m> first and then applying <m>\mathbf{B}</m>? How does this compare to the notion of function composition?
           </p>
         </statement>
       </exercise>
