@@ -14,5 +14,6 @@
     <xi:include href="./reading-miscellaneous.ptx"/>
     <xi:include href="./reading-basis.ptx"/>
     <xi:include href="./reading-linear-transformations.ptx"/>
+    <xi:include href="./reading-topics.ptx"/>
   </article>
 </pretext>
