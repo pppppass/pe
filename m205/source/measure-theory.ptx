@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="measures-summary" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Measures - Summary</title>
+  <introduction>
+    <p>Some words</p>
+  </introduction>
+  <subsection xml:id="subsection-1">
+    <title>My First Subsection</title>
+    <p>Hello, more worlds!</p>
+  </subsection>
+</section>
