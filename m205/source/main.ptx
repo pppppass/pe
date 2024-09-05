@@ -6,6 +6,9 @@
   <article xml:id="real-analysis-topics">
     <title>Real Analysis: Topics</title>
     <xi:include href="./measure-theory.ptx"/>
-    <!-- <xi:include href="./.ptx" /> -->
+    <xi:include href="./functional-analysis.ptx"/>
+    <!-- <xi:include href="./banach-spaces.ptx"/> -->
+    <!-- <xi:include href="./hilbert-spaces.ptx"/>
+    <xi:include href="./distribution-theory.ptx"/> -->
   </article>
 </pretext>
