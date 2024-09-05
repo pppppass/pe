@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="functional-analysis" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Functional analysis</title>
+  <introduction>
+    <p>
+      <ul>
+        <li>
+          <p>
+            ([F]) Folland. <pubtitle>Real Analysis: Modern Techniques and Their Applications</pubtitle>, 2ed.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Ch. 4<ndash/>5.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Topological vector spaces</title>
+    <p>
+        
+    </p>
+  </subsection>
+</section>
