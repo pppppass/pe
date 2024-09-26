@@ -1,0 +1,49 @@
+name: Build pem53 with PreTeXt-CLI
+
+on:
+  pull_request:
+    branches: [main, m53]
+  push:
+    branches: [main, m53]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r m53/requirements.txt
+
+      - name: Build deploy targets
+        working-directory: ./m53
+        run: pretext build --deploys
+
+      - name: Stage deployment
+        working-directory: ./m53
+        run: pretext deploy --stage-only
+      
+      - name: Move to depoly folder
+        run: mkdir -p deploy && mv m53/output/stage deploy/m53
+
+      - name: Cache contents
+        uses: actions/cache/save@v4
+        with:
+            path: deploy/m53
+            key: m53-${{ github.run_id }}
+
+  gh-pages:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/gh-pages.yml
