@@ -32,6 +32,13 @@ jobs:
           key: m0-${{ github.run_id }}
           restore-keys: m0
 
+      - name: Download contents of pem53
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/m53
+          key: m53-${{ github.run_id }}
+          restore-keys: m53
+
       - name: Setup GitHub Pages
         id: check
         uses: actions/configure-pages@v5
