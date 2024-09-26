@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title></title>
+  <subsection>
+    <title>Motivation</title>
+    <p>
+      Differential equations are prevalent because the world is dynamical. The dimension of time is very different from the three spatial dimensions. The universe is not frozen at <url href="https://en.wikipedia.org/wiki/Absolute_zero">absolute zero</url>, nor is it in the <url href="https://en.wikipedia.org/wiki/Heat_death_of_the_universe">heat death</url>. Things move around.
+    </p>
+    <p>
+      This is the prime example of differential equations: from speed we obtain the movement. Say at time <m>t</m> something is at position <m> x (t) </m>. Prescribing the speed as a function of time, say <m> x' (t) = 100 </m>, is setting up a differential equation. The <em>general</em> solution is
+      <me>
+        x (t) = x (0) + \int_0^t x' (s) \mathop{\mathrm{d}\!} s = x (0) + 100 t
+      </me>.
+      This is a family of solutions parameterized by <m> x (0) </m>: any value of <m> x (0) </m> gives a <em>specific</em> solution. Say <m> x (0) = -100 </m>, and then <m> x (t) = -100 + 100 t </m>. This is very physical because
+      <ol>
+        <li>
+          <p>
+            we are able to start from any starting point <m> x (0) </m> (solution exists for any initial value), and
+          </p>
+        </li>
+        <li>
+          <p>
+            the starting point <m> x (0) </m> completely determines the trajectory <m> x (t) </m> (the solution is unique for any initial value).
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      The more physical example involves forces:
+      <me> \ddot{x} = \frac{1}{m} F </me>,
+      or equivalently
+      <md>
+        <mrow> \dot{x} \amp= \frac{1}{m} p \text{,} </mrow>
+        <mrow> \dot{p} \amp= F </mrow>
+      </md>.
+      This, classical mechanics, is all of physics, before
+      <ul>
+        <li>
+          <p>
+            field theory (many discrete small things together form a <url href="https://en.wikipedia.org/wiki/Continuum_mechanics">continuous entity</url>),
+          </p>
+        </li>
+        <li>
+          <p>
+            statistical mechanics (the initial condition is <url href="https://en.wikipedia.org/wiki/Ergodic_hypothesis">too complicated</url> to be described unless statistically), and
+          </p>
+        </li>
+        <li>
+          <p>
+            quantum mechanics (the trajectory is <url href="https://en.wikipedia.org/wiki/Uncertainty_principle">inherently non-deterministic</url>).
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+    <alert>A differential equation is always an equation of functions.</alert>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Linearity</title>
+    <p>
+      
+    </p>
+  </subsection>
+  <subsection>
+    <title>Change of variables</title>
+    <p>
+    </p>
+  </subsection>
+</section>
