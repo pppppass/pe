@@ -45,7 +45,7 @@
       Modes of convergence. Convergence in norm implies convergence in measure [p. 61 Prop. 2.29].Convergence in measure implies a.e. convergence of a subsequence [ibid. Thm. 2.30]. Almost uniform convergence implies convergence in measure and a.e. convergence [p. 63 Ex. 39]. If the measure is finite, a.e. convergence implies almost uniform convergence [p. 62 Thm. 2.33]. 
     </p>
     <p>
-      †Uniform integrability. One equivalent definition of absolute continuity <m> \nu \ll \mu </m> is <m> \nu (E) \to 0 </m> when <m> \mu (E) \to 0 </m> [p. 89 Thm. 3.5]. Applying to <m> f \mu \ll \mu </m>, we get the (uniform) integrability of <m>f</m> [ibid. Crly 3.6]. Convergence in <m>L^1</m> is equivalent to convergence in measure together with uniform integrability [p. 92 Ex. 11b].
+      †Uniform integrability. One equivalent definition of absolute continuity <m> \nu \ll \mu </m> is <m> \nu (E) \to 0 </m> when <m> \mu (E) \to 0 </m> [p. 89 Thm. 3.5]. Applying to <m> f \mu \ll \mu </m>, we get the (uniform) integrability of <m>f</m> [p. 52 Ex. 16]. Convergence in <m>L^1</m> is equivalent to convergence in measure together with uniform integrability [p. 92 Ex. 11b].
     </p>
     <p>
       Exercises. Ch. 2 Ex. 13, 44, 46. Ch. 3 Ex. 21.
