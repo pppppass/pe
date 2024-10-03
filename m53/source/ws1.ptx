@@ -7,11 +7,18 @@
       Differential equations are prevalent because the world is dynamical. The dimension of time is very different from the three spatial dimensions. The universe is not frozen at <url href="https://en.wikipedia.org/wiki/Absolute_zero">absolute zero</url>, nor is it in the <url href="https://en.wikipedia.org/wiki/Heat_death_of_the_universe">heat death</url>. Things move around.
     </p>
     <p>
-      This is the prime example of differential equations: from speed we obtain the movement. Say at time <m>t</m> something is at position <m> x (t) </m>. Prescribing the speed as a function of time, say <m> x' (t) = 100 </m>, is setting up a differential equation. The <em>general</em> solution is
+      This is the prime example of differential equations: speed implies movement. Say at time <m>t</m> something is at position <m> x (t) </m>. Prescribing the speed as a function of time sets up a differential equation. Say  <m> x' (t) = 100 </m>. The <em>general</em> solution can be found by
+      <md>
+        <mrow> \sd x \amp= 100 \sd t\text{,} \amp \int \sd x \amp= \int 100 \sd t\text{,} \amp x \amp= 100 t + C\text{.} </mrow>
+      </md>
+      This is a family of solutions parameterized by a parameter <m>C</m>. Think of <m>C</m> as a radio knob or a slider bar: tweaking it gives different functions <m> x (t) </m>. An extra condition pins down the parameter and thus gives a <em>specific</em> solution. Say <m> x (1) = 0 </m>. Then <m> C = -100 </m> and <m> x (t) = -100 + 100 t </m>. 
+    </p>
+    <p>
+      An equivalent way to write the solution is through
       <me>
-        x (t) = x (0) + \int_0^t x' (s) \mathop{\mathrm{d}\!} s = x (0) + 100 t
+        x (t) = x (0) + \int_0^t x' (s) \sd s = x (0) + 100 t
       </me>.
-      This is a family of solutions parameterized by <m> x (0) </m>: any value of <m> x (0) </m> gives a <em>specific</em> solution. Say <m> x (0) = -100 </m>, and then <m> x (t) = -100 + 100 t </m>. This is very physical because
+      This is very physical because
       <ol>
         <li>
           <p>
@@ -27,17 +34,14 @@
     </p>
     <p>
       The more physical example involves forces:
-      <me> \ddot{x} = \frac{1}{m} F </me>,
-      or equivalently
       <md>
-        <mrow> \dot{x} \amp= \frac{1}{m} p \text{,} </mrow>
-        <mrow> \dot{p} \amp= F </mrow>
-      </md>.
+        <mrow> \ddot{x} \amp= \frac{1}{m} F\text{,} \amp \text{or equivalently} \quad \amp\left\{\begin{aligned} \dot{x} \amp= \frac{1}{m} p \text{,} \\ \dot{p} \amp= F\text{.} \end{aligned}\right. </mrow>
+      </md>
       This, classical mechanics, is all of physics, before
       <ul>
         <li>
           <p>
-            field theory (many discrete small things together form a <url href="https://en.wikipedia.org/wiki/Continuum_mechanics">continuous entity</url>),
+            continuum/field theory (too many small discrete things together form a <url href="https://en.wikipedia.org/wiki/Continuum_mechanics">continuous entity</url>),
           </p>
         </li>
         <li>
@@ -52,19 +56,202 @@
         </li>
       </ul>
     </p>
-    <p>
-    <alert>A differential equation is always an equation of functions.</alert>
-    </p>
+    <assemblage>
+      <title>Principle α</title>
+      <p>
+        A differential equation is always an equation of functions. The general solution is a parameterized family of functions. Extra conditions pin down the parameters and yield specific solutions.
+      </p>
+    </assemblage>
   </subsection>
   <subsection>
     <title>Linearity</title>
     <p>
-      
+      An operation being linear means addition goes through the operation, <ie/>
+      <me>
+        F ( x + y ) = F (x) + F (y)
+      </me>.
+      (The operation of) multiplying by <m>2</m> is linear:
+      <md>
+        <mrow> 2 \times ( 5 + 7 ) \amp= 2 \times 5 + 2 \times 7\text{,} \amp 2 ( a + b ) \amp= 2 a + 2 b\text{.} </mrow>
+      </md>
+      Taking derivatives is linear:
+      <me>
+        ( f (x) + g (x) )' = f' (x) + g' (x)
+      </me>,
+      and multiplying by a function is also linear:
+      <me>
+        h (x) ( f (x) + g (x) ) = h (x) f (x) + h (x) g (x)
+      </me>.
+      However, most of the things are not linear, especially like (unless for very special values)
+      <md>
+        <mrow> ( a + b )^2 \amp\neq a^2 + b^2\text{,} \amp \frac{1}{ a + b } \amp\neq \frac{1}{a} + \frac{1}{b}\text{,} \amp \se^{ a + b } \amp\neq \se^a + \se^b\text{.} </mrow>
+      </md>
+      Taylor expansion says as long as we look close enough, a (nice) non-linear thing will <em>locally</em> almost look like a linear thing.
+      However, most of the interesting yet complicated <em>global</em> behaviors are still brought by non-linearity.
     </p>
+    <p>
+      Solutions of (homogenous) linear differential equations can be added because of linearity:
+      <md alignment="alignat">
+        <mrow> y' (x) \amp- ( \sin x ) \amp y (x) \amp= 0\text{,} </mrow>
+        <mrow> z' (x) \amp- ( \sin x ) \amp z (x) \amp= 0\text{,} </mrow>
+        <mrow> \text{then} \quad ( y (x) + z (x) )' \amp- ( \sin x ) \amp ( y (x) + z (x) ) \amp= 0\text{,} </mrow>
+      </md>
+      or more generally for linear combinations:
+      <me>
+       \quad ( a y (x) + b z (x) )' - ( \sin x ) ( a y (x) + b z (x) ) = 0\text{.}
+      </me>
+      This is exactly like saying solutions to (homogenous) linear systems form a span:
+      <md alignment="alignat">
+        <mrow> 2 \amp\times 4 \amp + 5 \amp\times 0 \amp + 8 \amp\times (-1) \amp \amp= 0\text{,} </mrow>
+        <mrow> 2 \amp\times 1 \amp + 5 \amp\times (-2) \amp + 8 \amp\times 1 \amp \amp= 0\text{,} </mrow>
+        <mrow> \text{then} \quad 2 \amp\times ( 4 a + b ) \amp + 5 \amp\times ( -2 b ) \amp + 8 \amp\times ( -a + b ) \amp \amp= 0\text{.} </mrow>
+      </md>
+    </p>
+    <p>
+      For linear systems, bases of the solution space (null space) can be found by matrix operations. Linear differential equations are more difficult but there are usually theories providing us with a basis. In other words, we are ensured that the solution can be written as a linear combination of certain functions.
+    </p>
+    <p>
+      Say we have the linear equation <m> y'' - 5 y' + 6 y = 0 </m>. Somebody guarantees us that the solution is a linear combination of functions in the form <m> \se^{ a x } </m> for some <m>a</m>. Plugging <m> y = \se^{ a x } </m> into the differential equation gives <m> ( a^2 - 5 a + 6 ) \se^{ a x } = 0 </m>, so two possible solutions are <m> y = \se^{ 2 x } </m> and <m> y = \se^{ 3 x } </m>. The general solution is therefore
+      <me>
+        y = A \se^{ 2 x } + B \se^{ 3 x }
+      </me>,
+      which has two parameters <m>A</m> and <m>B</m> that can take arbitrary values.
+    </p>
+    <p>
+      If we are given the initial conditions <m> y (0) = 0 </m> and <m> y' (0) = 1 </m>, we want to figure out what exact values of <m>A</m> and <m>B</m> will make these happen. Plugging in again, we see <m> y (0) = A + B = 0 </m> and <m> y' (0) = 2 A + 3 B = 1 </m>. So <m> A = -1 </m> and <m> B = 1 </m>, <ie/> the specific solution is <m> y (x) = -\se^{ 2 x } + \se^{ 3 x } </m>.
+    </p>
+    <assemblage>
+      <title>Principle β</title>
+      <p>
+        For linear differential equations, past hard work of physicists and mathematicians (which? vote!) gives us some functions such that (1) any linear combination of them is a solution and (2) any solution is a linear combination of them. The general solution is any linear combination, and the specific solution is some linear combination.
+      </p>
+    </assemblage>
   </subsection>
   <subsection>
-    <title>Change of variables</title>
+    <title>Jacobian</title>
     <p>
+      A function <m> y (x) </m> tells how a variable <m>y</m> associates with another variable <m>x</m>. Say <m> y (x) = \se^x </m>:
+      <tabular halign="center">
+        <row bottom="minor">
+          <cell><m>x</m></cell>
+          <cell><m>y</m></cell>
+        </row>
+        <row>
+          <cell><m>1</m></cell>
+          <cell><m>\se</m></cell>
+        </row>
+        <row>
+          <cell><m>2</m></cell>
+          <cell><m>\se^2</m></cell>
+        </row>
+        <row>
+          <cell><m>3</m></cell>
+          <cell><m>\se^3</m></cell>
+        </row>
+        <row>
+          <cell><m>4</m></cell>
+          <cell><m>\se^4</m></cell>
+        </row>
+      </tabular>
+    </p>
+    <p>
+      If we want to scale the variable <m>y</m> but keep the variable <m>x</m>, we can set up (in variable language)
+      <md>
+        <mrow> Y \amp= 2 y\text{,} \amp X \amp= x  </mrow>
+      </md>,
+      <ie/> (in function language)
+      <md>
+        <mrow> Y (X) = Y (x) = 2 y (x) </mrow>
+      </md>.
+      In the case of <m> y (x) = \se^x </m>:
+      <tabular halign="center">
+        <row bottom="minor">
+          <cell><m> X = x </m></cell>
+          <cell><m>y</m></cell>
+          <cell><m>Y</m></cell>
+        </row>
+        <row>
+          <cell><m>1</m></cell>
+          <cell><m>\se</m></cell>
+          <cell><m> 2 \se </m></cell>
+        </row>
+        <row>
+          <cell><m>2</m></cell>
+          <cell><m>\se^2</m></cell>
+          <cell><m> 2 \se^2 </m></cell>
+        </row>
+        <row>
+          <cell><m>3</m></cell>
+          <cell><m>\se^3</m></cell>
+          <cell><m> 2 \se^3 </m></cell>
+        </row>
+        <row>
+          <cell><m>4</m></cell>
+          <cell><m>\se^4</m></cell>
+          <cell><m> 2 \se^4 </m></cell>
+        </row>
+      </tabular>
+    </p>
+    <p>
+      The derivative goes intuitively like
+      <md>
+        <mrow> \frac{ \sd Y }{ \sd X } \amp= \frac{ \sd Y }{ \sd x } = 2 \frac{ \sd y }{ \sd x }\text{,} \amp \sd Y = 2 \sd y </mrow>
+      </md>,
+      <ie/>
+      <me>
+        Y' (X) = 2 y' (X) = 2 y' (x)
+      </me>.
+      This is reasonable because <m>Y</m> changes twice more violently than <m>y</m> with respect to <m> X = x </m>. In the case of <m> y (x) = \se^x </m>, we have <m> Y' (X) = 2 \se^X </m>.
+    </p>
+    <p>
+      If we scale the variable <m>x</m> but keep the variable <m>y</m>, we are relabing the time:
+      <md>
+        <mrow> Y \amp= y\text{,} \amp X \amp= 2 x\text{.} </mrow>
+      </md>
+      In the case of <m> y (x) = \se^x </m>:
+      <tabular halign="center">
+        <row bottom="minor">
+          <cell><m>X</m></cell>
+          <cell><m>x</m></cell>
+          <cell><m> Y = y </m></cell>
+        </row>
+        <row>
+          <cell><m>1</m></cell>
+          <cell><m> 1 / 2 </m></cell>
+          <cell><m> \se^{ 1 / 2 } </m></cell>
+        </row>
+        <row>
+          <cell><m>2</m></cell>
+          <cell><m>1</m></cell>
+          <cell><m>\se</m></cell>
+        </row>
+        <row>
+          <cell><m>3</m></cell>
+          <cell><m> 3 / 2 </m></cell>
+          <cell><m> \se^{ 3 / 2 } </m></cell>
+        </row>
+        <row>
+          <cell><m>4</m></cell>
+          <cell><m>2</m></cell>
+          <cell><m>\se^2</m></cell>
+        </row>
+      </tabular>
+      Here <m> Y = y </m> changes half slower with respect to <m>X</m> than to <m>x</m>. It's exactly like taking fast-motion pictures in real time of <m>x</m> using a high-speed camera <m> X = 2 x </m>: when playing back in real time of <m>X</m> we are actually seeing slow-motion pictures <m> x = X / 2 </m>. In function language, all this is saying
+      <me>
+        Y (X) = y (x) = y \left( \frac{X}{2} \right)
+      </me>,
+      and the derivative goes counter-intuitively like
+      <md>
+        <mrow> \frac{ \sd Y }{ \sd X } \amp= \frac{ \sd y }{ \sd X } = \frac{ \sd y }{ \sd x } \frac{ \sd x }{ \sd X } = \frac{1}{2} \frac{ \sd y }{ \sd x }\text{,} \amp \frac{\sd}{ \sd X } \amp= \frac{\sd}{ 2 \sd x } = \frac{1}{2} \frac{\sd}{ \sd x } </mrow>
+      </md>,
+      <ie/>
+      <me>
+        Y' (X) = \frac{1}{2} y' \left( \frac{X}{2} \right)
+      </me>.
+      In the case of <m> y (x) = \se^x </m>, we get <m> Y (X) = \se^{ X / 2 } </m> and <m> Y' (X) = \se^{ X / 2 } / 2 </m>.
+    </p>
+    <p>
+      The two different behaviors have their respective names in field theory or tensor analysis: one called covariant and another contravariant, see <url href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_of_vectors">wiki</url>.
     </p>
   </subsection>
 </section>
