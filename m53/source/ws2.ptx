@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title></title>
+  <subsection>
+    <title>Time marching</title>
+    <p>
+      It's generally very difficult to find a solution formula for differential equations. There are no supercomputers embedded inside everything exhaustively trying to figure out how to solve differential equations. <url href="https://en.wikipedia.org/wiki/And_yet_it_moves">E pur si muove</url>, things still move on their own. Nature solves whatever differential equations using the power of time:
+        <ol>
+          <li>
+            <p>
+              Because of inertia, things move in almost constant speed for at least a little bit of time.
+            </p>
+          </li>
+          <li>
+            <p>
+              Then because of forces the speed may change a little bit.
+            </p>
+          </li>
+          <li>
+            <p>
+              But then things can move in the new speed for a little bit longer time.
+            </p>
+          </li>
+        </ol>
+    </p>
+    <p>
+        Look at the differential equation <m> y' (x) = y (x) </m> with initial condition <m> y (0) = 1 </m>. We want to do something similar, so we write
+        <md alignment="alignat">
+            <mrow> y (0.1) \amp= {} \amp y (0) + (0.1 - 0) y' (0) \amp= {} \amp y (0) + 0.1 y (0) \amp = 1.1\text{,} </mrow>
+            <mrow> y (0.2) \amp= {} \amp y (0.1) + (0.2 - 0.1) y' (0.1) \amp= {} \amp y (0.1) + 0.1 y (0.1) \amp = 1.21\text{,} </mrow>
+            <mrow> y (0.3) \amp= {} \amp y (0.2) + (0.3 - 0.2) y' (0.2) \amp= {} \amp y (0.2) + 0.1 y (0.2) \amp = 1.331\text{.} </mrow>
+        </md>
+        Eventually we will get <m> y (1) = ( 1 + 0.1 )^{ 1 / 0.1 } </m>, or <m> y (1) = ( 1 + h )^{ 1 / h } \to \se </m> if we want to use a smaller step size <m> h \to 0 </m>. Step by step, we can find <m> y (x) </m> of any <m>x</m>, even for <m> x \lt 0 </m>: we just go backwards like
+        <me>
+          y (-0.1) = y (0) + (-0.1 - 0) y' (0) = y (0) - 0.1 y (0.0)  = 0.9
+        </me>.
+    </p>
+    <assemblage>
+        <title>Principle γ</title>
+        <p>
+            In a differential equation in time, the time derivative relates increment speed to the present value. So to find a discretized solution we can just march over time little by little.
+        </p>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Blow up</title>
+    <p>
+      Look at the differential equation <m> y' (x) = 1 / x </m>. Although we write
+      <me>
+        \int \frac{ \sd x }{x} = \log |x| + C
+      </me>
+      always, the function
+      <me>
+        y (x) = \begin{cases} \log x - 3\text{,} \amp x \gt 0\text{;} \\ \log (-x) + 10\text{,} \amp x \lt 0 \end{cases}
+      </me>
+      seems also to be a solution. The issue is clear from a time marching perspective: suppose we are given an initial value <m> y (1) = -3 </m>, and then we can do time marching around <m>1</m> and eventually explore over <m> ( 0, +\infty ) </m>. However, we will never be able to cross over the point <m>0</m>. This is not because <m> 1 / x = \infty </m> at <m> x = 0 </m> (though the singularity is necessary), but because the solution from time marching <m> y (x) = \log x - 3 </m> approaches <m>-\infty</m> as <m> x \to 0^+ </m>. There's no way to extend the solution over <m> x = 0 </m>.
+    </p>
+    <p>
+      Another perspective can be seen from really solving the differential equation:
+      <md>
+        <mrow> \sd y \amp= \frac{ \sd x }{x}\text{,} \amp \int_{-3}^y \sd v \amp= \int_{1}^x \frac{ \sd u }{u}\text{,} \amp y = \log x - 3 </mrow>
+      </md>.
+      It simply doesn't make sense to put <m> x \lt 0 </m> on the middle integral. In many senses, definite integrals are in the first place, while indefinite integrals are just tools to evaluate definite integrals. Everything about indefinite integrals can be written in definite integrals with variable limits and some people refrain from using indefinite integrals.
+    </p>
+    <p>
+      In any sense, if we start from the initial condition <m> y (1) = -3 </m>, we don't know anything about the solution on <m> ( -\infty, 0 ) </m>. To say anything there we need another initial condition like <m> y (-1) = 10 </m>. We tend to define solutions only on an open interval, usually the maximal interval where the solution cannot be further extended, and don't worry about the other branches.
+    </p>
+    <p>
+      Look at another differential equation <m> y' (x) = 1 + y^2 (x) </m> with initial condition <m> y (0) = 0 </m>. We have
+      <md>
+        <mrow> \frac{ \sd y }{ 1 + y^2 } \amp= \sd x\text{,} \amp \int_0^y \frac{ \sd v }{ 1 + v^2 } \amp= \int_0^x \sd u\text{,} \amp \arctan y = x </mrow>
+      </md>,
+      so <m> y (x) = \tan x </m> and the maximal interval is <m> ( -\pi / 2, \pi / 2 ) </m>. If we start with <m> y (1) = 0 </m> then the maximal interval is <m> ( -\pi / 2 + 1, \pi / 2 + 1 ) </m>. The root for this blow up is the nonlinearity: the speed of growth <m> 1 + y^2 </m> is too fast, especially for a large <m>y</m>.
+    </p>
+    <assemblage>
+      <title>Principle δ</title>
+      <p>
+        The solution to an ordinary differential equation may extend to infinity or blow up in finite time. We only define solutions on the maximal existence interval. Nonlinearity and singularity in coefficients cause blow ups. Linear ordinary differential equations with nice coefficients don't blow up in finite time.
+      </p>
+    </assemblage>
+  </subsection>
+  <subsection>
+    <title>Lipchitz</title>
+    <p>
+      Look at the differential equation <m> y' (x) = \sqrt{ y (x) } </m> with <m> y (0) = 1 </m>. We have
+      <md>
+        <mrow> \frac{ \sd y }{\sqrt{y}} \amp= \sd x\text{,} \amp \int_1^y \frac{ \sd v }{\sqrt{v}} \amp= \int_0^x \sd u \text{,} \amp 2 \sqrt{y} - 2 \amp= x\text{,} </mrow>
+      </md>
+      so seemingly <m> y (x) = ( x + 2 )^2 / 4 </m>. However, this is not the end of the story: notice that <m> y' (x) \ge 0 </m>, so the decreasing behavior over <m> ( -\infty, -2 ) </m> is spurious. The only possibility over <m> ( -\infty, -2 ) </m> is that <m>y</m> stays at zero, <ie/>
+      <me>
+        y (x) = \begin{cases} ( x + 2 )^2 / 4\text{,} \amp x \ge -2 \\ 0\text{,} \amp x \lt -2\text{.} \end{cases}
+      </me>
+      The case <m> y = 0 </m> is something we dismissed when dividing by <m>\sqrt{y}</m> and it has to be recovered manually. The lesson is
+      <ul>
+        <li>
+          <p>
+            we need to be very careful about singularities, and
+          </p>
+        </li>
+        <li>
+          <p>
+            qualitative behavior can help us in determining quantitative behavior.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      The same thing happens for the seemingly innocent <m> y' = y </m>:
+      <md>
+        <mrow> \frac{ \sd y }{y} \amp= \sd x\text{,} \amp \int \frac{ \sd y }{y} \amp= \int \sd x\text{,} \amp \log |y| \amp= x + C_1 </mrow>
+      </md>,
+      so <m> y (x) = \pm \se^{C_1} \se^x </m>. However, the dismissed solution is <m> y (x) = 0 </m>. The general solution is actually <m> y (x) = C_2 \se^x </m> for any <m>C_2</m>.
+    </p>
+    <p>
+      Still look at <m> y' (x) = \sqrt{ y (x) } </m>. All the possible solutions are
+      <md alignment="gather">
+        <mrow> y (x) = \begin{cases} ( x - C )^2 / 4\text{,} \amp x \ge C; \\ 0\text{,} \amp x \lt C \end{cases} \quad \text{ for any } C </mrow>
+        <mrow> \text{and} \quad y (x) = 0\text{.} </mrow>
+      </md>
+      Given the initial condition <m> y (x_0) = y_0 \gt 0 </m>, there exists a unique solution to the differential equation. This can be seen from the time marching argument: if do time marching around the initial condition, as long as the solution doesn't blow up, where it doesn't in our case, time marching should give us one and only one solution.
+    </p>
+    <p>
+      However, the solution is not unique if we place the initial condition <m> y (x_0) = y_0 = 0 </m>. This actually comes from the singularity of <m> f (y) = \sqrt{y} </m> at <m> y = 0 </m>: we have <m> f' (y) = 1 / ( 2 \sqrt{y} ) = +\infty </m> at <m> y = 0 </m>. For example, <m> \sqrt{ 0.000001 } = 0.001 </m>, which is very big compared to <m>0.000001</m>. If we really do time arching from <m> y (x_0) = 0 </m> we will indeed get the solution <m> y (x) = 0 </m>. But if we perturb a little bit and start from <m> y (x_0) = a \gt 0 </m>, no matter how small <m>a</m> is, the time marching solution will significantly branch up since the growth speed changes so much, and we will get the quadratic solution. We can even take the limit <m> a \to 0 </m> and the limiting solution is
+      <me>
+        y (x) = \begin{cases} ( x - x_0 )^2 / 4\text{,} \amp x \ge x_0 \\ 0\text{,} \amp x \lt x_0\text{,} \end{cases}
+      </me>
+      which is exactly <m>0</m> on <m> ( -\infty, x_0 ] </m>. This is exactly like a <url href="https://en.wikipedia.org/wiki/Bifurcation_theory">discontinuity</url>, as for the sign function: <m> \lim_{ x \to 0^- } \sgn x = -1 </m>, <m> \lim_{ x \to 0^+ } \sgn x = 1 </m>, but usually <m> \sgn 0 = 0 </m>.
+    </p>
+    <assemblage>
+      <title>Principle ε</title>
+      <p>
+        For an ordinary differential equation <m> y' = f ( x, y ) </m>, singularities of <m>f</m> in <m>y</m> can lead to non-uniqueness of solutions. For a nice function <m>f</m>, the solution exists and is unique, at least locally.
+      </p>
+    </assemblage>
+    <!-- <p>
+      Look at the differential equation
+      <md>
+        <mrow> y' (x) \amp= f ( y (x) )\text{,} \amp f (v) = \begin{cases} \sqrt{v} \amp v \ge 0\text{;} \\ -\sqrt{-v} \amp v \lt 0\text{.} \end{cases} </mrow>
+      </md>
+      Suppose we are given 
+    </p> -->
+  </subsection>
+</section>
