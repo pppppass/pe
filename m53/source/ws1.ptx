@@ -87,7 +87,7 @@
         <mrow> ( a + b )^2 \amp\neq a^2 + b^2\text{,} \amp \frac{1}{ a + b } \amp\neq \frac{1}{a} + \frac{1}{b}\text{,} \amp \se^{ a + b } \amp\neq \se^a + \se^b\text{.} </mrow>
       </md>
       Taylor expansion says as long as we look close enough, a (nice) non-linear thing will <em>locally</em> almost look like a linear thing.
-      However, most of the interesting yet complicated <em>global</em> behaviors are still brought by non-linearity.
+      However, most of the interesting yet complicated behaviors are still brought by non-linearity <em>globally</em>.
     </p>
     <p>
       Solutions of (homogenous) linear differential equations can be added because of linearity:
@@ -108,10 +108,10 @@
       </md>
     </p>
     <p>
-      For linear systems, bases of the solution space (null space) can be found by matrix operations. Linear differential equations are more difficult but there are usually theories providing us with a basis. In other words, we are ensured that the solution can be written as a linear combination of certain functions.
+      For linear systems, bases of the solution space (null space) can be found by matrix operations (Gaussian elimination). Linear differential equations are more difficult but there are usually theories providing us with a basis. In other words, we are ensured that the solution can be written as a linear combination of certain functions.
     </p>
     <p>
-      Say we have the linear equation <m> y'' - 5 y' + 6 y = 0 </m>. Somebody guarantees us that the solution is a linear combination of functions in the form <m> \se^{ a x } </m> for some <m>a</m>. Plugging <m> y = \se^{ a x } </m> into the differential equation gives <m> ( a^2 - 5 a + 6 ) \se^{ a x } = 0 </m>, so two possible solutions are <m> y = \se^{ 2 x } </m> and <m> y = \se^{ 3 x } </m>. The general solution is therefore
+      Say we have the linear equation <m> y'' - 5 y' + 6 y = 0 </m>. Somebody guarantees us that the solution is a linear combination of functions in the form <m> \se^{ a x } </m> for some <m>a</m>. Plugging <m> y = \se^{ a x } </m> into the differential equation gives <m> ( a^2 - 5 a + 6 ) \se^{ a x } = 0 </m>, so two possible solutions (basis elements) are <m> y = \se^{ 2 x } </m> and <m> y = \se^{ 3 x } </m>. The general solution is therefore linear combinations
       <me>
         y = A \se^{ 2 x } + B \se^{ 3 x }
       </me>,
@@ -236,7 +236,7 @@
           <cell><m>\se^2</m></cell>
         </row>
       </tabular>
-      Here <m> Y = y </m> changes half slower with respect to <m>X</m> than to <m>x</m>. It's exactly like taking fast-motion pictures in real time of <m>x</m> using a high-speed camera <m> X = 2 x </m>: when playing back in real time of <m>X</m> we are actually seeing slow-motion pictures <m> x = X / 2 </m>. In function language, all this is saying
+      Here <m> Y = y </m> changes half slower with respect to <m>X</m> than to <m>x</m>. It's exactly like taking fast-motion pictures in real time of <m>x</m> using a high-speed camera <m> X = 2 x </m>: when playing back in real time of <m>X</m> we are actually seeing slow-motion pictures in half speed <m> x = X / 2 </m>. In function language, all this is saying
       <me>
         Y (X) = y (x) = y \left( \frac{X}{2} \right)
       </me>,
