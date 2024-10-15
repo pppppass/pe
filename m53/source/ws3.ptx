@@ -2,19 +2,107 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude">
   <title></title>
   <subsection>
-    <title>Slope field</title>
+    <title>Trajectory</title>
     <p>
+      There are two perspectives on ordinary differential equations. Say we are talking about an ordinary differential equation <m> y' = f ( t, y ) </m>, <ie/> <m> y' (t) = f ( t, y (t) ) </m>.
+    </p>
+    <p>
+      One point of view is about slope fields and <em>integral curves</em>. At each point <m> ( t, y ) </m> on the <m>t</m>-<m>y</m> plane, there is a teeny-tiny little bit of line with slope <m> f ( t, y ) </m>. Solving the ordinary differential equation means finding curves on the <m>t</m>-<m>y</m> plane that have those little lines as tangent lines. If we are lucky, the integral curves are graphs of functions <m> y = y ( t; C ) </m>, where <m>C</m> is a parameter varying over different integral curves. In other words, <m> y = y ( t; C ) </m> is the general solution.
+    </p>
+    <p>
+      Another parallel point of view is about vector fields and <em>trajectories</em>. Think of <m> y (t) </m> as the trajectory of a particle on the <m>y</m> line. Here <m>t</m> doesn't manifest as a spatial dimension, but as a temporal dimension: think of it as the animation time, or even a slider bar you can drag. Now the ordinary differential equation is really saying at time <m>t</m>, if the particle is at position <m>y</m>, it will have speed <m> f ( t, y ) </m>. Solving the differential equation then means determining the trajectory given initial conditions. This is what we look at when talking about phase lines of autonomous systems.
+    </p>
+    <p>
+      A more pertinent example is
+      <md>
+        <mrow> \amp\left\{ \begin{aligned} \dot{x} \amp= - y\text{,} \\ \dot{y} \amp = x \end{aligned} \right. \amp \text{with} \quad \amp\left\{ \begin{aligned} x (0) \amp= 1\text{,} \\ y (0) \amp= 0\text{.} \end{aligned} \right. </mrow>
+      </md>
+      We will see the solution is
+      <me>
+        \left\{ \begin{aligned} x (t) \amp= \cos t\text{,} \\ y (t) \amp= \sin t\text{,} \end{aligned} \right.
+      </me>
+      which is an integral curve in the <m>t</m>-<m>x</m>-<m>y</m> space. The trajectory on the <m>x</m>-<m>y</m> plane is really a circle given by <m> x^2 + y^2 = 1 </m>. More precisely, the particle <m> ( x (t), y (t) ) </m> runs on the circle counter-clockwise.
+    </p>
+    <p>
+      Actually, the trajectory can be found again by differential equations:
+      <md>
+        <mrow> \frac{ \sd x }{ \sd t } \amp= -y\text{,} \amp \frac{ \sd y }{ \sd t } \amp= x \text{,} \amp \text{so} \quad \frac{ \sd y }{ \sd x } \amp= -\frac{x}{y}\text{.} </mrow>
+      </md>
+      The last equation is separable and general solutions are <m> x^2 + y^2 = C </m>, which evaluates to <m> C = 1 </m> given the initial conditions above.
     </p>
   </subsection>
   <subsection>
     <title>1D dynamics</title>
     <p>
+      Think of a pendulum. Strictly speaking, the differential equation is
+      <men xml:id="eq-pend-nonlin">
+        \ddot{\theta} + \frac{g}{L} \sin \theta = 0
+      </men>.
+      The <m> \sin \theta </m> term doesn't look very friendly at all. However, if the angle <m>\theta</m> is <url href="https://en.wikipedia.org/wiki/Small-angle_approximation">small</url>, we will have <m> \sin \theta \approx \theta </m>, so the equation turns into
+      <men xml:id="eq-pend-lin">
+        \ddot{\theta} + \frac{g}{L} \theta = 0
+      </men>.
+      This is a linear differential equation and we will know how to solve it completely. Working a little bit harder, we see the period is <m> 2 \pi \sqrt{ L / g }</m>.
     </p>
+    <p>
+      What happens here is that we look at a <em>local model</em> <xref ref="eq-pend-lin"/> instead of the one with complicated global behaviors <xref ref="eq-pend-nonlin"/>. The assumption is that we are mainly interested in the local behavior near a point, here <m> \theta \approx 0 </m>. Local models are usually linear because of Taylor expansion and are therefore much easier to understand. Meanwhile, local models are not that useful in studying global behaviors, <eg/>, when and how the pendulum will go past the highest point.
+    </p>
+    <p>
+      Come back to 1-dimensional (autonomous) dynamical systems, given by <m> y' = f (y) </m> with a nice <m> f (y) </m>. If <m> f (y_0) \neq 0 </m> at a point <m> y = y_0 </m>, we have <m> f (y) \approx f (y_0) </m> so the dynamics nearby is just flowing in one direction, depending on the sign of <m> f (y_0) </m>. We can say the local models are <m> y' = A </m> with <m> A = f (y_0) \gtrless 0 </m>, but they don't really provide more information.
+    </p>
+    <p>
+      If <m> f (y_0) = 0 </m>, we then have <m> f (y) \approx f' (y_0) ( y - y_0 ) </m>. The interesting (not <m> y' = \text{constant} </m>) yet simple (not <m> y' = \text{quadratic or more} </m>) cases are really only <m> y' = A ( y - y_0 ) </m> with <m> f (y_0) = 0 </m> and <m> A = f' (y_0) \gtrless 0 </m>. Changing <m> y - y_0 </m> into <m>y</m> (centering at <m> y = y_0 </m>), this is really <m> y' = A y </m>. The general solution is <m> y = C \se^{ A t } </m>, so
+      <ul>
+        <li>
+          <p>
+            if <m> A \gt 0 </m>, this is an unstable stationary point, <ie/> a source;
+          </p>
+        </li>
+        <li>
+          <p>
+            if <m> A \lt 0 </m>, this is an stable stationary point, <ie/> a sink.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      More delicate cases with <m> f (y_0) = f' (y_0) = 0 </m> are possible and we will have <m> f (y) \approx f'' (y_0) ( y - y_0 )^2 / 2 </m>. The local models <m> y' = A y^2 </m> with <m> A \neq 0 </m> are semi-stable stationary points.
+    </p>
+    <assemblage>
+      <title>Principle ζ</title>
+      <p>
+        Local behaviors of dynamical systems are governed by the first non-zero term in Taylor expansion. There are usually only a handful of possible local models, and classification of these local models constitutes the main part of local behavior studies.
+      </p>
+    </assemblage>
   </subsection>
   <subsection>
-    <title>Osgood</title>
+    <title>✨Osgood</title>
     <p>
+      For a stable stationary point <m> y = y_0 </m> with <m> f (y_0) = 0 </m> and <m> f' (y_0) \lt 0 </m>, solutions <m> y (t) </m> starting nearby will converge asymptotically to <m>y_0</m> as <m> t \to +\infty </m>. One interesting observation is that <m> y (t) </m> will never reach <m>y_0</m> in finite time as long as <m> f (y) </m> is nice. Local models provide a qualitative argument, and here are two quantitative arguments.
+    </p>
+    <p>
+      <ul>
+        <li>
+          <p>
+            (Uniqueness) Note that <m> y (t) = y_0 </m> is a (stationary) solution to <m> y' = f (y) </m>. If another solution satisfies <m> y (t_1) \neq y_0 </m> but <m> y (t_2) = y_0 </m>, this immediately violates the uniqueness of solutions, which is guaranteed by <m> f (y) </m> being nice.
+          </p>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <p>
+            (Osgood's theorem) Suppose <m> y (t_1) \neq y_0 </m> but <m> y (t_2) = y_0 </m>. Now
+            <md>
+              <mrow> \frac{ \sd y }{ f (y) } \amp= \sd t\text{,} \amp \int_{ y (t_1) }^{y_0} \frac{ \sd v }{ f (v) } \amp= \int_{t_1}^{t_2} \sd u = t_2 - t_1\text{,} </mrow>
+            </md>
+            which is impossible because
+            <me>
+              \int_{ y (t_1) }^{y_0} \frac{ \sd v }{ f (v) } \approx \frac{1}{ f' (y_0) } \int_{ y (t_1) }^{y_0} \frac{ \sd v }{ v - y_0 }
+            </me>
+            is infinite while <m> t_2 - t_1 </m> is supposed to be finite.
+          </p>
+        </li>
+      </ul>
     </p>
   </subsection>
-
 </section>
