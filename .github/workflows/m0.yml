@@ -1,15 +1,12 @@
 name: Build pem0 with PreTeXt-CLI
 
 on:
-  pull_request:
-    branches: [main, m0]
-  push:
-    branches: [main, m0]
+  workflow_call:
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
 
       - name: Checkout source
@@ -40,10 +37,3 @@ jobs:
         with:
             path: deploy/m0
             key: m0-${{ github.run_id }}
-
-  gh-pages:
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    uses: ./.github/workflows/gh-pages.yml

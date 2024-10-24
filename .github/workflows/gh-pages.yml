@@ -1,12 +1,80 @@
 name: Deploy GitHub Pages
 
 on:
-  workflow_call:
+  push:
+    branches: ["*"]
   workflow_dispatch:
 
 jobs:
+
+  check-m0:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/cache/restore@v4
+      with:
+        path: deploy/m0
+        key: m0-${{ github.run_id }}
+        restore-keys: m0
+        lookup-only: true
+        fail-on-cache-miss: true
+  
+  build-m0:
+    needs: check-m0
+    if: ${{ failure() || startsWith(github.ref_name, 'm0') }}
+    uses: ./.github/workflows/m0.yml
+
+  check-m205:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/cache/restore@v4
+      with:
+        path: deploy/m205
+        key: m205-${{ github.run_id }}
+        restore-keys: m205
+        lookup-only: true
+        fail-on-cache-miss: true
+  
+  build-m205:
+    needs: check-m205
+    if: ${{ failure() || startsWith(github.ref_name, 'm205') }}
+    uses: ./.github/workflows/m205.yml
+
+  check-m53:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/cache/restore@v4
+      with:
+        path: deploy/m53
+        key: m53-${{ github.run_id }}
+        restore-keys: m53
+        lookup-only: true
+        fail-on-cache-miss: true
+  
+  build-m53:
+    needs: check-m53
+    if: ${{ failure() || startsWith(github.ref_name, 'm53') }}
+    uses: ./.github/workflows/m53.yml
+
+  check-m50s:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/cache/restore@v4
+      with:
+        path: deploy/m50s
+        key: m50s-${{ github.run_id }}
+        restore-keys: m50s
+        lookup-only: true
+        fail-on-cache-miss: true
+  
+  build-m50s:
+    needs: check-m50s
+    if: ${{ failure() || startsWith(github.ref_name, 'm50s') }}
+    uses: ./.github/workflows/m50s.yml
+  
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    needs: [build-m0, build-m205, build-m53, build-m50s]
+    if: ${{ always() }}
     permissions:
       pages: write
       id-token: write
@@ -17,7 +85,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-
+      
+      - name: Download contents of pem0
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/m0
+          key: m0-${{ github.run_id }}
+          restore-keys: m0
+      
       - name: Download contents of pem205
         uses: actions/cache/restore@v4
         with:
@@ -25,19 +100,19 @@ jobs:
           key: m205-${{ github.run_id }}
           restore-keys: m205
 
-      - name: Download contents of pem0
-        uses: actions/cache/restore@v4
-        with:
-          path: deploy/m0
-          key: m0-${{ github.run_id }}
-          restore-keys: m0
-
       - name: Download contents of pem53
         uses: actions/cache/restore@v4
         with:
           path: deploy/m53
           key: m53-${{ github.run_id }}
           restore-keys: m53
+
+      - name: Download contents of pem50s
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/m50s
+          key: m50s-${{ github.run_id }}
+          restore-keys: m50s
 
       - name: Setup GitHub Pages
         id: check

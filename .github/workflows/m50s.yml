@@ -1,4 +1,4 @@
-name: Build pem53 with PreTeXt-CLI
+name: Build pem50s with PreTeXt-CLI
 
 on:
   workflow_call:
@@ -19,21 +19,21 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: pip install -r m53/requirements.txt
+        run: pip install -r m50s/requirements.txt
 
       - name: Build deploy targets
-        working-directory: ./m53
+        working-directory: ./m50s
         run: pretext build --deploys
 
       - name: Stage deployment
-        working-directory: ./m53
+        working-directory: ./m50s
         run: pretext deploy --stage-only
       
       - name: Move to depoly folder
-        run: mkdir -p deploy && mv m53/output/stage deploy/m53
+        run: mkdir -p deploy && mv m50s/output/stage deploy/m50s
 
       - name: Cache contents
         uses: actions/cache/save@v4
         with:
-            path: deploy/m53
-            key: m53-${{ github.run_id }}
+            path: deploy/m50s
+            key: m50s-${{ github.run_id }}
