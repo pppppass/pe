@@ -71,7 +71,7 @@
     <assemblage>
       <title>Principle ζ</title>
       <p>
-        Local behaviors of dynamical systems are governed by the first non-zero term in Taylor expansion. There are usually only a handful of possible local models, and classification of these local models constitutes the main part of local behavior studies.
+        Local behaviors of dynamical systems are governed by the first non-zero term in the Taylor expansion. There are usually only a handful of possible local models, and classification of these local models constitutes the main part of local behavior studies.
       </p>
     </assemblage>
   </subsection>
