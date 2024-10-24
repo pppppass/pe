@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <docinfo>
+    <latex-image-preamble>\usepackage{tikz}</latex-image-preamble>
+  </docinfo>
+  <article xml:id="studies-on-calculus-and-linear-algebra">
+    <title>Studies on Calculus and Linear algebra</title>
+    <xi:include href="./quotes.ptx" />
+    <xi:include href="./thoughts.ptx" />
+  </article>
+</pretext>

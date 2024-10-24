@@ -1,0 +1,39 @@
+name: Build pem50s with PreTeXt-CLI
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r m50s/requirements.txt
+
+      - name: Build deploy targets
+        working-directory: ./m50s
+        run: pretext build --deploys
+
+      - name: Stage deployment
+        working-directory: ./m50s
+        run: pretext deploy --stage-only
+      
+      - name: Move to depoly folder
+        run: mkdir -p deploy && mv m50s/output/stage deploy/m50s
+
+      - name: Cache contents
+        uses: actions/cache/save@v4
+        with:
+            path: deploy/m50s
+            key: m50s-${{ github.run_id }}
