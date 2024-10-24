@@ -4,15 +4,33 @@
   <subsection>
     <title>Euler</title>
     <p>
+      The classic story of exponential goes like this. Euler has $1 million and there's a bank that has interest rate 100%. Our dear Euler knows that if he deposits his $1 million for one year, he will get $2 million in the end. Somehow the bank is too nice to charge Euler any service fee, so our smart Euler figured out that if he withdraws $1.5 million after half a year and then deposits again, he will get $2.25 million still within one year. Our brilliant Euler then realized if he does the same thing quarterly or even monthly, he will get even more still within one year. Our ingenious Euler then decided to withdraw-redeposit every day or even every second. After bugging the bank for a whole year, he eventually gets $2.718 281 83 million but no more, because
+      <me>
+        \lim_{ N \to +\infty } \left( 1 + \frac{1}{N} \right)^N = \se \approx 2.71828183
+      </me>.
+    </p>
+    <p>
+      This is exactly the same story when we are doing time marching to solve <m> y' = A y </m>. Starting from <m> y (0) = 1 </m> and cutting <m> [ 0, 1 ] </m> into <m>N</m> pieces, we get
+      <me>
+        y (1) = \lim_{ N \to +\infty } \left( 1 + \frac{A}{N} \right)^N = \se^A
+      </me>.
+    </p>
+    <p>
+      The same story also works for complex numbers. Think about <m> ( 1 + \si B / N )^N </m>, which is the product of <m>N</m> copies of <m> 1 + \si B / N </m>. Now each <m> 1 + \si B / N </m> is really just rotating counter-clockwise with an angle <m> B / N </m>, so by stacking up <m>N</m> copies we are actually rotating with an angle <m>B</m>. All this is saying
+      <me>
+        \lim_{ N \to +\infty } \left( 1 + \si \frac{B}{N} \right)^N = \cos B + \si \sin B
+      </me>.
+      The left-hand side is one definition of <m> \se^{ \si B } </m>.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Time derivatives</title>
+    <p>
+      A very physical example is actually <m> \dot{x} = -\nabla V (x) </m>.
     </p>
   </subsection>
   <subsection>
     <title>Damping</title>
-    <p>
-    </p>
-  </subsection>
-  <subsection>
-    <title>Time</title>
     <p>
     </p>
   </subsection>
