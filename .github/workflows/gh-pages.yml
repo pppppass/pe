@@ -61,6 +61,8 @@ jobs:
   ensure-m50s:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
       - name: Look up contents of pem50s
         id: restore-m50s
         uses: actions/cache/restore@v4
@@ -71,7 +73,7 @@ jobs:
           lookup-only: true
       - name: Generate contents of pem50s
         if: ${{ ! startsWith(steps.restore-m50s.outputs.cache-matched-key, 'm50s') || startsWith(github.ref_name, 'm50s') }}
-        uses: pppppass/m50s.yml@m50s
+        uses: ./.github/workflows/m50s.yml
 
   deploy:
     runs-on: ubuntu-latest
