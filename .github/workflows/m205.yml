@@ -1,15 +1,12 @@
 name: Build pem205 with PreTeXt-CLI
 
 on:
-  pull_request:
-    branches: [main, m205]
-  push:
-    branches: [main, m205]
+  workflow_call:
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
 
       - name: Checkout source
@@ -40,10 +37,3 @@ jobs:
         with:
             path: deploy/m205
             key: m205-${{ github.run_id }}
-
-  gh-pages:
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    uses: ./.github/workflows/gh-pages.yml
