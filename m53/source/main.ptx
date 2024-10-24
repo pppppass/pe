@@ -2,9 +2,18 @@
 <pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
   <docinfo>
     <latex-image-preamble>\usepackage{tikz}</latex-image-preamble>
+    <macros>
+      \DeclareMathOperator\sd{\mathrm{d}\!}
+      \DeclareMathOperator\sgn{\mathrm{sgn}}
+      \newcommand\se{\mathrm{e}}
+      \newcommand\si{\mathrm{i}}
+    </macros>
   </docinfo>
-  <article xml:id="learn-math">
+  <article xml:id="differential-equations">
     <title>Differential equations</title>
     <xi:include href="./ws1.ptx"/>
+    <xi:include href="./ws2.ptx"/>
+    <xi:include href="./ws3.ptx"/>
+    <xi:include href="./ws4.ptx"/>
   </article>
 </pretext>
