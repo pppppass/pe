@@ -22,7 +22,7 @@ jobs:
           lookup-only: true
       - name: Generate contents of pem0
         if: ${{ ! startsWith(steps.restore-m0.outputs.cache-matched-key, 'm0') || startsWith(github.ref_name, 'm0') }}
-        uses: ./.github/workflows/m0.yml
+        uses: ./.github/workflows/m0
 
   ensure-m205:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
           lookup-only: true
       - name: Generate contents of pem205
         if: ${{ ! startsWith(steps.restore-m205.outputs.cache-matched-key, 'm205') || startsWith(github.ref_name, 'm205') }}
-        uses: ./.github/workflows/m205.yml
+        uses: ./.github/workflows/m205
 
   ensure-m53:
     runs-on: ubuntu-latest
@@ -56,7 +56,7 @@ jobs:
           lookup-only: true
       - name: Generate contents of pem53
         if: ${{ ! startsWith(steps.restore-m53.outputs.cache-matched-key, 'm53') || startsWith(github.ref_name, 'm53') }}
-        uses: ./.github/workflows/m53.yml
+        uses: ./.github/workflows/m53
 
   ensure-m50s:
     runs-on: ubuntu-latest
@@ -73,7 +73,7 @@ jobs:
           lookup-only: true
       - name: Generate contents of pem50s
         if: ${{ ! startsWith(steps.restore-m50s.outputs.cache-matched-key, 'm50s') || startsWith(github.ref_name, 'm50s') }}
-        uses: ./.github/workflows/m50s.yml
+        uses: ./.github/workflows/m50s
 
   deploy:
     runs-on: ubuntu-latest
