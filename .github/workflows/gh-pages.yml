@@ -58,9 +58,24 @@ jobs:
         if: ${{ ! startsWith(steps.restore-m53.outputs.cache-matched-key, 'm53') || startsWith(github.ref_name, 'm53') }}
         uses: ./.github/workflows/m53.yml
 
+  ensure-m50s:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Look up contents of pem50s
+        id: restore-m50s
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/m50s
+          key: m50s-${{ github.run_id }}
+          restore-keys: m50s
+          lookup-only: true
+      - name: Generate contents of pem50s
+        if: ${{ ! startsWith(steps.restore-m50s.outputs.cache-matched-key, 'm50s') || startsWith(github.ref_name, 'm50s') }}
+        uses: pppppass/m50s.yml@m50s
+
   deploy:
     runs-on: ubuntu-latest
-    needs: [ensure-m0, ensure-m205, ensure-m53]
+    needs: [ensure-m0, ensure-m205, ensure-m53, ensure-m50s]
     permissions:
       pages: write
       id-token: write
@@ -92,6 +107,13 @@ jobs:
           path: deploy/m53
           key: m53-${{ github.run_id }}
           restore-keys: m53
+
+      - name: Download contents of pem50s
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/m50s
+          key: m50s-${{ github.run_id }}
+          restore-keys: m50s
 
       - name: Setup GitHub Pages
         id: check
