@@ -5,7 +5,8 @@
   </docinfo>
   <article xml:id="studies-on-calculus-and-linear-algebra">
     <title>Studies on Calculus and Linear algebra</title>
-    <xi:include href="./quotes.ptx" />
-    <xi:include href="./thoughts.ptx" />
+    <xi:include href="./quotes.ptx"/>
+    <xi:include href="./thoughts.ptx"/>
+    <xi:include href="./observations.ptx"/>
   </article>
 </pretext>

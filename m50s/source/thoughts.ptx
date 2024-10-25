@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<section xml:id="thoughts" xmlns:xi="http://www.w3.org/2001/XInclude">
+<section xml:id="section-thoughts" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Thoughts</title>
-  <p>
-    
-  </p>
+  <subsection xml:id="subsec-principles">
+    <title>Principles</title>
+    <p>
+      General principle is <q>Calculus turns nonlinear problems into linear problems, linear algebra turns linear problems into combinatorial problems, and combinatorics is difficult</q>.
+    </p>
+    <p>
+      List of principles that are useful:
+      <ul>
+        <li>
+          <p>
+            Geometric invariance and coordinate transform. <q>There's only one geometric entity, but there are multiple coordinate systems to represent the same thing, some of which are easier to work with.</q>
+          </p>
+        </li>
+        <li>
+          <p>
+            Linear approximation. <q>Most of the things are non-linear and global behaviors are formidably complicated, but if we look close enough things are almost linear locally and thus intelligible.</q>
+          </p>
+        </li>
+        <li>
+          <p>
+            Linearity. <q>Linear combinations get through, so if we know the action under a basis we know everything.</q> Also naturalness. <q>Only under a basis we know the coordinates.</q>
+          </p>
+        </li>
+        <li>
+          <p>
+            Types. <q>Things have types and operations require certain types.</q> <q>Functions input a certain type and output a certain type.</q> Especially currying.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+  <subsection xml:id="subsec-pedagogy">
+    <title>Pedagogy</title>
+    <p>
+      On motivation. The <q>Theorem<ndash/>Formula<ndash/>Application</q> loop can demote understanding and lead to fossilization. <url href="https://matheducators.stackexchange.com/a/11180">SE post</url>. Mathematical concepts have natural motivations and later people explain things in ways they want. I tend to not give any template formulas but do things step by step from scratch. Sometimes there are capability issues of the instructors and motivations can get lost. I tend to write my own materials because I know what I want to and am able to talk about.
+    </p>
+    <p>
+      On examples. Theoretical physicists tend to give the cleanest example because of the universality argument and the approximation argument. Very detailed examples will diffuse attention even if they are supposed to be very close to reality.  Domain experts know much more than mathematicians and as mathematicians there's no need to do their job.
+    </p>
+    <p>
+      On applied fields. One very common saying is <q>engineers will just plug in formulas</q> and one implication is formulas and procedures are more important and should be emphasized. The antecedent is obviously wrong because every one can plug in formulas and nobody will make progress. Engineers and scientists make progress also by understanding things. Applied fields are extremely complex and reductionism is very bad.
+    </p>
+    <p>
+      On automation. The <q>Formula<ndash/>Application</q> loop is problematic because that is the precise part that can be automatized. Instead of giving formulas, how to formulate a problem and then invoke whatever resources will become very important because this is exactly the meta-task that currently cannot be automatized. One implication is that a faster but more abstract way of manipulating or experimenting with concrete objects will be in need.
+    </p>
+    <p>
+      On abstraction. Type theory is becoming more important because familiarity with programming languages is growing. Polymorphism in programming languages may actually be the first abstraction example people realize and have to think about. Abstraction reduces the number of <q>important rules</q> to memorize and eventually reduces cognitive burden, <ie/> improves reusability and even readability. This also relates to procedures, where abstract atomic procedures are going to be important because they are building blocks.
+    </p>
+    <p>
+      On rigorousness. There's a tendency to be very rigorous in some calculus pedagogy. This strongly goes against intuitions from applied fields and may be a result from training of certain people. Philosophically speaking, the model applicability argument may play a very important role: for models, usually it's more difficult to estimate errors <em>a priori</em> than just to claim the model is wrong or not applicable. In this sense, unless rigorous analysis can lead to new phenomena, for applied fields it can be not very useful.
+    </p>
+    <p>
+      On visualization and interaction. <q>Draw pictures because only those will retain in your memory after 5 years.</q> <q>A language teacher cannot be substituted by Duolingo because there's no human interaction.</q> Interaction leads to emotions and only then people can empathize with each other.
+    </p>
+  </subsection>
 </section>

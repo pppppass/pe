@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="section-observations" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Observations</title>
+  <subsection xml:id="subsec-courses">
+    <title>Courses</title>
+    <subsubsection xml:id="subsubsec-19">
+      <title>19</title>
+        <p>
+          Not so automatic things:
+          <ul>
+            <li>
+              <p>
+                <m> f (x, y) = x^2 + y </m> then <m> f (y, x) = y^2 + x </m>, <ie/> difference between function and variable language.
+              </p>
+            </li>
+          </ul>
+        </p>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-51">
+      <title>51</title>
+      <p>
+        Not so automatic things:
+        <ul>
+          <li>
+            <p>
+              <m> \begin{bmatrix} a \\ b \\ c \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} </m> <vs/> <m> a = 1 </m> <etc/>
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              <m> \begin{bmatrix} s + 2 t \\ 3 s + 4 t \\ 5 s + 6 t \end{bmatrix} </m> <vs/> <m> s \begin{bmatrix} 1 \\ 3 \\ 5 \end{bmatrix} + t \begin{bmatrix} 2 \\ 4 \\ 6 \end{bmatrix} </m>.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              Quantifiers, especially the definition of linear independence. It's difficult to discuss linear independence without proofs or to verify it without linear systems.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              Projection inner product formula <vs/> linear combination coefficients under orthogonal basis.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              Types of graphs.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              Matrix multiplication as function.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              The reason why derivative matrix of <m> \mathbb{R}^m \to \mathbb{R}^n </m> is of <m> n \mathord{\times} m </m>. Types involved in chain rules.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              Row operations <vs/> matrix left multiplication, <etc/> Basic blocking.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              Multivariate Taylor expansion, especially the idea behind the first and the second orders.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              Orthogonal matrix <vs/> orthogonal basis.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              Eigenvalue decomposition <vs/> change of basis.
+            </p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <p>
+              Gaussian elimination, <ie/> how to solve linear systems.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        It's actually very good to define a linear subspace as a span because in applied fields whenever claiming something is a vector space a basis is usually also presented. However, then coordinates and change of basis have to be emphasized. In [LADL], vector spaces are defined abstractly first and then matrices are defined as matrices under basis. In [Hoffman], after vector spaces are axiomatically introduced, we see a chapter of Gaussian elimination and this provides good examples later. In [Qiu], vector spaces are introduced very late. In [Strang] there's a lot of emphasis on the splitting between row space and null space.
+      </p>
+      <p>
+        The point of introducing many matrix decompositions, especially <em>LU</em> and <em>QR</em>, can be confusing, especially without a lot of discussion on basis. The decompositions are usually better done by computers and the procedures will be clearer.
+      </p>
+      <p>
+        Implicit function theorem seems to be not discussed.
+      </p>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-52">
+      <title>52</title>
+      <p>
+        
+      </p>
+    </subsubsection>
+    <subsubsection xml:id="subsubsec-53">
+      <title>53</title>
+      <p>
+        
+      </p>
+    </subsubsection>
+  </subsection>
+</section>
