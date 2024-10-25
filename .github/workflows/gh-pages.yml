@@ -70,6 +70,22 @@ jobs:
     needs: check-m50s
     if: ${{ failure() || startsWith(github.ref_name, 'm50s') }}
     uses: ./.github/workflows/m50s.yml
+
+  check-m50:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/cache/restore@v4
+      with:
+        path: deploy/m50
+        key: m50-${{ github.run_id }}
+        restore-keys: m50
+        lookup-only: true
+        fail-on-cache-miss: true
+  
+  build-m50:
+    needs: check-m50
+    if: ${{ failure() || startsWith(github.ref_name, 'm50') }}
+    uses: ./.github/workflows/m50.yml
   
   deploy:
     runs-on: ubuntu-latest
@@ -113,6 +129,13 @@ jobs:
           path: deploy/m50s
           key: m50s-${{ github.run_id }}
           restore-keys: m50s
+
+      - name: Download contents of pem50
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/m50
+          key: m50-${{ github.run_id }}
+          restore-keys: m50
 
       - name: Setup GitHub Pages
         id: check
