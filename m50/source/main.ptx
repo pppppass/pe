@@ -5,6 +5,8 @@
   </docinfo>
   <article xml:id="calculus-and-linear-algebra">
     <title>Calculus and Linear algebra</title>
-    <xi:include href="./gaussian-elimination.ptx"/>
+    <xi:include href="./beginning.ptx"/>
+    <xi:include href="./plotting.ptx"/>
+    <xi:include href="./substituting.ptx"/>
   </article>
 </pretext>

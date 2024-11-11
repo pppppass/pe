@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="section-beginning" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Gen: Beginning</title>
+  <subsection xml:id="subsec-what-and-why">
+    <title>What and why</title>
+    <p>
+      It's 2025 and ChatGPT has been there for a while. If you searched more you might also know Claude and Llama. They solve difficult math problems. I personally witnessed someone cheating with ChatGPT at a math exam. The obvious question in the air is: why are we still studying, suffering from studying, and required to suffer from studying, math, something computers are eventually going to be good at?
+    </p>
+    <p>
+      I found the following paragraphs from <url href="https://personal.math.ubc.ca/~tbjw/ila/overview.html"><pubtitle>Interactive Linear Algebra</pubtitle></url> fulfilling:
+    </p>
+    <blockquote>
+      <p>
+        This text is roughly half computational and half conceptual in nature. The main goal is to present a library of linear algebra tools, and more importantly, to teach a conceptual framework for understanding which tools should be applied in a given context.
+      </p>
+      <p>
+        If Matlab can find the answer faster than you can, then your question is just an algorithm: this is not real problem solving.
+      </p>
+      <p>
+        The subtle part of the subject lies in understanding <em>what computation to ask the computer to do for you</em><mdash/>it is far less important to know how to perform computations that a computer can do better than you anyway.
+      </p>
+    </blockquote>
+    <p>
+      We need to ask the correct questions. Problems in the wild don't come in particular shapes as in prep books. There're no checklists or procedures for you to follow. In 20 years there will be very different problems that need you to solve. The real important thing is not <em>how</em> to do, but <em>what</em> to do and <em>why</em> doing so.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec-idea">
+    <title>Idea</title>
+    <p>
+      We are going to talk a lot about ideas (what and why), and you are going to find out the recipes (how) yourself. This is a grand adventure, and we human have been trying so hard to grasp the most delicate ideas from the thin air.
+      <!-- It might sound a little bit unsafe, but remember there're plenty of companions around. It's 2025 and we have services like ChatGPT, channels like 3Blue1Brown, platforms like Khan Academy, open textbooks like <url href="https://activecalculus.org/">this</url> and <url href="https://personal.math.ubc.ca/~tbjw/ila/">this</url>. Team up with other people from class, Reddit, StackExchange, or even Twitter: there are so many people have been trying hard to grasp the most delicate ideas from the thin air. -->
+      Regularly colleagues of mine tell me that they eventually learned linear algebra <q>the right way</q> only many years after graduation. We are struggling together.
+    </p>
+    <p>
+      Here are two quotes from completely different communities. One from Schoenberg's <pubtitle>Style and Idea</pubtitle>:
+    </p>
+    <blockquote>
+      <p>
+        In comparison with all developments in mechanics, a tool like a pair of pliers might seem simple. I always admired the mind which invented it. In order to understand the problem which this inventor had to overcome one must imagine the state of mechanics before its invention. The idea of fixing the crosspoint of the two crooked arms so that the two smaller segments in front would move in the opposite direction to the larger segments at the back, thus multiplying the power of the man who squeezed them to such an extent that he could cut wire<mdash/>this idea can only have been conceived by a genius. Certainly more complicated and better tools exist today, and there may come a time when the use of the pliers and other similar tools may become superfluous. The tool itself may fall into disuse, but the idea behind it can never become obsolete. And therein lies the difference between a mere style and a real idea.
+      </p>
+      <p>
+        <em>An idea can never perish.</em>
+      </p>
+      <p>
+        It is very regrettable that so many contemporary composers care so much about style and so little about idea. From this came such notions as the attempt to compose in ancient styles, using their mannerisms, limiting oneself to the little that one can thus express and to the insignificance of the musical configurations which can be produced with such equipment.
+      </p>
+    </blockquote>
+    <p>
+      Another from GothamChess <url href="https://youtu.be/qK1oN9dBs5A?t=749">I'm Cancelling Guess The Elo</url>:
+    </p>
+    <blockquote>
+      <p>
+        The entire point of putting the knight on e4 in the Nimso, is to take on c3 with the bishop, and build behind your knight with f5. That's the whole point. This is the point. And then you go here and do all the good stuff. Why would you play knight e4? And now<ellipsis/> This is [_]. Bishop e7, but now you just have nothing. You didn't even play f5. Oh! Why did he hang a pawn? Just nobody<ellipsis/> I'm gonna cry<ellipsis/>
+      </p>
+      <p>
+        This is the problem with intermediate level chess. This is the problem. You buy a course for 70 dollars when it's 50 percent off that was made by Anish Giri or something. You can't even explain what the whole point of the opening is! If I ask you to explain the point of this position to a 5-year-old, you couldn't do it! What's the point of this whole opening? What is<ellipsis/> What are all these moves fighting against? This square! White would like to take the center with everything at the<ellipsis/>
+      </p>
+      <p>
+        Underneath every sophisticated chess opening is a fundamental idea. That's why white does this: to slowly build for the center. All the moves are battling for one square. And you just lost it. You're just giving white all the central space. That's what<ellipsis/> I mean, what are these openings, what, what are you<ellipsis/> Just e4 here and black is dead: black has no play ever. What is knight a6? Where is the knight going? Where is the knight going? It's going here? And then what, up its own [_]? Like I would<ellipsis/>
+      </p>
+    </blockquote>
+  </subsection>
+  <subsection xml:id="subsec-abstraction">
+    <title>Abstraction</title>
+    <p>
+      Ideas tend to be encapsuled in abstractions because that hides the irrelevants and highlights the important. Frequently we need to unpack abstractions, <ie/> to figure out what they even mean, so that we can talk about what to do and why doing so. Think hard and make sure you understand the meaning of every math statement, before even thinking about procedures and reasonings. If you cannot explain, you then don't understand, so try again.
+    </p>
+    <p>
+      I first learned the point of abstraction from <pubtitle>Computer Systems: A Programmer's Perspective</pubtitle> by Bryant and O'Hallaron.
+    </p>
+    <blockquote>
+      <p>
+        The use of <em>abstractions</em> is one of the most important concepts in computer science. For example, one aspect of good programming practice is to formulate a simple application program interface (API) for a set of functions that allow programmers to use the code without having to delve into its inner workings. Different programming languages provide different forms and levels of support for abstraction, such as Java class declarations and C function prototypes.
+      </p>
+      <p>
+        We have already been introduced to several of the abstractions seen in computer systems, as indicated in Figure 1.18. On the processor side, the <em>instruction set architecture</em> provides an abstraction of the actual processor hardware. With this abstraction, a machine-code program behaves as if it were executed on a processor that performs just one instruction at a time. The underlying hardware is far more elaborate, executing multiple instructions in parallel, but always in a way that is consistent with the simple, sequential model. By keeping the same execution model, different processor implementations can execute the same machine code while offering a range of cost and performance.
+      </p>
+      <p>
+        On the operating system side, we have introduced three abstractions: <em>files</em> as an abstraction of I/O devices, <em>virtual memory</em> as an abstraction of program memory, and <em>processes</em> as an abstraction of a running program. To these abstractions we add a new one: the <em>virtual machine</em>, providing an abstraction of the entire computer, including the operating system, the processor, and the programs.
+      </p>
+    </blockquote>
+    <p>
+      It's difficult to realize how far abstractions have been progressing without looking at history. Here are course recommendations for students in science or engineering at Stanford, taken from Stanford Bulletin Archive.
+    </p>
+    <p>
+      1899<ndash/>1900:
+      <ul>
+        <li>
+          <p>
+            <term>1. Algebra.</term>
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>2. Trigonometry.</term>
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>3. Solid Geometry.</term>
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>4. Co-ordinate Geometry.</term>
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>5. Calculus.</term>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      1919<ndash/>20:
+      <ul>
+        <li>
+          <p>
+            <term>1a, 1b. Elementary Analysis.</term><mdash/>This course presupposes a familiarity with the elements of algebra and trigonometry, and is designed to strengthen the command of the student over these subjects and to give him a working knowledge of the method of coordinate geometry.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>2a, 2b. Calculus.</term><mdash/>An elementary course in Differential and Integral Calculus, in which emphasis is laid on fundamental principles and simple applications.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>3a, 3b. Theoretical Mechanics.</term><mdash/>An elementary course, covering the fundamental principles of Statics, Kinematics, and Kinetics, restricted mainly to coplanar forces and to plane motion of particles and of rigid bodies. An elementary treatment of Graphic Statics is included.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      1939<ndash/>40:
+      <ul>
+        <li>
+          <p>
+            <term>10, 11. Analytic Geometry.</term><mdash/>Courses 10 and 11 cover the following topics: the plotting of curves; loci; geometry of the straight line, circle, parabola, ellipse, and hyperbola; transformation of co-ordinates; polar co-ordinates; solid co-ordinate geometry of the plane and straight line, with a brief discussion of the quadric surface.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>21, 21, 22. Differential and Integral Calculus.</term><mdash/>Courses 21<ndash/>23 cover: Functions; the derivative as the slope of a curve and as the rate of change of a function; formulas of differentiation; maxima and minima; infinitesimals and differentials; the area under a curve; integration; definite integrals; length of the arc of a curve, areas in polar co-ordinates; curvature; volumes of curved solids; centers of gravity, fluid pressure, moments of inertia; infinite series; partial differentiation.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      1950<ndash/>60:
+      <ul>
+        <li>
+          <p>
+            <term>10. Analytic Geometry and Calculus</term><mdash/>Inequalities, absolute values, coordinate systems, graphs of equations, distance, circles, slope of a line, equations for straight lines, functions, limits, derivatives of algebraic functions, derivatives of higher order.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>11. Analytic Geometry and Calculus</term><mdash/>Continuation of 10, 10a. Applications of derivatives of algebraic functions including tangent and normal, maxima and minima, velocity, acceleration; antiderivative; definite integral; areas by
+            integration.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>21. Analytic Geometry and Calculus</term><mdash/>Continuation of 11. Volumes of
+            revolution; work; approximate evaluation of definite integrals; conics and other algebraic curves; differentiation of exponential, logarithmic, trigonometric, inverse trigonometric functions.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>22. Analytic Geometry and Calculus</term><mdash/>Continuation of 21. Formal integration; differentials; Simpson's rule; centroids; parametric equations, polar coordinates, and applications including motion in a plane; area of surface of revolution.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>23. Analytic Geometry and Calculus</term><mdash/>Continuation of 22. Rolle's theorem; mean value theorem; indeterminate forms; improper integrals; Taylor's formula; solid analytic geometry; brief introduction to partial derivatives and multiple integrals.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>24. Analytic Geometry and Calculus</term><mdash/>Continuation of 23 or 43 (below). Infinite series including convergence, series of functions, term by term integration and differentiation, power series, Fourier series; ordinary differential equations including separable and linear equations of first order, second order equations of special type, linear equations with constant coefficients; operations with matrices including systems of linear equations and systems of linear differential equations with constant coefficients.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>25. Advanced Calculus I</term><mdash/>Vector algebra, differentiation of vector functions of one variable, applications in geometry and mechanics; differential calculus of functions of several variables, partial derivatives, differentials, implicit functions, Jacobians, extrema, Lagrange multiplier; vector differential calculus; gradient, divergence, curl, curvilinear coordinate systems, surfaces in space, curvature.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>26. Advanced Calculus II</term><mdash/>Integral calculus of functions of several variables, multiple integrals, improper multiple integrals, change of variables in multiple integrals; vector integral calculus, line and surface integrals, divergence theorem, Stokes's theorem, applications; calculus of variations; change of variables in partial differential equations.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      1979<ndash/>80:
+      <ul>
+        <li>
+          <p>
+            <term>41. Calculus and Analytic Geometry</term><mdash/>Courses 41 and 42 together present the calculus of functions of one variable and plane analytic geometry. Principal topics included in 41 are: functions and graphs, limit, continuity, derivative, plane analytic geometry of the straight line, conies, geometrical and physical applications of the derivative, mean value theorem.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>42. Calculus and Analytic Geometry</term><mdash/>Continuation of 41. Principal topics include: antiderivative, definite integral, fundamental theorem, technique of integration, geometrical and physical applications of the integral, polar coordinates.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>43. Calculus and Analytic Geometry</term><mdash/>Courses 43 and 44 present an introduction to multivariable calculus and analytic space geometry. Principal topics included in 43 are: determinants, vector algebra in the plane and space, lines and planes in space, parametric equations in the plane and space, surfaces; partial derivatives, total differential, applications; line integrals, exact differentials; brief discussion of double integrals.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>44. Calculus</term><mdash/>Continuation of 43. Principal topics included are: double and triple integrals, iterated integrals, applications, surface area; infinite series, convergence tests, power series, Taylor's theorem; complex numbers and functions; introduction to differential equations.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      1999<ndash/>2000:
+      <ul>
+        <li>
+          <p>
+            <term>41. Single Variable Calculus</term><mdash/>Introduction to differential and integral calculus of functions of one variable. Topics: review of elementary functions including exponentials and logarithms, rates of change, and the derivative.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>42. Single Variable Calculus</term><mdash/>Continuation of 41. Methods of symbolic and numerical integration, applications of the definite integral, introduction to differential equations. Infinite series.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>51. Linear Algebra and Differential Calculus of Several Variables</term><mdash/>Geometry and algebra of vectors, systems of linear equations, matrices, vector valued functions and functions of several variables, partial derivatives, gradients, chain rule in several variables, vector fields, optimization.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>52. Integral Calculus of Several Variables</term><mdash/>Iterated integrals, line and surface integrals, vector analysis with applications to vector potentials and conservative vector fields, physical interpretations, numerical methods.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>53. Ordinary Differential Equations with Linear Algebra</term><mdash/>Linear ordinary differential equations, applications to oscillations, matrix methods including determinants, eigenvalues and eigenvectors, matrix exponentials, and solving of systems of linear differential equations with constant coefficients, numerical methods, and Laplace transforms.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <!-- <p>
+      2024<ndash/>25:
+      <ul>
+        <li>
+          <p>
+            <term>MATH 19: Calculus.</term> Introduction to differential calculus of functions of one variable. Review of elementary functions (including exponentials and logarithms), limits, rates of change, the derivative and its properties, applications of the derivative.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>MATH 20: Calculus.</term> The definite integral, Riemann sums, antiderivatives, the Fundamental Theorem of Calculus. Integration by substitution and by parts. Area between curves, and volume by slices, washers, and shells. Initial-value problems, exponential and logistic models, direction fields, and parametric curves.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>MATH 21: Calculus.</term> This course addresses a variety of topics centered around the theme of <q>calculus with infinite processes</q>, largely the content of BC-level AP Calculus that isn't in the AB-level syllabus. It is needed throughout probability and statistics at all levels, as well as to understand approximation procedures that arise in all quantitative fields (including economics and computer graphics). After an initial review of limit rules, the course goes on to discuss sequences of numbers and of functions, as well as limits <q>at infinity</q> for each (needed for any sensible discussion of long-term behavior of a numerical process, such as: iterative procedures and complexity in computer science, dynamic models throughout economics, and repeated trials with data in any field). Integration is discussed for rational functions (a loose end from Math 20) and especially (improper) integrals for unbounded functions and <q>to infinity</q>: this shows up in contexts as diverse as escape velocity for a rocket, the present value of a perpetual yield asset, and important calculations in probability (including the famous <q>bell curve</q> and to understand why many statistical tests work as they do). The course then turns to infinite series (how to <q>sum</q> an infinite collection of numbers), some useful convergence and divergence rests for these, and the associated killer app: power series and their properties, as well as Taylor approximations, all of which provide the framework that underlies virtually all mathematical models used in any quantitative field.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>MATH 51: Linear Algebra, Multivariable Calculus, and Modern Applications.</term> This course provides unified coverage of linear algebra and multivariable differential calculus, and the free course e-text connects the material to many fields. Linear algebra in large dimensions underlies the scientific, data-driven, and computational tasks of the 21st century. The linear algebra portion includes orthogonality, linear independence, matrix algebra, and eigenvalues with applications such as least squares, linear regression, and Markov chains (relevant to population dynamics, molecular chemistry, and PageRank); the singular value decomposition (essential in image compression, topic modeling, and data-intensive work in many fields) is introduced in the final chapter of the e-text. The multivariable calculus portion includes unconstrained optimization via gradients and Hessians (used for energy minimization), constrained optimization (via Lagrange multipliers, crucial in economics), gradient descent and the multivariable Chain Rule (which underlie many machine learning algorithms, such as backpropagation), and Newton's method (an ingredient in GPS and robotics). The course emphasizes computations alongside an intuitive understanding of key ideas. The widespread use of computers makes it important for users of math to understand concepts: novel users of quantitative tools in the future will be those who understand ideas and how they fit with examples and applications.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>MATH 52: Integral Calculus of Several Variables.</term> Iterated integrals, line and surface integrals, vector analysis with applications to vector potentials and conservative vector fields, physical interpretations. Divergence theorem and the theorems of Green, Gauss, and Stokes.
+          </p>
+        </li>
+        <li>
+          <p>
+            <term>MATH 53: Differential Equations with Linear Algebra, Fourier Methods, and Modern Applications.</term> Ordinary differential equations and initial value problems, linear systems of such equations with an emphasis on second-order constant-coefficient equations, stability analysis for non-linear systems (including phase portraits and the role of eigenvalues), and numerical methods. Partial differential equations and boundary-value problems, Fourier series and initial conditions, and Fourier transform for non-periodic phenomena. Throughout the development we harness insights from linear algebra, and software widgets are used to explore course topics on a computer (no coding background is needed). The free e-text provides motivation from applications across a wide array of fields (biology, chemistry, computer science, economics, engineering, and physics) described in a manner not requiring any area-specific expertise, and it has an appendix on Laplace transforms with many worked examples as a complement to the Fourier transform in the main text.
+          </p>
+        </li>
+      </ul>
+    </p> -->
+    <p>
+      Compare with the current version on <url href="https://explorecourses.stanford.edu/search?q=MATH">ExploreCourses</url>. We are struggling together. We are also making progress together.
+    </p>
+  </subsection>
+</section>
