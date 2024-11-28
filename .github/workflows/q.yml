@@ -1,0 +1,39 @@
+name: Build peq with PreTeXt-CLI
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r q/requirements.txt
+
+      - name: Build deploy targets
+        working-directory: ./q
+        run: pretext build --deploys
+
+      - name: Stage deployment
+        working-directory: ./q
+        run: pretext deploy --stage-only
+      
+      - name: Move to depoly folder
+        run: mkdir -p deploy && mv q/output/stage deploy/q
+
+      - name: Cache contents
+        uses: actions/cache/save@v4
+        with:
+            path: deploy/q
+            key: q-${{ github.run_id }}

@@ -86,10 +86,26 @@ jobs:
     needs: check-m50
     if: ${{ failure() || startsWith(github.ref_name, 'm50') }}
     uses: ./.github/workflows/m50.yml
+
+  check-q:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/cache/restore@v4
+      with:
+        path: deploy/q
+        key: q-${{ github.run_id }}
+        restore-keys: q
+        lookup-only: true
+        fail-on-cache-miss: true
+  
+  build-q:
+    needs: check-q
+    if: ${{ failure() || startsWith(github.ref_name, 'q') }}
+    uses: ./.github/workflows/q.yml
   
   deploy:
     runs-on: ubuntu-latest
-    needs: [build-m0, build-m205, build-m53, build-m50s]
+    needs: [build-m0, build-m205, build-m53, build-m50s, build-q]
     if: ${{ always() }}
     permissions:
       pages: write
@@ -136,6 +152,13 @@ jobs:
           path: deploy/m50
           key: m50-${{ github.run_id }}
           restore-keys: m50
+
+      - name: Download contents of peq
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/q
+          key: q-${{ github.run_id }}
+          restore-keys: q
 
       - name: Setup GitHub Pages
         id: check
