@@ -5,6 +5,6 @@
   </docinfo>
   <article xml:id="condensed-matter-theory">
     <title>Condensed Matter Theory</title>
-    <xi:include href="./test.ptx" />
+    <xi:include href="./disorder.ptx" />
   </article>
 </pretext>

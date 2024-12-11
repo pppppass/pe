@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="disorder" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Disorder</title>
+  <subsection xml:id="anderson-localization">
+    <title>Anderson localization</title>
+    <p>
+      
+    </p>
+  </subsection>
+  <subsection xml:id="resonance-delocalization">
+    <title>Resonant delocalization</title>
+    <p>
+      
+    </p>
+  </subsection>
+  <subsection xml:id="spin-delocalization">
+    <title>Spin delocalization</title>
+    <p>
+      
+    </p>
+  </subsection>
+  <subsection xml:id="many-body-localization">
+    <title>Many-body localization</title>
+    <p>
+      
+    </p>
+  </subsection>
+</section>
