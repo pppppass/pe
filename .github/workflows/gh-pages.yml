@@ -102,10 +102,26 @@ jobs:
     needs: check-q
     if: ${{ failure() || startsWith(github.ref_name, 'q') }}
     uses: ./.github/workflows/q.yml
+
+  check-scond:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/cache/restore@v4
+      with:
+        path: deploy/scond
+        key: scond-${{ github.run_id }}
+        restore-keys: scond
+        lookup-only: true
+        fail-on-cache-miss: true
+  
+  build-scond:
+    needs: check-scond
+    if: ${{ failure() || startsWith(github.ref_name, 'scond') }}
+    uses: ./.github/workflows/scond.yml
   
   deploy:
     runs-on: ubuntu-latest
-    needs: [build-m0, build-m205, build-m53, build-m50s, build-q]
+    needs: [build-m0, build-m205, build-m53, build-m50s, build-q, build-scond]
     if: ${{ always() }}
     permissions:
       pages: write
@@ -159,6 +175,13 @@ jobs:
           path: deploy/q
           key: q-${{ github.run_id }}
           restore-keys: q
+
+      - name: Download contents of mdg/scond
+        uses: actions/cache/restore@v4
+        with:
+          path: deploy/scond
+          key: scond-${{ github.run_id }}
+          restore-keys: scond
 
       - name: Setup GitHub Pages
         id: check
